@@ -16,23 +16,23 @@
 <meta property="og:url" content="https://luishowin.github.io/frontier-moto/maintain/">
 <meta property="og:title" content="Maintain | Frontier Moto">
 <meta property="og:description" content="Maintenance guides, service intervals and diagnostics tuned for local conditions.">
-<meta property="og:image" content="https://luishowin.github.io/frontier-moto/assets/img/og-frontier.svg">
+<meta property="og:image" content="https://luishowin.github.io/frontier-moto/assets/img/og-frontier.jpg">
 <meta property="og:image:alt" content="Frontier Moto">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Maintain | Frontier Moto">
 <meta name="twitter:description" content="Maintenance guides, service intervals and diagnostics tuned for local conditions.">
-<meta name="twitter:image" content="https://luishowin.github.io/frontier-moto/assets/img/og-frontier.svg">
+<meta name="twitter:image" content="https://luishowin.github.io/frontier-moto/assets/img/og-frontier.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap">
 
-<link rel="stylesheet" href="../assets/css/index.css?v=6">
+<link rel="stylesheet" href="../assets/css/index.css?v=7">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="preload" as="image" href="../assets/img/hero-maintain.svg" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" imagesrcset="../assets/img/hero-maintain.avif 1170w, ../assets/img/hero-maintain-800.avif 800w" imagesizes="100vw" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -114,7 +114,7 @@
 </div>
 <main id="main">
 <section class="hero hero--compact hero--flat">
-  <div class="hero__media"><img src="../assets/img/hero-maintain.svg" width="2000" height="1000" alt="A chain and rear sprocket being measured with a rule on a workshop bench" sizes="100vw" fetchpriority="high" decoding="async"></div>
+  <div class="hero__media"><picture><source type="image/avif" srcset="../assets/img/hero-maintain.avif 1170w, ../assets/img/hero-maintain-800.avif 800w" sizes="100vw"><img src="../assets/img/hero-maintain.jpg" srcset="../assets/img/hero-maintain.jpg 1170w, ../assets/img/hero-maintain-800.jpg 800w" width="1170" height="585" alt="Combination spanners and hand tools laid out in order across a black rubber bench mat" sizes="100vw" fetchpriority="high" decoding="async"></picture></div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <p class="hero__label"><b>04</b> Frontier Index</p>
@@ -129,7 +129,7 @@
     <h2 class="section-label" id="lead-title"><span class="section-label__n">04.1</span><span class="section-label__title">In this section</span><span class="section-label__aside">Field 013</span></h2>
     <article class="feature" data-reveal>
   <div class="feature__media">
-    <img src="../assets/img/feature-chain.svg" width="1800" height="1200" alt="A worn drive chain and rear sprocket photographed against a workshop bench with a measuring rule" sizes="(max-width: 960px) 100vw, 55vw" decoding="async" loading="lazy">
+    <picture><source type="image/avif" srcset="../assets/img/feature-chain.avif 688w" sizes="(max-width: 960px) 100vw, 55vw"><img src="../assets/img/feature-chain.jpg" srcset="../assets/img/feature-chain.jpg 688w" width="688" height="459" alt="A gloved hand holding a component clear of the frame of a partly stripped motorcycle on a workbench" sizes="(max-width: 960px) 100vw, 55vw" decoding="async" loading="lazy"></picture>
     <p class="feature__issue">Field 013</p>
   </div>
   <div class="feature__body">
@@ -220,9 +220,23 @@
   under warranty.</p>
   </div>
 </section>
+<section class="section section--soft" aria-labelledby="plate-title">
+  <div class="container">
+    <h2 class="section-label" id="plate-title"><span class="section-label__n">04.4</span><span class="section-label__title">Naming the parts</span><span class="section-label__aside">Reference diagram</span></h2>
+    <div class="split split--wide-left">
+      <figure data-reveal style="margin:0">
+        <picture><source type="image/avif" srcset="../assets/img/maintain-anatomy.avif 1572w, ../assets/img/maintain-anatomy-1200.avif 1200w, ../assets/img/maintain-anatomy-800.avif 800w" sizes="(max-width: 1320px) 100vw, 1320px"><img src="../assets/img/maintain-anatomy.jpg" srcset="../assets/img/maintain-anatomy.jpg 1572w, ../assets/img/maintain-anatomy-1200.jpg 1200w, ../assets/img/maintain-anatomy-800.jpg 800w" width="1572" height="1001" alt="A labelled side view diagram of an adventure motorcycle naming the main parts, from windscreen and front fork through engine and main frame to swingarm and rear rack" sizes="(max-width: 1320px) 100vw, 1320px" decoding="async" loading="lazy"></picture>
+        <figcaption class="workshop-callout__figcaption" style="border:1px solid var(--line);border-top:none">
+          <span>Adventure single, general arrangement</span><span>Reference diagram, not a specific machine</span>
+        </figcaption>
+      </figure>
+      <p class="lede" data-reveal style="--i:1;max-width:none">Half of a phone diagnosis is lost to vocabulary. If you can tell a fundi that the noise is at the swingarm pivot rather than somewhere at the back, you get a useful answer on the first call and you pay for one repair instead of two. The specification block on this drawing is marked as an example, because the numbers that matter are the ones in your own manual.</p>
+    </div>
+  </div>
+</section>
 <section class="section" id="guides" aria-labelledby="guides-title">
   <div class="container">
-    <h2 class="section-label" id="guides-title"><span class="section-label__n">04.4</span><span class="section-label__title">Guides</span><span class="section-label__aside">3 listed</span></h2>
+    <h2 class="section-label" id="guides-title"><span class="section-label__n">04.5</span><span class="section-label__title">Guides</span><span class="section-label__aside">3 listed</span></h2>
     <div class="row-list"><article class="article-row" data-reveal style="--i:0">
   <p class="article-row__cat">Diagnostics</p>
   <div>
@@ -253,13 +267,13 @@
 </section>
 <section class="section section--soft" aria-labelledby="related-title">
   <div class="container">
-    <h2 class="section-label" id="related-title"><span class="section-label__n">04.5</span><span class="section-label__title">Adjacent sections</span><span class="section-label__aside">Where this leads</span></h2>
+    <h2 class="section-label" id="related-title"><span class="section-label__n">04.6</span><span class="section-label__title">Adjacent sections</span><span class="section-label__aside">Where this leads</span></h2>
     <div class="related-grid" data-reveal><article class="related-card"><p class="related-card__n">01</p><h3 class="related-card__title"><a href="../workshop/">Workshop</a></h3><p class="related-card__blurb">Service, inspection and repair.</p></article><article class="related-card"><p class="related-card__n">02</p><h3 class="related-card__title"><a href="../survive/">Survive</a></h3><p class="related-card__blurb">Breakdowns, preparedness and roadside resilience.</p></article><article class="related-card"><p class="related-card__n">03</p><h3 class="related-card__title"><a href="../workshop/">Workshop</a></h3><p class="related-card__blurb">Service, inspection and repair.</p></article></div>
   </div>
 </section>
 <section class="section" aria-labelledby="notes-title">
   <div class="container">
-    <h2 class="section-label" id="notes-title"><span class="section-label__n">04.6</span><span class="section-label__title">Field notes</span><span class="section-label__aside">One email, occasionally</span></h2>
+    <h2 class="section-label" id="notes-title"><span class="section-label__n">04.7</span><span class="section-label__title">Field notes</span><span class="section-label__aside">One email, occasionally</span></h2>
     <div class="newsletter">
   <div data-reveal>
     <h2 class="newsletter__title">Field notes for the ride ahead</h2>
@@ -320,6 +334,6 @@
     </div>
   </div>
 </footer>
-<script src="../assets/js/index.js?v=6" defer></script>
+<script src="../assets/js/index.js?v=7" defer></script>
 </body>
 </html>

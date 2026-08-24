@@ -13,6 +13,7 @@ sections, and the newsletter.
 from components import (
     article_card,
     article_row,
+    image,
     checklist,
     editorial_hero,
     esc,
@@ -255,6 +256,27 @@ def build(page, data):
   </div>
 </section>""")
 
+    # ── Reference plate ──────────────────────────────────────────────────────
+    # Optional, and only where a drawing does work that prose cannot. Maintain
+    # carries the general arrangement because naming a part correctly is what
+    # makes a phone diagnosis possible.
+    if page.get("plate"):
+        plate = page["plate"]
+        out.append(f"""<section class="section section--soft" aria-labelledby="plate-title">
+  <div class="container">
+    {section_label(sub(), plate["title"], plate["aside"], heading_id="plate-title")}
+    <div class="split split--wide-left">
+      <figure data-reveal style="margin:0">
+        {image(plate["image"], DEPTH, sizes=plate["sizes"])}
+        <figcaption class="workshop-callout__figcaption" style="border:1px solid var(--line);border-top:none">
+          <span>{esc(plate["caption_left"])}</span><span>{esc(plate["caption_right"])}</span>
+        </figcaption>
+      </figure>
+      <p class="lede" data-reveal style="--i:1;max-width:none">{esc(plate["body"])}</p>
+    </div>
+  </div>
+</section>""")
+
     # ── Listing ──────────────────────────────────────────────────────────────
     if rest:
         rows = "".join(article_row(a, DEPTH, i) for i, a in enumerate(rest))
@@ -306,7 +328,7 @@ def page_meta(page, site):
         "title": page["title"],
         "description": page["purpose"],
         "dark_hero": True,
-        "preload_image": f'/assets/img/{page["hero_image"]}.svg',
+        "preload_image": page["hero_image"],
         "schema": {
             "@context": "https://schema.org",
             "@type": "CollectionPage",

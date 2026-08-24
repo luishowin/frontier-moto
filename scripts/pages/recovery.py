@@ -12,6 +12,7 @@ the form, and again in the form's own response.
 """
 
 from components import (
+    image,
     checklist,
     esc,
     newsletter_form,
@@ -233,6 +234,12 @@ def build(data):
         {checklist(data["checklists"]["checklists"]["contacts"], 0)}
       </div>
     </div>
+    <figure data-reveal style="margin:2.5rem 0 0">
+      {image("hero-recovery", DEPTH, sizes="(max-width: 1320px) 100vw, 1320px")}
+      <figcaption class="workshop-callout__figcaption" style="border:1px solid var(--line);border-top:none">
+        <span>Off the tarmac, no other vehicle in sight</span><span>Reference photograph</span>
+      </figcaption>
+    </figure>
   </div>
 </section>""")
 

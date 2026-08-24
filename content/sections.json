@@ -8,7 +8,10 @@
       "detail": "Matatu behaviour, blind overtakes, night glare, wet murram. The habits that decide whether a route is survivable.",
       "size": "wide",
       "image": "index-ride",
-      "stat": { "k": "Guides", "v": "18" }
+      "stat": {
+        "k": "Guides",
+        "v": "18"
+      }
     },
     {
       "number": "02",
@@ -18,7 +21,10 @@
       "detail": "Distances that are real, fuel gaps that are honest, and where the tarmac ends.",
       "size": "tall",
       "image": "index-navigate",
-      "stat": { "k": "Routes logged", "v": "31" }
+      "stat": {
+        "k": "Routes logged",
+        "v": "31"
+      }
     },
     {
       "number": "03",
@@ -28,7 +34,10 @@
       "detail": "What to carry, what to do first, and how to stay safe on a shoulder at dusk.",
       "size": "standard",
       "image": null,
-      "stat": { "k": "Checklists", "v": "9" }
+      "stat": {
+        "k": "Checklists",
+        "v": "9"
+      }
     },
     {
       "number": "04",
@@ -38,7 +47,10 @@
       "detail": "Intervals adjusted for dust, load and fuel quality rather than a European service book.",
       "size": "standard",
       "image": null,
-      "stat": { "k": "Intervals", "v": "24" }
+      "stat": {
+        "k": "Intervals",
+        "v": "24"
+      }
     },
     {
       "number": "05",
@@ -48,7 +60,10 @@
       "detail": "Helmets, wet weather gear, luggage and tyres, judged against heat, dust and price.",
       "size": "standard",
       "image": "index-equip",
-      "stat": { "k": "Tested items", "v": "46" }
+      "stat": {
+        "k": "Tested items",
+        "v": "46"
+      }
     },
     {
       "number": "06",
@@ -58,7 +73,10 @@
       "detail": "Where to start when the bike will not move and you are a long way from anyone.",
       "size": "signal",
       "image": null,
-      "stat": { "k": "Response", "v": "Not live" }
+      "stat": {
+        "k": "Response",
+        "v": "Not live"
+      }
     }
   ],
   "pages": [
@@ -69,9 +87,18 @@
       "purpose": "Road craft, technique and awareness for roads that do not forgive assumptions.",
       "lede": "Most incidents on East African roads are not caused by speed alone. They are caused by a rider reading the road with expectations built somewhere else. This section covers what the road actually does.",
       "hero_image": "hero-ride",
-      "hero_alt": "A rider holding a line on a wet two lane highway as a matatu pulls out from the shoulder ahead",
-      "topics": ["Road craft", "Overtaking", "Night riding", "Wet season", "Traffic reading", "Pillion and load"],
-      "related": ["navigate", "survive"],
+      "topics": [
+        "Road craft",
+        "Overtaking",
+        "Night riding",
+        "Wet season",
+        "Traffic reading",
+        "Pillion and load"
+      ],
+      "related": [
+        "navigate",
+        "survive"
+      ],
       "module": "checklist",
       "module_key": "pre-ride"
     },
@@ -82,9 +109,18 @@
       "purpose": "Routes, route notes, fuel planning and terrain preparation across the region.",
       "lede": "A route is not a line on a map. It is a fuel plan, a surface report, a weather window and an honest estimate of how long the last sixty kilometres will actually take.",
       "hero_image": "hero-navigate",
-      "hero_alt": "A dirt track descending toward a valley floor with a rain front visible on the far ridge",
-      "topics": ["Route notes", "Fuel planning", "Surface reports", "Border crossings", "Weather windows", "Offline maps"],
-      "related": ["ride", "survive"],
+      "topics": [
+        "Route notes",
+        "Fuel planning",
+        "Surface reports",
+        "Border crossings",
+        "Weather windows",
+        "Offline maps"
+      ],
+      "related": [
+        "ride",
+        "survive"
+      ],
       "module": "routes",
       "module_key": null
     },
@@ -95,9 +131,18 @@
       "purpose": "Breakdowns, first aid, weather and the preparation that happens before any of it.",
       "lede": "The gap between an inconvenience and an emergency is usually preparation. This section is about the hour after something goes wrong, and the ten minutes before you left that decided how that hour goes.",
       "hero_image": "hero-survive",
-      "hero_alt": "A motorcycle parked on a road shoulder at dusk with a hazard triangle placed behind it",
-      "topics": ["Roadside safety", "First aid", "Punctures", "Weather", "Water and heat", "Emergency contacts"],
-      "related": ["recovery", "maintain"],
+      "topics": [
+        "Roadside safety",
+        "First aid",
+        "Punctures",
+        "Weather",
+        "Water and heat",
+        "Emergency contacts"
+      ],
+      "related": [
+        "recovery",
+        "maintain"
+      ],
       "module": "steps",
       "module_key": "roadside"
     },
@@ -108,11 +153,29 @@
       "purpose": "Maintenance guides, service intervals and diagnostics tuned for local conditions.",
       "lede": "Service books are written for clean fuel, sealed roads and mild dust. Adjust the intervals or the bike will adjust them for you, usually at the least convenient point on the route.",
       "hero_image": "hero-maintain",
-      "hero_alt": "A chain and rear sprocket being measured with a ruler on a workshop bench",
-      "topics": ["Service intervals", "Chain and drive", "Tyres", "Brakes", "Electrical", "Diagnostics"],
-      "related": ["workshop", "survive"],
+      "topics": [
+        "Service intervals",
+        "Chain and drive",
+        "Tyres",
+        "Brakes",
+        "Electrical",
+        "Diagnostics"
+      ],
+      "related": [
+        "workshop",
+        "survive"
+      ],
       "module": "intervals",
-      "module_key": null
+      "module_key": null,
+      "plate": {
+        "image": "maintain-anatomy",
+        "title": "Naming the parts",
+        "aside": "Reference diagram",
+        "sizes": "(max-width: 1320px) 100vw, 1320px",
+        "caption_left": "Adventure single, general arrangement",
+        "caption_right": "Reference diagram, not a specific machine",
+        "body": "Half of a phone diagnosis is lost to vocabulary. If you can tell a fundi that the noise is at the swingarm pivot rather than somewhere at the back, you get a useful answer on the first call and you pay for one repair instead of two. The specification block on this drawing is marked as an example, because the numbers that matter are the ones in your own manual."
+      }
     },
     {
       "number": "05",
@@ -121,11 +184,29 @@
       "purpose": "Equipment, motorcycle listings and buying guidance, tested rather than sponsored.",
       "lede": "Everything here has either been used on a route or inspected in person. Where we have not tested something we say so, and where a price moves with the exchange rate we say that too.",
       "hero_image": "hero-market",
-      "hero_alt": "Riding gear laid out on a workshop floor beside a loaded motorcycle",
-      "topics": ["Helmets", "Wet weather", "Luggage", "Tyres", "Tools", "Used bikes"],
-      "related": ["maintain", "ride"],
+      "topics": [
+        "Helmets",
+        "Wet weather",
+        "Luggage",
+        "Tyres",
+        "Tools",
+        "Used bikes"
+      ],
+      "related": [
+        "maintain",
+        "ride"
+      ],
       "module": "listings",
-      "module_key": null
+      "module_key": null,
+      "plate": {
+        "image": "market-gear",
+        "title": "Condition, not packaging",
+        "aside": "How equipment is judged here",
+        "sizes": "(max-width: 960px) 100vw, 50vw",
+        "caption_left": "Shelf storage, helmets",
+        "caption_right": "Reference photograph",
+        "body": "A helmet is the one item on this page where used is the wrong economy. It absorbs an impact once, the damage that matters is inside the shell where you cannot see it, and a resale price tells you nothing about whether it has already done its job. Everything else in a loadout can be bought second hand and judged on wear. Storage counts too: a shell left in sunlight or hung on a mirror ages faster than the date stamp inside it suggests."
+      }
     },
     {
       "number": "06",
@@ -134,9 +215,18 @@
       "purpose": "Motorcycle news and field reports from across the region.",
       "lede": "Road works, fuel prices, regulation, import duty, and what riders are reporting from routes we have not covered yet.",
       "hero_image": "hero-news",
-      "hero_alt": "A boda stage at the edge of a market town in early morning light",
-      "topics": ["Regulation", "Roads", "Fuel", "Field reports", "Industry", "Reviews"],
-      "related": ["market", "navigate"],
+      "topics": [
+        "Regulation",
+        "Roads",
+        "Fuel",
+        "Field reports",
+        "Industry",
+        "Reviews"
+      ],
+      "related": [
+        "market",
+        "navigate"
+      ],
       "module": "none",
       "module_key": null
     }

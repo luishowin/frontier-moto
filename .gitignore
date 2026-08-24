@@ -1,10 +1,4 @@
-# Python
+# Python bytecode. The .pyc files embed the absolute path of the machine that
+# wrote them, so they are worth keeping out of the repository on their own.
 __pycache__/
-*.py[cod]
-
-# Editors and OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-desktop.ini
+*.pyc

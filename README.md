@@ -24,7 +24,9 @@ docs/                       the published site (GitHub Pages serves from here)
   robots.txt sitemap.xml site.webmanifest favicon.svg favicon.ico
   assets/css/index.css      tokens, then components, in one file
   assets/js/index.js        theme, pinned header, menu, reveal, demo forms
-  assets/img/               GENERATED image plates + MANIFEST.md
+  assets/img/               photographs as AVIF + JPEG, one SVG plate, MANIFEST.md
+
+assets/photos/              SOURCE photographs, not published
 
 content/                    the SOURCE. Never edit docs/*.html by hand
   site.json                 brand, nav, footer, base URL
@@ -38,8 +40,10 @@ content/                    the SOURCE. Never edit docs/*.html by hand
 
 scripts/
   build.py                  content + components -> docs/*.html
-  build_images.py           images.json -> SVG plates + MANIFEST.md
+  build_photos.py           assets/photos/ -> AVIF + JPEG derivatives (Pillow)
+  build_images.py           images.json -> the remaining SVG artwork
   check.py                  the verification pass
+  check_contrast.py         text over photographs, measured (Pillow)
   shell.py                  head, header, menu overlay, footer
   components.py             the component library
   pages/                    one module per page kind
@@ -47,12 +51,22 @@ scripts/
 
 ## Build
 
-Python 3.11 or newer. No packages to install.
+Python 3.11 or newer. Building the site needs no packages:
 
 ```bash
 python scripts/build_images.py
 python scripts/build.py
 python scripts/check.py
+```
+
+The two image scripts need Pillow, and are an asset step rather than a build
+step: they run when the photographs change and their output is committed, so a
+clone can rebuild the whole site with a bare Python.
+
+```bash
+python -m pip install Pillow
+python scripts/build_photos.py
+python scripts/check_contrast.py
 ```
 
 Preview with `python -m http.server 8127 --directory docs`, or the `site`
@@ -63,7 +77,15 @@ links resolve, images carry alt text and explicit dimensions, titles and
 descriptions are unique and present, canonical and social metadata exist, JSON-LD
 parses, heading levels never skip, `aria-labelledby` targets exist, every form is
 marked as a demonstration, the Recovery page states that dispatch is not live,
-and no em dash appears anywhere.
+and no em dash appears anywhere. It also resolves every `srcset` candidate, so a
+photograph that is referenced but missing fails the build rather than the page.
+
+`check_contrast.py` is the other half of that. It composites each photograph
+under the same scrim gradient the CSS applies, samples the region the copy
+occupies, and reports the worst contrast ratio against every text colour painted
+there. It is a separate script because it needs Pillow, and it exists because
+swapping flat plates for photographs broke contrast on eight of eleven cases
+without changing a line of markup.
 
 ## Editing
 
@@ -75,6 +97,13 @@ Never hand edit `docs/*.html`; it is regenerated on every build. Change
 `scripts/shell.py` and rebuild.** Pages serves static assets with a long cache
 life and there is no build step hashing filenames, so without the bump a deploy
 can leave readers on the previous stylesheet.
+
+**To change a photograph,** drop the file into `assets/photos/`, point the slot
+at it in the `PLAN` table in `scripts/build_photos.py`, then run
+`build_photos.py`, `build.py` and `check_contrast.py`. Update the caption and
+alt text in `content/images.json` afterwards: alt text is content and does not
+travel with a file, so a swapped picture with the old alt text is a lie about
+what is on the page.
 
 **To move to a real domain:** change `site.base_url` in `content/site.json`, add
 a `CNAME` file in `docs/` containing the bare domain, rebuild, then point DNS at
@@ -133,16 +162,43 @@ The shell is generated rather than copied per page on purpose. The
 `nanyuki-holiday-home` README names hand editing the nav in every file as a known
 maintenance problem; there is one copy of it here.
 
-## Images
+## Photography
 
-Every slot in `content/images.json` is generated as an SVG plate by
-`build_images.py`: brand palette, technical grid, crop marks, a caption and a
-slot reference. They are placeholders that look deliberate, they weigh about 5 KB
-each, and they sit inside real `<img>` markup with dimensions, lazy loading and
-alt text. `docs/assets/img/MANIFEST.md` lists every slot with the ratio,
-dimensions and alt text a photograph needs, so replacing one is a file swap.
+`assets/photos/` holds the source photographs. `build_photos.py` crops each one
+to its slot ratio around a stated focal point, writes an AVIF and a JPEG at each
+responsive width, strips camera metadata, and rewrites the measured dimensions
+back into `content/images.json` so the markup and the files cannot disagree.
+Pages emit a `<picture>`: AVIF first, JPEG behind it. The homepage hero costs
+about 27 KB on a phone.
 
-`maintain-diagram` is artwork rather than a stand-in and should be kept.
+Two rules the mapping follows, both of them content rules rather than technical
+ones:
+
+- **Nothing is upscaled.** Most sources are about 1170px wide, so slot
+  dimensions are whatever the photograph can honestly deliver after cropping.
+  Workshop and Recovery draw on portrait sources and their heroes are 687px
+  wide, which is soft on a large screen. A soft hero is worse than a small one,
+  and both were the most apt pictures available for those pages.
+- **The focal point is set per photograph.** A centre crop decapitates riders.
+
+`maintain-diagram` stays a generated SVG. Its six numbered callouts are keyed to
+`content/technical.json`, so no photograph can replace it. `build_images.py`
+skips any slot a photograph now serves.
+
+### Provenance
+
+The photographs are stock and reference imagery supplied for the build. **They
+are not Frontier Moto field photographs and none of them were taken in East
+Africa.** Captions and alt text therefore describe what is in the frame and
+never name a place: a picture of an Australian escarpment does not get captioned
+as the Old Naivasha Road. Two supplied files are not used. `map-hero.avif` is a
+British tourist map with "The Isle of Wight" and "Ventnor" legible in it, which
+cannot be presented as an East African route, and `workshop.avif` was surplus
+once every slot was filled.
+
+Confirm the licence for each file before treating the site as published work.
+`docs/assets/img/MANIFEST.md` lists every slot with its source file, dimensions,
+generated widths and alt text.
 
 ## What is not real yet
 
@@ -156,7 +212,9 @@ None of it is implied to work in the meantime.
   The page says so three times and the request form transmits nothing.
 - **Workshop booking.** No calendar, no inbox, no booking system.
 - **Newsletter.** No list and no endpoint.
-- **Photography.** All image slots are generated plates.
+- **Photography.** Stock and reference imagery standing in for commissioned
+  work. Not shot in East Africa, not licensed for this use as far as this repo
+  knows, and captioned accordingly. See Provenance above.
 - **Social channels.** None open, so none are linked.
 - **Schema.** Organization only. Not LocalBusiness, which needs a real street
   address, and no telephone, opening hours, ratings or reviews.

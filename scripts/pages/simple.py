@@ -46,9 +46,16 @@ def legal(data):
 
       <h2 id="credits">Credits</h2>
       <p>
-        Photography slots are currently filled by generated placeholder plates, listed in
-        the image manifest with the dimensions and description each one needs. They will
-        be replaced with commissioned photography rather than stock.
+        Photographs on this site are reference imagery standing in for commissioned work.
+        None of them were taken by Frontier Moto and none were taken in East Africa, so
+        captions and alt text describe what is in the frame and do not name a place. Where
+        a picture shows a machine, a tool or a road, read it as an illustration of the
+        subject rather than a record of somewhere we have been.
+      </p>
+      <p>
+        The one exception is the service point diagram on the Maintain and home pages,
+        which is drawn for this site. Every image slot is listed in the image manifest
+        with its source, dimensions and description.
       </p>
       <p>
         Type is Archivo and Roboto Mono, both open licensed. The site is static HTML, CSS

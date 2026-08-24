@@ -43,6 +43,9 @@ class PageParser(html.parser.HTMLParser):
         self.labelled = []
         self.ids = []
         self.forms = 0
+        self.pictures = 0
+        self.sources = 0
+        self.bad_sources = []
         self._in_title = False
         self._in_ld = False
         self._ld_buf = ""
@@ -59,6 +62,12 @@ class PageParser(html.parser.HTMLParser):
             self.links.append(a["href"])
         elif tag == "link" and a.get("rel") in ("stylesheet", "icon", "manifest", "canonical", "preload"):
             self.links.append(a.get("href", ""))
+            self.links.extend(candidates(a.get("imagesrcset", "")))
+        elif tag == "source":
+            self.sources += 1
+            if not a.get("srcset"):
+                self.bad_sources.append("<source> without a srcset")
+            self.links.extend(candidates(a.get("srcset", "")))
         elif tag == "script" and a.get("src"):
             self.links.append(a["src"])
         elif tag == "script" and a.get("type") == "application/ld+json":
@@ -68,6 +77,9 @@ class PageParser(html.parser.HTMLParser):
             self.images.append(a)
             if a.get("src"):
                 self.links.append(a["src"])
+            self.links.extend(candidates(a.get("srcset", "")))
+        elif tag == "picture":
+            self.pictures += 1
         elif tag in ("h1", "h2", "h3", "h4", "h5", "h6"):
             self.headings.append(int(tag[1]))
         elif tag == "meta":
@@ -93,6 +105,16 @@ class PageParser(html.parser.HTMLParser):
             self.title = (self.title or "") + data
         if self._in_ld:
             self._ld_buf += data
+
+
+def candidates(srcset):
+    """The URLs out of a srcset or imagesrcset, dropping the w descriptors."""
+    out = []
+    for part in srcset.split(","):
+        part = part.strip()
+        if part:
+            out.append(part.split()[0])
+    return out
 
 
 def resolve(page_path, href):
@@ -172,6 +194,17 @@ def check_page(path, seen_titles, seen_descriptions):
             fail(rel_name, f"image with empty alt that is not marked decorative: {src}")
         if not img.get("width") or not img.get("height"):
             fail(rel_name, f"image without explicit width and height: {src}")
+
+    # ── Responsive images ────────────────────────────────────────────────────
+    # A <picture> with no <img> renders nothing at all in every browser, and a
+    # <source> is only ever a fallback away from being invisible, so a missing
+    # file behind a srcset never shows up as a broken image on the page.
+    for problem in parser.bad_sources:
+        fail(rel_name, problem)
+    if parser.sources and not parser.pictures:
+        fail(rel_name, f"{parser.sources} <source> element(s) outside any <picture>")
+    if parser.pictures > len([i for i in parser.images if i.get("srcset")]):
+        fail(rel_name, "a <picture> has no <img> fallback inside it")
 
     # ── Links ────────────────────────────────────────────────────────────────
     for href in parser.links:

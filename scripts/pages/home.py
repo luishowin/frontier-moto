@@ -213,5 +213,5 @@ PAGE = {
         "for riders across Kenya, Uganda, Tanzania and Rwanda."
     ),
     "dark_hero": True,
-    "preload_image": "/assets/img/hero-home.svg",
+    "preload_image": "hero-home",
 }

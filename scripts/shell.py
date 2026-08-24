@@ -14,7 +14,7 @@ GitHub Pages project sub-path.
 
 import json
 
-from components import esc, mono_label
+from components import esc, mono_label, preload_link
 
 
 def rel(href, depth):
@@ -34,7 +34,7 @@ def rel(href, depth):
 # assets with a long cache life and there is no build step to hash filenames,
 # so without this a deploy can leave readers on the previous stylesheet. The
 # house sites use the same query string approach.
-ASSET_VERSION = "6"
+ASSET_VERSION = "7"
 
 
 BEACON = (
@@ -146,9 +146,11 @@ def head(site, page, depth):
     if page.get("noindex"):
         parts.append('<meta name="robots" content="noindex, follow">')
 
+    # preload_image is a slot id, so the preload is built from the same slot
+    # data as the markup and cannot drift away from what the page will request.
     if page.get("preload_image"):
         parts.append(
-            f'<link rel="preload" as="image" href="{rel(page["preload_image"], depth)}" fetchpriority="high">'
+            preload_link(page["preload_image"], depth, page.get("preload_sizes", "100vw"))
         )
 
     if schema:

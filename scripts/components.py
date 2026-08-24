@@ -69,15 +69,34 @@ def rel(href, depth):
     return (up if depth else "") + href.lstrip("/")
 
 
+def srcset(slot, ext, depth):
+    """
+    A w-descriptor srcset across the widths build_photos.py actually produced.
+    The widest file keeps the bare slot name so the fallback src is stable; the
+    rest carry their width, which is also what makes them easy to spot on disk.
+    """
+    widths = slot.get("widths") or [slot["w"]]
+    parts = []
+    for w in widths:
+        suffix = "" if w == widths[0] else "-%d" % w
+        href = rel("/assets/img/%s%s.%s" % (slot["id"], suffix, ext), depth)
+        parts.append("%s %dw" % (href, w))
+    return ", ".join(parts)
+
+
 def image(slot_id, depth, *, cls="", lazy=True, sizes=None, priority=False):
     """
     Every image carries real dimensions so nothing shifts as it loads, and the
     alt text comes from content/images.json rather than the page, because it
     describes the picture rather than the layout.
+
+    Photographs ship as AVIF with a JPEG behind them. AVIF is roughly half the
+    weight at the same quality, which is the difference that matters on a weak
+    connection, and the JPEG in the <img> covers anything that cannot read it.
+    Slots without a `source` are generated artwork and stay a single SVG.
     """
     slot = IMAGES[slot_id]
     attrs = [
-        f'src="{rel("/assets/img/" + slot_id + ".svg", depth)}"',
         f'width="{slot["w"]}"',
         f'height="{slot["h"]}"',
         f'alt="{esc(slot["alt"])}"',
@@ -88,12 +107,42 @@ def image(slot_id, depth, *, cls="", lazy=True, sizes=None, priority=False):
         attrs.append(f'sizes="{sizes}"')
     if priority:
         attrs.append('fetchpriority="high"')
-        attrs.append('decoding="async"')
-    else:
-        attrs.append('decoding="async"')
+    attrs.append('decoding="async"')
     if lazy and not priority:
         attrs.append('loading="lazy"')
-    return "<img " + " ".join(attrs) + ">"
+
+    if not slot.get("source"):
+        src = rel("/assets/img/%s.svg" % slot_id, depth)
+        return '<img src="%s" ' % src + " ".join(attrs) + ">"
+
+    fallback = rel("/assets/img/%s.jpg" % slot_id, depth)
+    img = (
+        '<img src="%s" srcset="%s" ' % (fallback, srcset(slot, "jpg", depth))
+        + " ".join(attrs) + ">"
+    )
+    sizes_attr = f' sizes="{sizes}"' if sizes else ""
+    return (
+        "<picture>"
+        f'<source type="image/avif" srcset="{srcset(slot, "avif", depth)}"{sizes_attr}>'
+        f"{img}</picture>"
+    )
+
+
+def preload_link(slot_id, depth, sizes="100vw"):
+    """
+    Preload the same AVIF candidate the <picture> will pick, not the JPEG, or
+    the browser fetches the hero twice. A browser without AVIF ignores an
+    unsupported type and simply loads the fallback in the normal course.
+    """
+    slot = IMAGES[slot_id]
+    if not slot.get("source"):
+        href = rel("/assets/img/%s.svg" % slot_id, depth)
+        return '<link rel="preload" as="image" href="%s" fetchpriority="high">' % href
+    return (
+        '<link rel="preload" as="image" type="image/avif" '
+        f'imagesrcset="{srcset(slot, "avif", depth)}" imagesizes="{sizes}" '
+        'fetchpriority="high">'
+    )
 
 
 # ── SectionLabel ─────────────────────────────────────────────────────────────

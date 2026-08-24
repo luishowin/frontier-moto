@@ -7,6 +7,7 @@ the trust building, not adjectives about quality.
 """
 
 from components import (
+    image,
     checklist,
     esc,
     editorial_hero,
@@ -142,7 +143,15 @@ def build(data):
     out.append(f"""<section class="section section--soft" aria-labelledby="how-title">
   <div class="container">
     {section_label("07.4", "How the work is quoted and recorded", "Practical detail", heading_id="how-title")}
-    <ul class="fact-list" data-reveal style="max-width:88ch">{practical}</ul>
+    <div class="split split--wide-left">
+      <ul class="fact-list" data-reveal>{practical}</ul>
+      <figure data-reveal style="--i:1;margin:0">
+        {image("workshop-bay", DEPTH, sizes="(max-width: 960px) 100vw, 40vw")}
+        <figcaption class="workshop-callout__figcaption" style="border:1px solid var(--line);border-top:none">
+          <span>Work in progress on the stand</span><span>Reference photograph</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>""")
 
@@ -251,7 +260,7 @@ def page_meta(site, data):
             "plainly."
         ),
         "dark_hero": True,
-        "preload_image": "/assets/img/hero-workshop.svg",
+        "preload_image": "hero-workshop",
         "schema": {
             "@context": "https://schema.org",
             "@type": "WebPage",

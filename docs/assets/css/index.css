@@ -110,15 +110,23 @@
     --dur-slow:      620ms;
 
     /* Functional scrim. Photography needs it for legible type, so it is tuned
-       as a left weighted ramp: heaviest where the copy sits. */
+       as a left weighted ramp: heaviest where the copy sits.
+
+       Both ramps are measured rather than judged by eye. The flat one was
+       first tuned against the generated plates, which were flat mid greys, and
+       a photograph of a snow field under a blue sky is nothing like that: the
+       section hero label fell to 2.9:1 on Ride, Navigate, Survive and Maintain
+       once real pictures went in. These values are the lightest ramp that
+       still clears 4.5:1 across every hero, so the photograph stays as visible
+       as legibility allows. Re-measure if the photographs change. */
     --scrim: linear-gradient(96deg,
                  rgba(10, 11, 12, 0.90) 0%,
                  rgba(10, 11, 12, 0.74) 42%,
                  rgba(10, 11, 12, 0.30) 100%);
     --scrim-flat: linear-gradient(180deg,
-                 rgba(10, 11, 12, 0.30) 0%,
-                 rgba(10, 11, 12, 0.72) 62%,
-                 rgba(10, 11, 12, 0.88) 100%);
+                 rgba(10, 11, 12, 0.48) 0%,
+                 rgba(10, 11, 12, 0.82) 38%,
+                 rgba(10, 11, 12, 0.93) 100%);
 }
 
 /* ── 2. RESET & BASE ──────────────────────────────────────────── */
@@ -698,7 +706,10 @@ body.menu-open { overflow: hidden; }
     font-size: var(--t-label);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
-    color: #8E8A82;
+    /* Measured, not chosen by eye. Over a photograph the old #8E8A82 fell to
+       2.65:1 on the Maintain hero. scripts/check_contrast.py puts the floor for
+       this slot at #BAB6AE; this sits just above it and still reads as quiet. */
+    color: #BFBAB1;
 }
 .hero__field dd {
     font-family: var(--font-mono);
@@ -742,7 +753,10 @@ body.menu-open { overflow: hidden; }
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(180deg, rgba(10,11,12,0.35) 0%, rgba(10,11,12,0.86) 100%);
+    background: linear-gradient(180deg,
+                 rgba(10, 11, 12, 0.45) 0%,
+                 rgba(10, 11, 12, 0.80) 45%,
+                 rgba(10, 11, 12, 0.94) 100%);
 }
 .index-card:hover .index-card__media img { transform: scale(1.045); }
 
@@ -752,7 +766,7 @@ body.menu-open { overflow: hidden; }
     letter-spacing: var(--track-label);
     color: var(--text-muted);
 }
-.index-card--media .index-card__n { color: #A8A49B; }
+.index-card--media .index-card__n { color: #B3AEA5; }
 .index-card__title {
     margin-top: 0.6rem;
     font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.1rem);
@@ -762,7 +776,7 @@ body.menu-open { overflow: hidden; }
 .index-card__blurb { margin-top: 0.5rem; font-size: var(--t-small); color: var(--text-muted); max-width: 34ch; }
 .index-card--media .index-card__blurb { color: #C4BFB5; }
 .index-card__detail { margin-top: 0.85rem; font-size: var(--t-tiny); color: var(--text-muted); max-width: 40ch; }
-.index-card--media .index-card__detail { color: #A8A49B; }
+.index-card--media .index-card__detail { color: #B3AEA5; }
 .index-card__foot {
     margin-top: auto;
     padding-top: 1.4rem;
@@ -776,7 +790,7 @@ body.menu-open { overflow: hidden; }
     text-transform: uppercase;
 }
 .index-card__stat { color: var(--text-muted); text-align: right; }
-.index-card--media .index-card__stat { color: #A8A49B; }
+.index-card--media .index-card__stat { color: #B3AEA5; }
 .index-card__stat b { display: block; color: var(--text); font-size: var(--t-small); letter-spacing: 0.04em; }
 .index-card--media .index-card__stat b { color: #EDE9E1; }
 

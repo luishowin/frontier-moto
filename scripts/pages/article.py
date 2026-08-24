@@ -151,7 +151,8 @@ def page_meta(article, site):
         "description": article["dek"],
         "dark_hero": False,
         "og_type": "article",
-        "preload_image": f'/assets/img/{article["image"]}.svg',
+        "preload_image": article["image"],
+        "preload_sizes": "(max-width: 1320px) 100vw, 1320px",
         "schema": {
             "@context": "https://schema.org",
             "@type": "Article",
