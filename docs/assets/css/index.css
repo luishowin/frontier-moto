@@ -706,9 +706,9 @@ body.menu-open { overflow: hidden; }
     font-size: var(--t-label);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
-    /* Measured, not chosen by eye. Over a photograph the old #8E8A82 fell to
-       2.65:1 on the Maintain hero. scripts/check_contrast.py puts the floor for
-       this slot at #BAB6AE; this sits just above it and still reads as quiet. */
+    /* Measured, not chosen by eye. Against the original scrim this grey read
+       1.09:1 over the Maintain hero. scripts/check_contrast.py puts the floor
+       for this slot at #BAB6AE; this sits just above it and still reads quiet. */
     color: #BFBAB1;
 }
 .hero__field dd {

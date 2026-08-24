@@ -30,13 +30,15 @@ assets/photos/              SOURCE photographs, not published
 
 content/                    the SOURCE. Never edit docs/*.html by hand
   site.json                 brand, nav, footer, base URL
-  sections.json             the six index entries and the six section pages
+  sections.json             the six index entries and the six section pages,
+                            plus the optional reference plate some carry
   articles.json             every article preview, plus full bodies for three
   checklists.json           checklists and numbered step sequences
   technical.json            routes, service intervals, component callouts
   market.json               equipment, listings, buying guides
   workshop.json             services, scope, quoting practice
-  images.json               every image slot with dimensions and alt text
+  images.json               every image slot: caption and alt text by hand,
+                            dimensions and widths written by build_photos.py
 
 scripts/
   build.py                  content + components -> docs/*.html
@@ -84,8 +86,9 @@ photograph that is referenced but missing fails the build rather than the page.
 under the same scrim gradient the CSS applies, samples the region the copy
 occupies, and reports the worst contrast ratio against every text colour painted
 there. It is a separate script because it needs Pillow, and it exists because
-swapping flat plates for photographs broke contrast on eight of eleven cases
-without changing a line of markup.
+swapping flat plates for photographs broke contrast on all eleven cases without
+changing a line of markup. The worst was 1.09:1, on a hero label over a snow
+field. None of it was visible as a broken page.
 
 ## Editing
 
@@ -127,8 +130,14 @@ URLs and the sitemap all derive from that one value.
   ink-black labels at about 7.6:1. Recovery is also marked by a beacon glyph and
   border weight, so it never depends on colour alone.
 - **The hairline rule is the structural device, not the card.** Content sits in
-  cells divided by 1px lines. No shadows, no gradients other than the hero scrim,
-  which is functional, and no corner radius above 2px.
+  cells divided by 1px lines. No shadows, no corner radius above 2px, and no
+  decorative gradient. The only gradients in the stylesheet are the two hero
+  scrims, the index card scrim and the technical grid pattern, all four of which
+  do a job.
+- **Text over a photograph is measured, not judged by eye.** Every scrim value
+  and every dim tone painted over a picture comes out of `check_contrast.py`,
+  set to the lightest value that still clears 4.5:1 so the photograph stays as
+  visible as legibility allows. Re-measure when the photographs change.
 - **One type scale.** Every size comes from the `--t-*` tokens. No ad hoc sizes.
 - **Layout.** Full bleed sections, a 1320px `.container` inside. Soft sections
   alternate down the page.
@@ -157,6 +166,7 @@ of a card, a spec list or a checklist.
 | `WorkshopCallout` | `components.workshop_callout` |
 | `RecoveryBanner` | `components.recovery_banner` |
 | `NewsletterForm` | `components.newsletter_form` |
+| Responsive image, `<picture>` and hero preload | `components.image`, `components.srcset`, `components.preload_link` |
 
 The shell is generated rather than copied per page on purpose. The
 `nanyuki-holiday-home` README names hand editing the nav in every file as a known
@@ -191,10 +201,10 @@ The photographs are stock and reference imagery supplied for the build. **They
 are not Frontier Moto field photographs and none of them were taken in East
 Africa.** Captions and alt text therefore describe what is in the frame and
 never name a place: a picture of an Australian escarpment does not get captioned
-as the Old Naivasha Road. Two supplied files are not used. `map-hero.avif` is a
-British tourist map with "The Isle of Wight" and "Ventnor" legible in it, which
-cannot be presented as an East African route, and `workshop.avif` was surplus
-once every slot was filled.
+as the Old Naivasha Road. Two of the supplied files were not brought into the
+repository at all. `map-hero.avif` is a British tourist map with "The Isle of
+Wight" and "Ventnor" legible in it, which cannot be presented as an East African
+route, and `workshop.avif` was surplus once every slot was filled.
 
 Confirm the licence for each file before treating the site as published work.
 `docs/assets/img/MANIFEST.md` lists every slot with its source file, dimensions,
