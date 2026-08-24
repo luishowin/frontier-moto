@@ -1,0 +1,88 @@
+{
+  "note": "Frontier Moto does not sell equipment and takes no commission. Items appear here because they were used on a route or inspected in person. Where we have not tested something, it is marked untested.",
+  "gear": [
+    {
+      "ref": "EQ-01",
+      "category": "Head",
+      "name": "Full face helmet, vented",
+      "verdict": "Field tested",
+      "summary": "Ventilation matters more than weight at equatorial midday. A quiet helmet that cooks you is the wrong helmet.",
+      "spec": [
+        { "k": "Use", "v": "Highway and mixed" },
+        { "k": "Watch for", "v": "Vent count and exhaust ports" },
+        { "k": "Replace", "v": "After any impact" }
+      ]
+    },
+    {
+      "ref": "EQ-02",
+      "category": "Wet weather",
+      "name": "Two piece rain suit over armour",
+      "verdict": "Field tested",
+      "summary": "Survives a full season if the seams are taped and it goes over armour rather than under it. Packs smaller than a one piece.",
+      "spec": [
+        { "k": "Use", "v": "Long rains" },
+        { "k": "Watch for", "v": "Taped seams, ankle gussets" },
+        { "k": "Fails at", "v": "Cuff and collar first" }
+      ]
+    },
+    {
+      "ref": "EQ-03",
+      "category": "Luggage",
+      "name": "Dry bag with compression straps",
+      "verdict": "Field tested",
+      "summary": "Cheaper, lighter and more waterproof than hard cases, and it does not change the width of the bike in traffic.",
+      "spec": [
+        { "k": "Use", "v": "Touring and cargo" },
+        { "k": "Watch for", "v": "Roll closure, four anchor points" },
+        { "k": "Limit", "v": "No security at all" }
+      ]
+    },
+    {
+      "ref": "EQ-04",
+      "category": "Tyres",
+      "name": "Dual purpose, road biased",
+      "verdict": "Field tested",
+      "summary": "For riders who meet murram occasionally rather than daily. A knobbly tyre used mostly on tarmac is a braking problem.",
+      "spec": [
+        { "k": "Use", "v": "80 road, 20 loose" },
+        { "k": "Watch for", "v": "Date code on purchase" },
+        { "k": "Pressure", "v": "Adjust for load" }
+      ]
+    },
+    {
+      "ref": "EQ-05",
+      "category": "Tools",
+      "name": "Tyre plug kit and compact inflator",
+      "verdict": "Field tested",
+      "summary": "The single highest value item per gram carried. Practise on a dead tyre at home before you need it on a shoulder.",
+      "spec": [
+        { "k": "Use", "v": "Tubeless only" },
+        { "k": "Watch for", "v": "Inflator duty cycle" },
+        { "k": "Note", "v": "A plug is a repair to get you home" }
+      ]
+    },
+    {
+      "ref": "EQ-06",
+      "category": "Visibility",
+      "name": "Reflective vest, class rated",
+      "verdict": "Untested",
+      "summary": "We have not run a controlled comparison. Any rated vest beats none, and the one you actually wear beats the better one you leave at home.",
+      "spec": [
+        { "k": "Use", "v": "All conditions" },
+        { "k": "Watch for", "v": "Class rating on the label" },
+        { "k": "Status", "v": "Comparison planned" }
+      ]
+    }
+  ],
+  "listings": [
+    { "ref": "ML-118", "title": "150 cc commuter, single owner", "detail": "Service history present, chain set recent, tyres at half.", "meta": "Central Kenya", "status": "Inspected" },
+    { "ref": "ML-121", "title": "250 cc dual sport", "detail": "Higher mileage, fork seals weeping, otherwise sound.", "meta": "Nairobi", "status": "Inspected" },
+    { "ref": "ML-124", "title": "125 cc, stage retired", "detail": "Working machine, honest wear, priced accordingly.", "meta": "Nakuru", "status": "Inspected" },
+    { "ref": "ML-127", "title": "400 cc adventure, imported", "detail": "Low mileage, no local service history, parts lead time is the risk.", "meta": "Nairobi", "status": "Seen only" }
+  ],
+  "guides": [
+    { "title": "What to inspect", "detail": "The twenty minute sequence that ends an inspection early when it should end early.", "href": "/market/#inspect" },
+    { "title": "What to carry", "detail": "The set that earns its space on almost any route, and what does not.", "href": "/survive/#carry" },
+    { "title": "What a fair price looks like", "detail": "How condition, history and parts availability move a number, and which of the three matters most.", "href": "/market/#price" }
+  ]
+}

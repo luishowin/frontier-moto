@@ -1,0 +1,266 @@
+{
+  "checklists": {
+    "pre-ride": {
+      "number": "CL 01",
+      "title": "Pre-ride check",
+      "note": "Two minutes, cold, before the engine starts. In this order because each step tells you whether the next one matters.",
+      "items": [
+        {
+          "label": "Tyres",
+          "detail": "Pressure by gauge, then look at the tread and the sidewall for cuts and embedded stones."
+        },
+        {
+          "label": "Chain",
+          "detail": "Slack at the tightest point of rotation, not wherever it happens to be standing."
+        },
+        {
+          "label": "Brakes",
+          "detail": "Lever and pedal travel, then fluid level if the reservoir has a window."
+        },
+        {
+          "label": "Lights",
+          "detail": "Head, brake, indicators. Brake light on both the lever and the pedal."
+        },
+        {
+          "label": "Fluids",
+          "detail": "Oil level on level ground, plus any leak that is new since yesterday."
+        },
+        {
+          "label": "Fasteners",
+          "detail": "Axle nuts, sprocket bolts, anything you or anyone else touched recently."
+        }
+      ]
+    },
+    "weather": {
+      "number": "CL 02",
+      "title": "Weather and terrain readiness",
+      "note": "Judged the night before, then again at the door. A route that is fine in the dry may be a different route entirely.",
+      "items": [
+        {
+          "label": "Rain window",
+          "detail": "When it is expected to start, not just whether it will rain."
+        },
+        {
+          "label": "Surface",
+          "detail": "Murram sections turn to clay quickly and stay that way after the rain stops."
+        },
+        {
+          "label": "River crossings",
+          "detail": "Seasonal crossings rise fast and fall slowly. Ask locally rather than guessing."
+        },
+        {
+          "label": "Heat",
+          "detail": "Midday on the equator is a fatigue problem before it is a comfort problem."
+        },
+        {
+          "label": "Light",
+          "detail": "Work backwards from sunset and add an hour of margin, not ten minutes."
+        },
+        {
+          "label": "Altitude",
+          "detail": "A cold, wet descent after a hot climb catches riders dressed for the start."
+        }
+      ]
+    },
+    "carry": {
+      "number": "CL 03",
+      "title": "Essential carry list",
+      "note": "The set that earns its space on almost any route. Everything else is route specific.",
+      "items": [
+        {
+          "label": "Tyre repair",
+          "detail": "Plugs, tool, and a way to reinflate that does not depend on finding a compressor."
+        },
+        {
+          "label": "Tools",
+          "detail": "The sizes your bike actually uses, checked against your bike, not a generic set."
+        },
+        {
+          "label": "Water",
+          "detail": "More than the ride needs. Dehydration reads as poor judgement long before it reads as thirst."
+        },
+        {
+          "label": "First aid",
+          "detail": "Compact, and only items you already know how to use."
+        },
+        {
+          "label": "Documents",
+          "detail": "Licence, insurance, registration, plus photographs of all three stored offline."
+        },
+        {
+          "label": "Cash",
+          "detail": "Small notes. Fuel, repairs and help are not always card or mobile transactions."
+        },
+        {
+          "label": "Light",
+          "detail": "A torch or headlamp that is not your phone, because your phone is your map."
+        }
+      ]
+    },
+    "fuel": {
+      "number": "CL 04",
+      "title": "Fuel and route planning",
+      "note": "Plan around the single longest gap on the route, not the average distance between stations.",
+      "items": [
+        {
+          "label": "Longest gap",
+          "detail": "Identify it before you leave and make sure your range covers it with margin."
+        },
+        {
+          "label": "Real range",
+          "detail": "Loaded, into wind, on a rough surface. Not the range you get commuting."
+        },
+        {
+          "label": "Reserve",
+          "detail": "Know what your reserve is in kilometres, tested, not assumed."
+        },
+        {
+          "label": "Last certain fuel",
+          "detail": "The last station you are confident is open and stocked, not the last one on the map."
+        },
+        {
+          "label": "Quality",
+          "detail": "Buy where the turnover is high. Low turnover means water and sediment."
+        },
+        {
+          "label": "Spare",
+          "detail": "Carry a litre only if you have a container made for it and a safe place to mount it."
+        }
+      ]
+    },
+    "contacts": {
+      "number": "CL 05",
+      "title": "Emergency contact preparation",
+      "note": "Prepared before the ride, because none of it is possible to arrange afterwards.",
+      "items": [
+        {
+          "label": "Route shared",
+          "detail": "One person who knows where you are going and roughly when to expect you."
+        },
+        {
+          "label": "Check in time",
+          "detail": "An agreed time, and an agreed action if you miss it."
+        },
+        {
+          "label": "Local numbers",
+          "detail": "Stored offline in the phone and written on paper in the bike."
+        },
+        {
+          "label": "Medical",
+          "detail": "Blood group, allergies and conditions, somewhere someone will find them."
+        },
+        {
+          "label": "Power",
+          "detail": "A way to charge the phone that does not depend on the bike running."
+        },
+        {
+          "label": "Offline map",
+          "detail": "Downloaded for the whole route before you leave signal, including the return."
+        }
+      ]
+    },
+    "workshop-prep": {
+      "number": "CL 06",
+      "title": "Preparing a motorcycle for a workshop visit",
+      "note": "Doing these five things before you arrive shortens the job and makes the estimate more accurate.",
+      "items": [
+        {
+          "label": "Write the symptom",
+          "detail": "When it happens, at what speed, hot or cold, and what changes it. Not your diagnosis."
+        },
+        {
+          "label": "Bring the history",
+          "detail": "What was done last, by whom, and how long ago in kilometres."
+        },
+        {
+          "label": "Empty the luggage",
+          "detail": "Anything you need that day, take with you. Anything you do not, leave at home."
+        },
+        {
+          "label": "Fuel",
+          "detail": "Enough to run and road test, not a full tank, which makes some jobs harder."
+        },
+        {
+          "label": "Say the budget",
+          "detail": "The number you want to be called at before work continues."
+        }
+      ]
+    }
+  },
+  "steps": {
+    "roadside": {
+      "number": "SEQ 01",
+      "title": "The first ninety seconds",
+      "note": "Position and visibility come before the machine. Every time, including when the fault seems trivial.",
+      "steps": [
+        {
+          "n": "01",
+          "title": "Get off the carriageway",
+          "detail": "Push the bike fully clear of the lane if it will not run. A partly clear bike is a hazard, not a stopped vehicle."
+        },
+        {
+          "n": "02",
+          "title": "Make yourself visible",
+          "detail": "High visibility on, hazards on if fitted, and a warning marker back up the road further than feels necessary."
+        },
+        {
+          "n": "03",
+          "title": "Stand off the road",
+          "detail": "Not between the bike and traffic. Uphill and behind a barrier if there is one."
+        },
+        {
+          "n": "04",
+          "title": "Check yourself, then the pillion",
+          "detail": "Adrenaline hides injury. Do this deliberately before you look at the motorcycle."
+        },
+        {
+          "n": "05",
+          "title": "Fix your position",
+          "detail": "Note where you are precisely enough to tell someone. Nearest marker, town, junction, direction of travel."
+        },
+        {
+          "n": "06",
+          "title": "Then diagnose",
+          "detail": "Only now. The machine has waited this long and will wait another minute."
+        }
+      ]
+    },
+    "recovery": {
+      "number": "SEQ 02",
+      "title": "If the ride has stopped",
+      "note": "Work down this list in order. Steps one to three matter whether or not any recovery service is available to you.",
+      "steps": [
+        {
+          "n": "01",
+          "title": "Safety first, always",
+          "detail": "Get clear of moving traffic, make yourself visible, and check everyone before you check the machine. If anyone is injured, contact local emergency services immediately. Frontier Moto is not an emergency service."
+        },
+        {
+          "n": "02",
+          "title": "Fix your location",
+          "detail": "Road name or number, direction of travel, the last town you passed and roughly how far back. A screenshot of your map position is worth more than a description."
+        },
+        {
+          "n": "03",
+          "title": "Describe the machine",
+          "detail": "Make, model, approximate weight, whether the rear wheel turns freely, and whether it can be rolled or must be lifted."
+        },
+        {
+          "n": "04",
+          "title": "Describe the fault plainly",
+          "detail": "What happened, at what speed, what it sounded like, and what it does now. Not what you think is broken."
+        },
+        {
+          "n": "05",
+          "title": "State your safety status",
+          "detail": "Whether you are somewhere safe, whether you have water, whether it is getting dark, and whether you are alone."
+        },
+        {
+          "n": "06",
+          "title": "Then request",
+          "detail": "With the first five ready, a request takes under a minute instead of a frustrating ten."
+        }
+      ]
+    }
+  }
+}

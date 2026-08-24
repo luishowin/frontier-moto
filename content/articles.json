@@ -1,0 +1,158 @@
+{
+  "featured_home": "escarpment-wet-season",
+  "articles": [
+    {
+      "slug": "escarpment-wet-season",
+      "section": "navigate",
+      "category": "Route feature",
+      "issue": "Field 014",
+      "title": "The escarpment in wet season",
+      "dek": "Ninety kilometres from Nairobi to Naivasha on the old road, and why the descent is the only part that matters.",
+      "excerpt": "The old escarpment road is shorter, quieter and more interesting than the highway. In April it is also the reason riders end up in the ditch at the third hairpin. Here is how the surface actually behaves once the rain starts.",
+      "date": "2026-08-11",
+      "read": "9 min",
+      "author": "Frontier Field Desk",
+      "image": "feature-escarpment",
+      "image_alt": "A wet hairpin bend on the old escarpment road with the Rift Valley floor visible below",
+      "location": "Old Naivasha Road, Kenya",
+      "specs": [
+        { "k": "Distance", "v": "92 km" },
+        { "k": "Surface", "v": "Tarmac, broken shoulder" },
+        { "k": "Descent", "v": "700 m" },
+        { "k": "Riding time", "v": "2 h 40 dry, 3 h 30 wet" },
+        { "k": "Fuel gap", "v": "48 km" },
+        { "k": "Season", "v": "Long rains, March to May" }
+      ],
+      "body": [
+        { "type": "p", "text": "The old road down the Rift Valley escarpment is the one riders recommend to each other and then quietly stop using in April. It is narrower than the highway, it carries less traffic, and the view from the viewpoint chapels is the reason people ride it in the first place. None of that is the problem. The problem is that the descent concentrates every difficulty of wet season riding into about eleven kilometres." },
+        { "type": "h2", "text": "What the surface does" },
+        { "type": "p", "text": "The tarmac on the descent is old and polished. Years of heavy vehicles have burnished the wheel tracks smooth, and the camber on several bends drains toward the outside rather than the inside. In dry conditions this is barely noticeable. In the first twenty minutes of rain, the polished sections behave like a different road surface entirely, and they are exactly where you would naturally place a tyre." },
+        { "type": "list", "title": "The three sections that catch people", "items": [
+          "The first sequence of bends after the upper viewpoint, where the gradient steepens before the corners tighten.",
+          "The long right hander roughly halfway down, which has a broken outer edge and a drop that is not obvious until you are on it.",
+          "The final straightening section, where riders relax, accelerate, and meet standing water across the full lane width."
+        ]},
+        { "type": "note", "title": "Field note", "text": "Rain on this descent arrives from the valley floor and moves up. You can be riding in dry conditions at the top and enter live rain three bends later with no warning from the sky above you." },
+        { "type": "h2", "text": "How to ride it" },
+        { "type": "p", "text": "Brake before the bend, not in it, and do the majority of the work with the rear on the polished sections. Move your line away from the burnished wheel tracks toward the centre of the lane where the texture is still open, while staying far enough right that an oncoming truck cutting the apex does not become your problem. Expect to be overtaken by vehicles that have judged this descent differently, and give them the room rather than the argument." },
+        { "type": "pull", "text": "The descent is eleven kilometres of a ninety two kilometre route, and it accounts for almost all of the risk." },
+        { "type": "h2", "text": "Fuel and timing" },
+        { "type": "p", "text": "There is a stretch of roughly forty eight kilometres with no reliable fuel once you commit to the old road. Fill in Nairobi rather than planning to fill on the way. If you are riding a small displacement machine this is comfortable. If you are two up with luggage and you have been sitting in traffic, it is closer than it looks." },
+        { "type": "p", "text": "Leave early. The descent in the first light of morning is dry more often than not, the traffic is thinner, and if something does go wrong you have the whole day to deal with it rather than the last hour before dark." },
+        { "type": "h2", "text": "If it goes wrong" },
+        { "type": "p", "text": "There is very little shoulder on the descent and almost nowhere safe to stop between the viewpoints. If you have a problem, keep moving to a viewpoint if the machine will do it at all. Stopping on the road itself, on a blind bend, in rain, is a considerably worse situation than a slow limp to somewhere with space and visibility." }
+      ]
+    },
+    {
+      "slug": "chain-service-in-dust",
+      "section": "maintain",
+      "category": "Maintenance guide",
+      "issue": "Field 013",
+      "title": "Chain service intervals when the road is dust",
+      "dek": "The service book assumes clean air. Here is the interval that actually keeps a chain alive on murram.",
+      "excerpt": "A drive chain on dusty roads does not fail from lack of lubricant. It fails from lubricant that has turned into grinding paste. The fix is not more oil, it is a different schedule.",
+      "date": "2026-08-04",
+      "read": "7 min",
+      "author": "Frontier Workshop",
+      "image": "feature-chain",
+      "image_alt": "A worn drive chain and rear sprocket photographed against a workshop bench with a measuring rule",
+      "location": "Frontier Workshop bench",
+      "specs": [
+        { "k": "Applies to", "v": "Chain drive, all sizes" },
+        { "k": "Clean interval", "v": "300 to 500 km on murram" },
+        { "k": "Lube interval", "v": "After every clean" },
+        { "k": "Slack check", "v": "Weekly, or after load changes" },
+        { "k": "Wear limit", "v": "2 percent stretch" },
+        { "k": "Tools", "v": "Brush, paraffin, rule" }
+      ],
+      "body": [
+        { "type": "p", "text": "Every chain drive motorcycle sold in the region comes with a service interval written by someone who was thinking about sealed roads. On murram, that interval is wrong by a wide margin, and following it is the single most common reason a chain and sprocket set that should last twenty thousand kilometres is finished at seven." },
+        { "type": "h2", "text": "Why dust is the actual problem" },
+        { "type": "p", "text": "Chain lubricant is sticky by design, because it has to stay on a part that is spinning. On a dusty road that stickiness collects fine grit continuously. Within a couple of hundred kilometres the lubricant is no longer a lubricant. It is a paste with an abrasive suspended in it, held exactly where the rollers meet the pins, which is the one place you do not want an abrasive." },
+        { "type": "p", "text": "Adding more lubricant on top does not fix this. It thickens the paste. The chain looks well cared for and wears faster than a dry one." },
+        { "type": "h2", "text": "The interval that works" },
+        { "type": "list", "title": "On mixed tarmac and murram", "items": [
+          "Clean at 300 to 500 km, sooner if you have ridden a full day on dust.",
+          "Clean means remove the old lubricant, not add to it. Paraffin and a stiff brush is enough.",
+          "Lubricate only after the chain is clean and dry, and only on a warm chain.",
+          "Use less than feels right. Excess is what collects grit.",
+          "Wipe the excess off the side plates before you ride."
+        ]},
+        { "type": "note", "title": "Check before you adjust", "text": "Slack that appears suddenly is usually not the chain stretching. Check the rear wheel alignment and the sprocket bolts first. A chain that has genuinely stretched will be uneven, tight at one point in its rotation and loose at another." },
+        { "type": "h2", "text": "Measuring wear honestly" },
+        { "type": "p", "text": "Pull the chain away from the rearmost point of the rear sprocket. If you can see daylight past the tooth, the set is finished. For a number rather than a judgement, measure a span of twenty links under light tension and compare it against the same span on a new chain of the same pitch. Two percent longer is the replacement point, and past that you are wearing out sprockets that were otherwise fine." },
+        { "type": "pull", "text": "Replace the chain and both sprockets together. A new chain on worn sprockets destroys itself in a fraction of its life." },
+        { "type": "h2", "text": "What this costs you" },
+        { "type": "p", "text": "The honest trade is about twenty minutes every few hundred kilometres against a chain and sprocket set every second year rather than twice a year. On a bike that is working for its living, that is not a hobby decision, it is the difference between a running cost you planned for and one you did not." }
+      ]
+    },
+    {
+      "slug": "boda-stage-field-report",
+      "section": "news",
+      "category": "Field report",
+      "issue": "Field 012",
+      "title": "What a boda stage already knows",
+      "dek": "Spend a morning at a working stage and the maintenance culture that keeps thousands of machines running becomes visible.",
+      "excerpt": "Riders who cover two hundred kilometres a day on the same machine develop diagnostic habits that no manual teaches. We spent a week listening rather than explaining.",
+      "date": "2026-07-28",
+      "read": "11 min",
+      "author": "Frontier Field Desk",
+      "image": "feature-stage",
+      "image_alt": "Riders and motorcycles gathered at a boda stage beside a market road in early morning",
+      "location": "Market road stage, central Kenya",
+      "specs": [
+        { "k": "Method", "v": "Observation and interview" },
+        { "k": "Duration", "v": "Six mornings" },
+        { "k": "Machines", "v": "Predominantly 125 to 150 cc" },
+        { "k": "Daily distance", "v": "120 to 220 km reported" },
+        { "k": "Sample", "v": "One stage, not representative" },
+        { "k": "Status", "v": "Ongoing" }
+      ],
+      "body": [
+        { "type": "p", "text": "A stage is not a taxi rank. It is a workshop, an information network and an informal credit system that happens to have motorcycles parked at it. If you want to know what a road did last week, ask at a stage rather than checking a map." },
+        { "type": "h2", "text": "Diagnosis by ear" },
+        { "type": "p", "text": "The most striking thing over six mornings was how much of the diagnostic work happened before anyone touched a tool. A machine would arrive, and someone would name the problem from across the yard, from the sound of it slowing down. Not always correctly, but correctly often enough that it was clearly a skill rather than a guess." },
+        { "type": "p", "text": "This is what two hundred kilometres a day on one machine buys you. The rider knows the baseline sound of their own bike more precisely than any instrument on it, and a deviation from that baseline registers days before it becomes a fault a workshop would find." },
+        { "type": "list", "title": "Habits worth borrowing", "items": [
+          "A short listening pause at the first start of the day, before moving off, every day.",
+          "Chain slack checked by hand at the stage rather than on a schedule.",
+          "Tyre pressure judged by thumb daily and by gauge weekly, which is not ideal but is far better than gauge only and rarely.",
+          "Fuel bought in known quantities from known sellers, so that consumption changes are readable.",
+          "Problems described to each other in terms of when they happen rather than what they are."
+        ]},
+        { "type": "note", "title": "On what we are not claiming", "text": "This is one stage over six mornings. It is a field report, not a survey. Practices differ considerably between towns, between routes and between machine types, and nothing here should be read as regional fact." },
+        { "type": "h2", "text": "The repair economy" },
+        { "type": "p", "text": "Parts move sideways constantly. A rider with a bike off the road for a week is a parts supply for four others, on the understanding that it works in reverse later. There is very little written down. There is also very little dispute, because the reputational cost of getting it wrong at your own stage is high and immediate." },
+        { "type": "pull", "text": "Ask at a stage what a road did last week. The answer will be more current than any map." },
+        { "type": "h2", "text": "Where the knowledge stops" },
+        { "type": "p", "text": "The gaps are consistent and worth naming, because they are the places where good information is actually useful. Braking technique is largely self taught and often front biased in exactly the wrong conditions. Protective equipment is understood as a cost rather than as equipment. And electrical faults, which are the most common cause of a machine stopping outright, are the least well understood category by a wide margin." },
+        { "type": "p", "text": "None of that is a criticism of riders working long days on thin margins. It is a description of where a guide is worth writing, and it has shaped most of what is in the Maintain and Ride sections of this site." }
+      ]
+    },
+
+    { "slug": null, "section": "ride", "category": "Road craft", "title": "Reading a matatu before it moves", "excerpt": "The signals that come three seconds before a sudden stop, and the following distance that makes them useful.", "date": "2026-08-18", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Technique", "title": "Braking on loose surface without locking", "excerpt": "Rear bias, progressive input, and why the front brake is not the enemy on murram.", "date": "2026-08-09", "read": "8 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Night riding", "title": "Glare, unlit vehicles and the speed that fits your headlight", "excerpt": "If you cannot stop inside the light you are producing, you are riding faster than you can see.", "date": "2026-07-30", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Load", "title": "Carrying a pillion who has never ridden", "excerpt": "A ninety second briefing that changes how the bike behaves for the next two hours.", "date": "2026-07-19", "read": "5 min", "status": "upcoming" },
+
+    { "slug": null, "section": "navigate", "category": "Route note", "title": "Nanyuki to Archers Post, surface report", "excerpt": "Where the tarmac holds, where it does not, and the last certain fuel before the northern stretch.", "date": "2026-08-14", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "navigate", "category": "Planning", "title": "Building a fuel plan around the longest gap", "excerpt": "Plan for the gap you cannot avoid, not the average distance between stations.", "date": "2026-08-02", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "navigate", "category": "Maps", "title": "Offline maps that still work with no signal", "excerpt": "What to download before you leave, and the failure mode that catches people at the border.", "date": "2026-07-21", "read": "6 min", "status": "upcoming" },
+
+    { "slug": null, "section": "survive", "category": "Roadside", "title": "The first ninety seconds after you stop", "excerpt": "Position, visibility, then the machine. In that order, every time.", "date": "2026-08-16", "read": "5 min", "status": "upcoming" },
+    { "slug": null, "section": "survive", "category": "First aid", "title": "A riders kit that fits under the seat", "excerpt": "What is worth the space, what is not, and what you need to know how to use before you need it.", "date": "2026-08-06", "read": "8 min", "status": "upcoming" },
+    { "slug": null, "section": "survive", "category": "Weather", "title": "Riding out a downpour instead of through it", "excerpt": "Twenty minutes of shelter against two hours of reduced grip and zero visibility.", "date": "2026-07-25", "read": "5 min", "status": "upcoming" },
+
+    { "slug": null, "section": "maintain", "category": "Diagnostics", "title": "It will not start, and it is almost always one of five things", "excerpt": "A sequence that finds the fault without removing anything you do not need to remove.", "date": "2026-08-12", "read": "9 min", "status": "upcoming" },
+    { "slug": null, "section": "maintain", "category": "Tyres", "title": "Pressure, load and heat on a long day", "excerpt": "The pressure on the sticker assumes one rider and no luggage. You are rarely either.", "date": "2026-07-31", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "maintain", "category": "Electrical", "title": "Charging faults you can find with a multimeter", "excerpt": "Three measurements that separate a dying battery from a dying regulator.", "date": "2026-07-17", "read": "8 min", "status": "upcoming" },
+
+    { "slug": null, "section": "market", "category": "Buying guide", "title": "Inspecting a used bike in twenty minutes", "excerpt": "The order to check things in, so that a fault ends the inspection before you waste an hour.", "date": "2026-08-15", "read": "10 min", "status": "upcoming" },
+    { "slug": null, "section": "market", "category": "Gear", "title": "Wet weather kit that survives one season", "excerpt": "Tested through a full set of long rains, including the two that did not make it.", "date": "2026-08-03", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "market", "category": "Helmets", "title": "Ventilation and heat, judged locally", "excerpt": "A helmet rated for European weather behaves differently at midday on the equator.", "date": "2026-07-22", "read": "6 min", "status": "upcoming" },
+
+    { "slug": null, "section": "news", "category": "Regulation", "title": "Helmet and reflective requirements, what changed", "excerpt": "A plain reading of current requirements for riders and pillions, with the parts that remain unclear marked as unclear.", "date": "2026-08-19", "read": "5 min", "status": "upcoming" },
+    { "slug": null, "section": "news", "category": "Roads", "title": "Resurfacing works and the diversions they create", "excerpt": "Reported by riders, updated when we can confirm it, dated so you can judge how stale it is.", "date": "2026-08-13", "read": "4 min", "status": "upcoming" },
+    { "slug": null, "section": "news", "category": "Fuel", "title": "Price movement and what it does to route planning", "excerpt": "When fuel moves, the calculation that decides whether you carry a spare litre moves with it.", "date": "2026-08-07", "read": "5 min", "status": "upcoming" }
+  ]
+}

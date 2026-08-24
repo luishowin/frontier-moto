@@ -1,0 +1,131 @@
+{
+  "note": "Every slot below is generated as an SVG plate by scripts/build_images.py and listed in docs/assets/img/MANIFEST.md. To use a photograph instead, save it at the stated dimensions with the same basename and change the extension in the page markup. Alt text is content, not decoration, so it travels with the slot rather than the file.",
+  "slots": [
+    {
+      "id": "hero-home",
+      "w": 2400, "h": 1350, "kind": "photo", "tone": "dark",
+      "caption": "A104 northbound, first light",
+      "subject": "highway",
+      "alt": "A loaded motorcycle on an open highway at first light with hills on the horizon and a truck in the far distance"
+    },
+    {
+      "id": "feature-escarpment",
+      "w": 1800, "h": 1200, "kind": "photo", "tone": "dark",
+      "caption": "Old Naivasha Road, wet season",
+      "subject": "descent",
+      "alt": "A wet hairpin bend on the old escarpment road with the Rift Valley floor visible below"
+    },
+    {
+      "id": "feature-chain",
+      "w": 1800, "h": 1200, "kind": "detail", "tone": "dark",
+      "caption": "Drive chain, 4200 km on murram",
+      "subject": "chain",
+      "alt": "A worn drive chain and rear sprocket photographed against a workshop bench with a measuring rule"
+    },
+    {
+      "id": "feature-stage",
+      "w": 1800, "h": 1200, "kind": "photo", "tone": "light",
+      "caption": "Market road stage, 06:40",
+      "subject": "stage",
+      "alt": "Riders and motorcycles gathered at a boda stage beside a market road in early morning"
+    },
+    {
+      "id": "index-ride",
+      "w": 1200, "h": 800, "kind": "photo", "tone": "dark",
+      "caption": "Two lane, wet",
+      "subject": "highway",
+      "alt": "A rider holding a line on a wet two lane highway as a matatu pulls out from the shoulder ahead"
+    },
+    {
+      "id": "index-navigate",
+      "w": 900, "h": 1200, "kind": "photo", "tone": "dark",
+      "caption": "Track to the valley floor",
+      "subject": "descent",
+      "alt": "A dirt track descending toward a valley floor with a rain front visible on the far ridge"
+    },
+    {
+      "id": "index-equip",
+      "w": 1200, "h": 800, "kind": "detail", "tone": "light",
+      "caption": "Loadout, laid out",
+      "subject": "gear",
+      "alt": "Riding gear and tools laid out in order on a workshop floor beside a loaded motorcycle"
+    },
+    {
+      "id": "maintain-diagram",
+      "w": 1400, "h": 1000, "kind": "diagram", "tone": "light",
+      "caption": "Service points, chain drive single",
+      "subject": "diagram",
+      "alt": "A schematic side view of a motorcycle with six numbered callouts marking routine service points"
+    },
+    {
+      "id": "market-gear",
+      "w": 1200, "h": 900, "kind": "detail", "tone": "dark",
+      "caption": "Wet weather kit, one season",
+      "subject": "gear",
+      "alt": "A two piece rain suit and dry bag showing a season of wear, photographed flat"
+    },
+    {
+      "id": "hero-ride",
+      "w": 2000, "h": 1000, "kind": "photo", "tone": "dark",
+      "caption": "Overtaking line, A104",
+      "subject": "highway",
+      "alt": "A rider holding a wide line behind a matatu on a two lane highway in flat afternoon light"
+    },
+    {
+      "id": "hero-navigate",
+      "w": 2000, "h": 1000, "kind": "photo", "tone": "dark",
+      "caption": "Rain front, far ridge",
+      "subject": "descent",
+      "alt": "A dirt track descending toward a valley floor with a rain front visible on the far ridge"
+    },
+    {
+      "id": "hero-survive",
+      "w": 2000, "h": 1000, "kind": "photo", "tone": "dark",
+      "caption": "Shoulder, last light",
+      "subject": "roadside",
+      "alt": "A motorcycle parked well clear of the carriageway at dusk with a warning marker placed back up the road"
+    },
+    {
+      "id": "hero-maintain",
+      "w": 2000, "h": 1000, "kind": "detail", "tone": "dark",
+      "caption": "Bench, measured not guessed",
+      "subject": "chain",
+      "alt": "A chain and rear sprocket being measured with a rule on a workshop bench"
+    },
+    {
+      "id": "hero-market",
+      "w": 2000, "h": 1000, "kind": "detail", "tone": "dark",
+      "caption": "Inspected, not sponsored",
+      "subject": "gear",
+      "alt": "Riding gear laid out on a workshop floor beside a loaded motorcycle"
+    },
+    {
+      "id": "hero-news",
+      "w": 2000, "h": 1000, "kind": "photo", "tone": "light",
+      "caption": "Stage, market road",
+      "subject": "stage",
+      "alt": "A boda stage at the edge of a market town in early morning light"
+    },
+    {
+      "id": "hero-workshop",
+      "w": 2000, "h": 1000, "kind": "detail", "tone": "dark",
+      "caption": "Bay two, mid service",
+      "subject": "workshop",
+      "alt": "A motorcycle on a workshop stand mid service with tools laid out in order on the bench behind"
+    },
+    {
+      "id": "hero-recovery",
+      "w": 2000, "h": 1000, "kind": "photo", "tone": "dark",
+      "caption": "Clear of the carriageway",
+      "subject": "roadside",
+      "alt": "A motorcycle pushed fully clear of the road with a rider standing uphill and behind the barrier"
+    },
+    {
+      "id": "og-frontier",
+      "w": 1200, "h": 630, "kind": "og", "tone": "dark",
+      "caption": "Ride farther. Ride smarter. Get home.",
+      "subject": "highway",
+      "alt": "Frontier Moto"
+    }
+  ]
+}

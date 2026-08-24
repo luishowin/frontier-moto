@@ -1,0 +1,63 @@
+{
+  "brand": {
+    "name": "Frontier Moto",
+    "wordmark": ["FRON", "TIER", "MOTO"],
+    "tagline": "Motorcycle knowledge, equipment and support for riders across East Africa.",
+    "mission": "Frontier Moto exists so that riders across East Africa can leave with better information than they arrived with. We publish what we have tested, we say plainly what we do not know, and we build for the rider who is a long way from a workshop.",
+    "region": "East Africa. Kenya, Uganda, Tanzania and Rwanda.",
+    "email": "field@frontiermoto.co.ke"
+  },
+  "site": {
+    "base_url": "https://luishowin.github.io/frontier-moto",
+    "locale": "en_KE",
+    "lang": "en",
+    "og_image": "/assets/img/og-frontier.svg",
+    "theme_color": "#121212"
+  },
+  "nav": [
+    { "slug": "ride",     "label": "Ride",     "href": "/ride/" },
+    { "slug": "navigate", "label": "Navigate", "href": "/navigate/" },
+    { "slug": "survive",  "label": "Survive",  "href": "/survive/" },
+    { "slug": "maintain", "label": "Maintain", "href": "/maintain/" },
+    { "slug": "market",   "label": "Market",   "href": "/market/" },
+    { "slug": "news",     "label": "News",     "href": "/news/" },
+    { "slug": "workshop", "label": "Workshop", "href": "/workshop/" }
+  ],
+  "recovery": {
+    "slug": "recovery",
+    "label": "Recovery",
+    "href": "/recovery/",
+    "short": "Get Recovery",
+    "note": "Help when the ride stops"
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "Sections",
+        "links": [
+          { "label": "Ride", "href": "/ride/" },
+          { "label": "Navigate", "href": "/navigate/" },
+          { "label": "Survive", "href": "/survive/" },
+          { "label": "Maintain", "href": "/maintain/" }
+        ]
+      },
+      {
+        "title": "More",
+        "links": [
+          { "label": "Market", "href": "/market/" },
+          { "label": "News", "href": "/news/" },
+          { "label": "Workshop", "href": "/workshop/" },
+          { "label": "Recovery", "href": "/recovery/" }
+        ]
+      }
+    ],
+    "legal": [
+      { "label": "Terms", "href": "/legal/" },
+      { "label": "Privacy", "href": "/legal/#privacy" },
+      { "label": "Credits", "href": "/legal/#credits" }
+    ],
+    "channels_note": "Social channels are not open yet. Email reaches us directly.",
+    "meta_left": "0°01'N 37°04'E, compiled in Nanyuki, Kenya",
+    "meta_right": "© 2026 Frontier Moto. Field notes published under review."
+  }
+}

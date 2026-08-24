@@ -1,0 +1,94 @@
+{
+  "routes": [
+    {
+      "ref": "RT-014",
+      "name": "Nairobi to Naivasha, old road",
+      "country": "Kenya",
+      "distance": "92 km",
+      "surface": "Tarmac, polished on descent",
+      "time": "2 h 40",
+      "fuel_gap": "48 km",
+      "difficulty": "Moderate",
+      "note": "The descent carries almost all of the risk. Avoid in the first twenty minutes of rain.",
+      "article": "escarpment-wet-season"
+    },
+    {
+      "ref": "RT-021",
+      "name": "Nanyuki to Archers Post",
+      "country": "Kenya",
+      "distance": "148 km",
+      "surface": "Tarmac, degrading north",
+      "time": "3 h 10",
+      "fuel_gap": "96 km",
+      "difficulty": "Moderate",
+      "note": "Last certain fuel is well before the northern stretch. Heat is the limiting factor after ten in the morning.",
+      "article": null
+    },
+    {
+      "ref": "RT-008",
+      "name": "Kampala to Jinja",
+      "country": "Uganda",
+      "distance": "81 km",
+      "surface": "Tarmac, heavy traffic",
+      "time": "2 h 20",
+      "fuel_gap": "22 km",
+      "difficulty": "Easy, dense",
+      "note": "Traffic density rather than surface is the difficulty. Leaving before six changes the ride completely.",
+      "article": null
+    },
+    {
+      "ref": "RT-030",
+      "name": "Arusha to Moshi",
+      "country": "Tanzania",
+      "distance": "80 km",
+      "surface": "Tarmac, good",
+      "time": "1 h 40",
+      "fuel_gap": "34 km",
+      "difficulty": "Easy",
+      "note": "Crosswind on the open sections is stronger than the terrain suggests, particularly with luggage.",
+      "article": null
+    },
+    {
+      "ref": "RT-025",
+      "name": "Kigali to Musanze",
+      "country": "Rwanda",
+      "distance": "106 km",
+      "surface": "Tarmac, excellent",
+      "time": "2 h 15",
+      "fuel_gap": "40 km",
+      "difficulty": "Moderate, altitude",
+      "note": "Sustained climbing and frequent low cloud. Dress for a temperature drop you will not feel until you are in it.",
+      "article": null
+    },
+    {
+      "ref": "RT-017",
+      "name": "Nakuru to Kericho",
+      "country": "Kenya",
+      "distance": "118 km",
+      "surface": "Tarmac, broken sections",
+      "time": "2 h 45",
+      "fuel_gap": "51 km",
+      "difficulty": "Moderate",
+      "note": "Afternoon rain is close to routine in season. Plan the ride around the window, not through it.",
+      "article": null
+    }
+  ],
+  "intervals": [
+    { "item": "Chain clean and lube", "tarmac": "800 km", "murram": "300 km", "note": "Dust turns lubricant into grinding paste. Clean, do not top up." },
+    { "item": "Engine oil", "tarmac": "3000 km", "murram": "2000 km", "note": "Heat and low average speed both shorten this. Filter every second change at minimum." },
+    { "item": "Air filter", "tarmac": "6000 km", "murram": "1500 km", "note": "The single largest difference between sealed and unsealed use." },
+    { "item": "Tyre pressure", "tarmac": "Weekly", "murram": "Weekly", "note": "Adjust for load, not just for the sticker figure." },
+    { "item": "Brake pads", "tarmac": "Inspect 5000 km", "murram": "Inspect 2500 km", "note": "Grit accelerates pad and disc wear together." },
+    { "item": "Spark plug", "tarmac": "8000 km", "murram": "6000 km", "note": "Read it before you replace it. The old plug is a free diagnostic." },
+    { "item": "Valve clearance", "tarmac": "12000 km", "murram": "10000 km", "note": "Noise is a late symptom. Measure on the interval rather than waiting to hear it." },
+    { "item": "Fork oil", "tarmac": "20000 km", "murram": "12000 km", "note": "Rough surface work is what actually consumes damping performance." }
+  ],
+  "callouts": [
+    { "n": "01", "part": "Chain and sprockets", "check": "Slack at the tight spot, tooth profile, 2 percent stretch limit" },
+    { "n": "02", "part": "Air filter", "check": "The first thing to check on any dusty route bike that has lost power" },
+    { "n": "03", "part": "Front brake", "check": "Pad thickness, disc lip, fluid clarity rather than just level" },
+    { "n": "04", "part": "Wheel bearings", "check": "Rock the wheel at twelve and six with the bike off the ground" },
+    { "n": "05", "part": "Rear shock", "check": "Sag under load, oil weeping at the seal, damping on a known bump" },
+    { "n": "06", "part": "Charging system", "check": "Battery at rest, then at idle, then at three thousand revolutions" }
+  ]
+}
