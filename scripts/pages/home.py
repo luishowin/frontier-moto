@@ -40,22 +40,14 @@ def build(data):
     out.append(editorial_hero(
         slot="hero-home",
         depth=DEPTH,
-        label_accent="01",
-        label="Frontier",
         title_lines=["Ride farther.", "Ride smarter.", "Get home."],
         lede=site["brand"]["tagline"],
         actions=(
             '<a class="btn btn--ghost-light" href="#index">'
             '<span class="btn__label">Explore Frontier</span></a>'
-            f'<a class="btn btn--signal" href="{rel("/recovery/", DEPTH)}">'
-            '<span class="btn__label">Get Recovery</span></a>'
+            f'<a class="btn btn--signal" href="{rel("/market/", DEPTH)}">'
+            '<span class="btn__label">Everything you need to get moving</span></a>'
         ),
-        field=[
-            ("Field log", "014 / Escarpment"),
-            ("Season", "Long rains, closing"),
-            ("Surface", "Tarmac, polished on descent"),
-            ("Compiled", "Nanyuki, Kenya"),
-        ],
     ))
 
     # ── 02 The Frontier Index ────────────────────────────────────────────────
@@ -88,8 +80,20 @@ def build(data):
 </section>""")
 
     # ── 04 Ride ready ────────────────────────────────────────────────────────
+    # Each list links to the section that carries it further. Same stretched
+    # link pattern as the index and article cards: one real anchor per card.
+    ready_hrefs = {
+        "pre-ride": "/ride/",
+        "weather": "/navigate/",
+        "carry": "/survive/",
+        "fuel": "/navigate/",
+        "contacts": "/survive/",
+    }
     keys = ["pre-ride", "weather", "carry", "fuel", "contacts"]
-    lists = "".join(checklist(checklists[k], i) for i, k in enumerate(keys))
+    lists = "".join(
+        checklist(checklists[k], i, href=ready_hrefs[k], depth=DEPTH)
+        for i, k in enumerate(keys)
+    )
     out.append(f"""<section class="section" aria-labelledby="ready-title">
   <div class="container">
     {section_label("04", "Ride ready", "Field guide, not a shop", heading_id="ready-title")}

@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap">
 
-<link rel="stylesheet" href="assets/css/index.css?v=7">
+<link rel="stylesheet" href="assets/css/index.css?v=9">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest">
@@ -86,7 +86,7 @@
     <div class="header__actions">
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"
               aria-label="Switch to dark theme"><svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg><svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/></svg></button>
-      <a class="recovery-action" href="recovery/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0.6 15.4 14H0.6L8 0.6Zm0 4.6L4.6 11.6h6.8L8 5.2Z"/><path d="M7.1 6.9h1.8v2.4H7.1V6.9Zm0 3.1h1.8v1.1H7.1V10Z"/></svg><span class="recovery-action__text">Get Recovery</span><span class="recovery-action__short">Recovery</span></a>
+      <a class="recovery-action" href="market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
       <button class="menu-trigger" id="menu-trigger" type="button" aria-expanded="false"
               aria-controls="menu-overlay" aria-label="Open menu"><span></span></button>
     </div>
@@ -103,9 +103,8 @@
     <ul><li><a href="ride/"><span class="menu-overlay__n">01</span>Ride</a></li><li><a href="navigate/"><span class="menu-overlay__n">02</span>Navigate</a></li><li><a href="survive/"><span class="menu-overlay__n">03</span>Survive</a></li><li><a href="maintain/"><span class="menu-overlay__n">04</span>Maintain</a></li><li><a href="market/"><span class="menu-overlay__n">05</span>Market</a></li><li><a href="news/"><span class="menu-overlay__n">06</span>News</a></li><li><a href="workshop/"><span class="menu-overlay__n">07</span>Workshop</a></li></ul>
   </nav>
   <div class="menu-overlay__foot">
-    <a class="recovery-action" href="recovery/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0.6 15.4 14H0.6L8 0.6Zm0 4.6L4.6 11.6h6.8L8 5.2Z"/><path d="M7.1 6.9h1.8v2.4H7.1V6.9Zm0 3.1h1.8v1.1H7.1V10Z"/></svg><span class="recovery-action__text">Get Recovery</span><span class="recovery-action__short">Recovery</span></a>
-    <p class="menu-overlay__note">Help when the ride stops. Recovery is not an
-    emergency service. If anyone is hurt, contact local emergency services first.</p>
+    <a class="recovery-action" href="market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
+    <p class="menu-overlay__note">Everything you need to get moving. Start in the Market.</p>
   </div>
 </div>
 <main id="main">
@@ -113,11 +112,11 @@
   <div class="hero__media"><picture><source type="image/avif" srcset="assets/img/hero-home.avif 2400w, assets/img/hero-home-1600.avif 1600w, assets/img/hero-home-1200.avif 1200w, assets/img/hero-home-800.avif 800w" sizes="100vw"><img src="assets/img/hero-home.jpg" srcset="assets/img/hero-home.jpg 2400w, assets/img/hero-home-1600.jpg 1600w, assets/img/hero-home-1200.jpg 1200w, assets/img/hero-home-800.jpg 800w" width="2400" height="1350" alt="A rider in dark gear cornering on a wet tarmac road through dense forest, with a metal guardrail on the outside of the bend" sizes="100vw" fetchpriority="high" decoding="async"></picture></div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
-    <p class="hero__label"><b>01</b> Frontier</p>
+    
     <h1 class="hero__title"><span>Ride farther.</span><span>Ride smarter.</span><span>Get home.</span></h1>
     <p class="hero__lede">Motorcycle knowledge, equipment and support for riders across East Africa.</p>
-    <div class="hero__actions btn-row"><a class="btn btn--ghost-light" href="#index"><span class="btn__label">Explore Frontier</span></a><a class="btn btn--signal" href="recovery/"><span class="btn__label">Get Recovery</span></a></div>
-    <dl class="hero__field"><div><dt>Field log</dt><dd>014 / Escarpment</dd></div><div><dt>Season</dt><dd>Long rains, closing</dd></div><div><dt>Surface</dt><dd>Tarmac, polished on descent</dd></div><div><dt>Compiled</dt><dd>Nanyuki, Kenya</dd></div></dl>
+    <div class="hero__actions btn-row"><a class="btn btn--ghost-light" href="#index"><span class="btn__label">Explore Frontier</span></a><a class="btn btn--signal" href="market/"><span class="btn__label">Everything you need to get moving</span></a></div>
+    
   </div>
 </section>
 <section class="section" id="index" aria-labelledby="index-title">
@@ -156,14 +155,14 @@
   <p class="index-card__blurb">Service, diagnostics, workshop knowledge.</p>
   <p class="index-card__detail">Intervals adjusted for dust, load and fuel quality rather than a European service book.</p>
   <div class="index-card__foot"><span>Open</span><span class="index-card__stat">Intervals<b>24</b></span></div>
-</article><article class="index-card index-card--media" data-reveal style="--i:4">
+</article><article class="index-card index-card--media index-card--signal" data-reveal style="--i:4">
   <div class="index-card__media"><picture><source type="image/avif" srcset="assets/img/index-equip.avif 715w" sizes="(max-width: 720px) 100vw, 45vw"><img src="assets/img/index-equip.jpg" srcset="assets/img/index-equip.jpg 715w" width="715" height="477" alt="A partly stripped motorcycle in a home garage surrounded by tool cases, a workbench and stacked parts" sizes="(max-width: 720px) 100vw, 45vw" decoding="async" loading="lazy"></picture></div>
   <p class="index-card__n">05</p>
   <h3 class="index-card__title"><a class="index-card__link" href="market/">Equip</a></h3>
   <p class="index-card__blurb">Gear, loadout, buying guidance.</p>
   <p class="index-card__detail">Helmets, wet weather gear, luggage and tyres, judged against heat, dust and price.</p>
   <div class="index-card__foot"><span>Open</span><span class="index-card__stat">Tested items<b>46</b></span></div>
-</article><article class="index-card index-card--signal" data-reveal style="--i:5">
+</article><article class="index-card" data-reveal style="--i:5">
   
   <p class="index-card__n">06</p>
   <h3 class="index-card__title"><a class="index-card__link" href="recovery/">Recover</a></h3>
@@ -207,38 +206,38 @@
       buy. Most of it is ten minutes and a decision made while you are still somewhere
       you can act on it.
     </p>
-    <div class="utility-grid"><section class="checklist" data-reveal style="--i:0">
+    <div class="utility-grid"><section class="checklist checklist--link" data-reveal style="--i:0">
   <div class="checklist__head">
     <span class="checklist__n">CL 01</span>
-    <h3 class="checklist__title">Pre-ride check</h3>
+    <h3 class="checklist__title"><a class="checklist__link" href="ride/">Pre-ride check<span class="checklist__go" aria-hidden="true">&#8594;</span></a></h3>
   </div>
   <p class="checklist__note">Two minutes, cold, before the engine starts. In this order because each step tells you whether the next one matters.</p>
   <ul class="checklist__items"><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Tyres</span><span class="checklist__detail">Pressure by gauge, then look at the tread and the sidewall for cuts and embedded stones.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Chain</span><span class="checklist__detail">Slack at the tightest point of rotation, not wherever it happens to be standing.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Brakes</span><span class="checklist__detail">Lever and pedal travel, then fluid level if the reservoir has a window.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Lights</span><span class="checklist__detail">Head, brake, indicators. Brake light on both the lever and the pedal.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Fluids</span><span class="checklist__detail">Oil level on level ground, plus any leak that is new since yesterday.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Fasteners</span><span class="checklist__detail">Axle nuts, sprocket bolts, anything you or anyone else touched recently.</span></span></li></ul>
-</section><section class="checklist" data-reveal style="--i:1">
+</section><section class="checklist checklist--link" data-reveal style="--i:1">
   <div class="checklist__head">
     <span class="checklist__n">CL 02</span>
-    <h3 class="checklist__title">Weather and terrain readiness</h3>
+    <h3 class="checklist__title"><a class="checklist__link" href="navigate/">Weather and terrain readiness<span class="checklist__go" aria-hidden="true">&#8594;</span></a></h3>
   </div>
   <p class="checklist__note">Judged the night before, then again at the door. A route that is fine in the dry may be a different route entirely.</p>
   <ul class="checklist__items"><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Rain window</span><span class="checklist__detail">When it is expected to start, not just whether it will rain.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Surface</span><span class="checklist__detail">Murram sections turn to clay quickly and stay that way after the rain stops.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">River crossings</span><span class="checklist__detail">Seasonal crossings rise fast and fall slowly. Ask locally rather than guessing.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Heat</span><span class="checklist__detail">Midday on the equator is a fatigue problem before it is a comfort problem.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Light</span><span class="checklist__detail">Work backwards from sunset and add an hour of margin, not ten minutes.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Altitude</span><span class="checklist__detail">A cold, wet descent after a hot climb catches riders dressed for the start.</span></span></li></ul>
-</section><section class="checklist" data-reveal style="--i:2">
+</section><section class="checklist checklist--link" data-reveal style="--i:2">
   <div class="checklist__head">
     <span class="checklist__n">CL 03</span>
-    <h3 class="checklist__title">Essential carry list</h3>
+    <h3 class="checklist__title"><a class="checklist__link" href="survive/">Essential carry list<span class="checklist__go" aria-hidden="true">&#8594;</span></a></h3>
   </div>
   <p class="checklist__note">The set that earns its space on almost any route. Everything else is route specific.</p>
   <ul class="checklist__items"><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Tyre repair</span><span class="checklist__detail">Plugs, tool, and a way to reinflate that does not depend on finding a compressor.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Tools</span><span class="checklist__detail">The sizes your bike actually uses, checked against your bike, not a generic set.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Water</span><span class="checklist__detail">More than the ride needs. Dehydration reads as poor judgement long before it reads as thirst.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">First aid</span><span class="checklist__detail">Compact, and only items you already know how to use.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Documents</span><span class="checklist__detail">Licence, insurance, registration, plus photographs of all three stored offline.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Cash</span><span class="checklist__detail">Small notes. Fuel, repairs and help are not always card or mobile transactions.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Light</span><span class="checklist__detail">A torch or headlamp that is not your phone, because your phone is your map.</span></span></li></ul>
-</section><section class="checklist" data-reveal style="--i:3">
+</section><section class="checklist checklist--link" data-reveal style="--i:3">
   <div class="checklist__head">
     <span class="checklist__n">CL 04</span>
-    <h3 class="checklist__title">Fuel and route planning</h3>
+    <h3 class="checklist__title"><a class="checklist__link" href="navigate/">Fuel and route planning<span class="checklist__go" aria-hidden="true">&#8594;</span></a></h3>
   </div>
   <p class="checklist__note">Plan around the single longest gap on the route, not the average distance between stations.</p>
   <ul class="checklist__items"><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Longest gap</span><span class="checklist__detail">Identify it before you leave and make sure your range covers it with margin.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Real range</span><span class="checklist__detail">Loaded, into wind, on a rough surface. Not the range you get commuting.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Reserve</span><span class="checklist__detail">Know what your reserve is in kilometres, tested, not assumed.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Last certain fuel</span><span class="checklist__detail">The last station you are confident is open and stocked, not the last one on the map.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Quality</span><span class="checklist__detail">Buy where the turnover is high. Low turnover means water and sediment.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Spare</span><span class="checklist__detail">Carry a litre only if you have a container made for it and a safe place to mount it.</span></span></li></ul>
-</section><section class="checklist" data-reveal style="--i:4">
+</section><section class="checklist checklist--link" data-reveal style="--i:4">
   <div class="checklist__head">
     <span class="checklist__n">CL 05</span>
-    <h3 class="checklist__title">Emergency contact preparation</h3>
+    <h3 class="checklist__title"><a class="checklist__link" href="survive/">Emergency contact preparation<span class="checklist__go" aria-hidden="true">&#8594;</span></a></h3>
   </div>
   <p class="checklist__note">Prepared before the ride, because none of it is possible to arrange afterwards.</p>
   <ul class="checklist__items"><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Route shared</span><span class="checklist__detail">One person who knows where you are going and roughly when to expect you.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Check in time</span><span class="checklist__detail">An agreed time, and an agreed action if you miss it.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Local numbers</span><span class="checklist__detail">Stored offline in the phone and written on paper in the bike.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Medical</span><span class="checklist__detail">Blood group, allergies and conditions, somewhere someone will find them.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Power</span><span class="checklist__detail">A way to charge the phone that does not depend on the bike running.</span></span></li><li><span class="checklist__box" aria-hidden="true"></span><span><span class="checklist__label">Offline map</span><span class="checklist__detail">Downloaded for the whole route before you leave signal, including the return.</span></span></li></ul>
@@ -314,13 +313,13 @@
   <div class="container recovery-banner__inner">
     <div>
       <p class="recovery-banner__label">
-        <span>07</span><span>Recovery</span>
+        <span>07</span><span>Market</span>
       </p>
-      <h2 class="recovery-banner__title" id="recovery-banner-title">Stranded? Start here.</h2>
-      <p class="recovery-banner__body">Work down the list before you contact anyone. Having these five things ready turns a frustrating ten minute conversation into a one minute one.</p>
+      <h2 class="recovery-banner__title" id="recovery-banner-title">Everything you need to get moving.</h2>
+      <p class="recovery-banner__body">Parts, equipment, and know-how for the ride ahead. Start in the Market, and keep this list somewhere you can find it when the ride stops.</p>
       <div class="recovery-banner__actions btn-row">
-        <a class="btn btn--solid" href="recovery/">
-          <span class="btn__label">Get Recovery</span></a>
+        <a class="btn btn--solid" href="market/">
+          <span class="btn__label">Get moving</span></a>
         <a class="btn" href="survive/">
           <span class="btn__label">Roadside guidance</span></a>
       </div>
@@ -454,7 +453,7 @@
         </p>
         <p class="site-footer__contact" style="margin-top:0.75rem">Social channels are not open yet. Email reaches us directly.</p>
         <div class="site-footer__cta">
-          <a class="recovery-action" href="recovery/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0.6 15.4 14H0.6L8 0.6Zm0 4.6L4.6 11.6h6.8L8 5.2Z"/><path d="M7.1 6.9h1.8v2.4H7.1V6.9Zm0 3.1h1.8v1.1H7.1V10Z"/></svg><span class="recovery-action__text">Get Recovery</span><span class="recovery-action__short">Recovery</span></a>
+          <a class="recovery-action" href="market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
           <a class="btn btn--ghost-light" href="workshop/">
             <span class="btn__label">Workshop services</span></a>
         </div>
@@ -467,6 +466,6 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/index.js?v=7" defer></script>
+<script src="assets/js/index.js?v=9" defer></script>
 </body>
 </html>

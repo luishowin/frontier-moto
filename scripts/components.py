@@ -19,7 +19,7 @@ Mapping to the component names used in the brief:
     RecoveryBanner      recovery_banner
     NewsletterForm      newsletter_form
 
-    SiteHeader, FrontierWordmark, PrimaryNav, RecoveryAction and SiteFooter
+    SiteHeader, FrontierWordmark, PrimaryNav, the primary header action and SiteFooter
     live in shell.py, because they are part of every document rather than
     something a page chooses to place.
 """
@@ -165,7 +165,7 @@ def section_label(number, title, aside=None, heading_id=None):
 
 # ── EditorialHero ────────────────────────────────────────────────────────────
 
-def editorial_hero(*, slot, depth, label, label_accent, title_lines, lede,
+def editorial_hero(*, slot, depth, label=None, label_accent=None, title_lines, lede,
                    actions="", field=None, compact=False, flat=False):
     classes = "hero"
     if compact:
@@ -174,6 +174,15 @@ def editorial_hero(*, slot, depth, label, label_accent, title_lines, lede,
         classes += " hero--flat"
 
     lines = "".join(f"<span>{esc(l)}</span>" for l in title_lines)
+
+    label_html = ""
+    if label or label_accent:
+        label_html = (
+            '<p class="hero__label">'
+            f"<b>{esc(label_accent)}</b> {esc(label)}</p>"
+            if label_accent else
+            f'<p class="hero__label">{esc(label)}</p>'
+        )
 
     field_html = ""
     if field:
@@ -186,7 +195,7 @@ def editorial_hero(*, slot, depth, label, label_accent, title_lines, lede,
   <div class="hero__media">{image(slot, depth, priority=True, lazy=False, sizes="100vw")}</div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
-    <p class="hero__label"><b>{esc(label_accent)}</b> {esc(label)}</p>
+    {label_html}
     <h1 class="hero__title">{lines}</h1>
     <p class="hero__lede">{esc(lede)}</p>
     {f'<div class="hero__actions btn-row">{actions}</div>' if actions else ""}
@@ -328,17 +337,27 @@ def article_row(article, depth, i=0):
 
 # ── Checklist and step sequence ──────────────────────────────────────────────
 
-def checklist(data, i=0):
+def checklist(data, i=0, href=None, depth=0):
     items = "".join(
         f'<li><span class="checklist__box" aria-hidden="true"></span>'
         f'<span><span class="checklist__label">{esc(item["label"])}</span>'
         f'<span class="checklist__detail">{esc(item["detail"])}</span></span></li>'
         for item in data["items"]
     )
-    return f"""<section class="checklist" data-reveal style="--i:{i}">
+    if href:
+        title = (
+            f'<a class="checklist__link" href="{rel(href, depth)}">'
+            f'{esc(data["title"])}'
+            '<span class="checklist__go" aria-hidden="true">&#8594;</span></a>'
+        )
+        cls = "checklist checklist--link"
+    else:
+        title = esc(data["title"])
+        cls = "checklist"
+    return f"""<section class="{cls}" data-reveal style="--i:{i}">
   <div class="checklist__head">
     <span class="checklist__n">{esc(data["number"])}</span>
-    <h3 class="checklist__title">{esc(data["title"])}</h3>
+    <h3 class="checklist__title">{title}</h3>
   </div>
   <p class="checklist__note">{esc(data["note"])}</p>
   <ul class="checklist__items">{items}</ul>
@@ -387,11 +406,11 @@ def workshop_callout(*, depth, slot, caption_left, caption_right, callouts,
 
 # ── RecoveryBanner ───────────────────────────────────────────────────────────
 
-def recovery_banner(*, depth, ready, title="Stranded? Start here.",
+def recovery_banner(*, depth, ready, title="Everything you need to get moving.",
                     body=None, heading_level=2, number="07"):
     body = body or (
-        "Work down the list before you contact anyone. Having these five things "
-        "ready turns a frustrating ten minute conversation into a one minute one."
+        "Parts, equipment, and know-how for the ride ahead. Start in the Market, "
+        "and keep this list somewhere you can find it when the ride stops."
     )
     items = "".join(
         f'<li><span class="ready-list__n">{esc(s["n"])}</span>'
@@ -405,13 +424,13 @@ def recovery_banner(*, depth, ready, title="Stranded? Start here.",
   <div class="container recovery-banner__inner">
     <div>
       <p class="recovery-banner__label">
-        <span>{esc(number)}</span><span>Recovery</span>
+        <span>{esc(number)}</span><span>Market</span>
       </p>
       <{h} class="recovery-banner__title" id="recovery-banner-title">{esc(title)}</{h}>
       <p class="recovery-banner__body">{esc(body)}</p>
       <div class="recovery-banner__actions btn-row">
-        <a class="btn btn--solid" href="{rel("/recovery/", depth)}">
-          <span class="btn__label">Get Recovery</span></a>
+        <a class="btn btn--solid" href="{rel("/market/", depth)}">
+          <span class="btn__label">Get moving</span></a>
         <a class="btn" href="{rel("/survive/", depth)}">
           <span class="btn__label">Roadside guidance</span></a>
       </div>

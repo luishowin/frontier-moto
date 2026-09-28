@@ -48,7 +48,7 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <rect width="32" height="32" fill="#121212"/>
 <rect x="4" y="6" width="24" height="3.5" fill="#F2EFE9"/>
 <rect x="4" y="14.25" width="24" height="3.5" fill="#F2EFE9"/>
-<rect x="4" y="22.5" width="24" height="3.5" fill="#FF5A1F"/>
+<rect x="4" y="22.5" width="24" height="3.5" fill="#EED202"/>
 </svg>
 """
 
@@ -63,7 +63,7 @@ def favicon_ico():
     import struct
 
     size = 32
-    ink, bone, signal = (0x12, 0x12, 0x12), (0xF2, 0xEF, 0xE9), (0xFF, 0x5A, 0x1F)
+    ink, bone, signal = (0x12, 0x12, 0x12), (0xF2, 0xEF, 0xE9), (0xEE, 0xD2, 0x02)
     bars = [(6, 10, bone), (14, 18, bone), (22, 26, signal)]
 
     rows = []

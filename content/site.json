@@ -24,11 +24,11 @@
     { "slug": "workshop", "label": "Workshop", "href": "/workshop/" }
   ],
   "recovery": {
-    "slug": "recovery",
-    "label": "Recovery",
-    "href": "/recovery/",
-    "short": "Get Recovery",
-    "note": "Help when the ride stops"
+    "slug": "market",
+    "label": "Market",
+    "href": "/market/",
+    "short": "Get moving",
+    "note": "Everything you need to get moving"
   },
   "footer": {
     "columns": [
