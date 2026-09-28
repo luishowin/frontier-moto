@@ -124,11 +124,13 @@ URLs and the sitemap all derive from that one value.
   measure identically and the cube stays square at 48% tracking. Each row carries
   a negative right margin equal to the tracking, which removes the trailing space
   letter-spacing adds after the final character.
-- **One accent.** Signal orange is for Recovery, focus rings and active state,
-  and nothing else. It measures about 3:1 on bone, so it is never body text:
-  `--signal-ink` is the darkened form for type, and orange fills always take
-  ink-black labels at about 7.6:1. Recovery is also marked by a beacon glyph and
-  border weight, so it never depends on colour alone.
+- **One accent.** Safety yellow (`#EED202`) is for the primary market action,
+  focus rings and active state, and nothing else. It measures about 1.3:1 on
+  bone, so it is never body text: `--signal-ink` is the darkened form for type,
+  and yellow fills always take ink-black labels at about 12.4:1. The header
+  action is also marked by an arrow glyph and border weight, so it never
+  depends on colour alone. On light surfaces the focus ring uses the darkened
+  ink form, which clears 4.5:1 where the yellow cannot.
 - **The hairline rule is the structural device, not the card.** Content sits in
   cells divided by 1px lines. No shadows, no corner radius above 2px, and no
   decorative gradient. The only gradients in the stylesheet are the two hero

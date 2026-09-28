@@ -58,7 +58,7 @@
       "label": "Equip",
       "blurb": "Gear, loadout, buying guidance.",
       "detail": "Helmets, wet weather gear, luggage and tyres, judged against heat, dust and price.",
-      "size": "standard",
+      "size": "signal",
       "image": "index-equip",
       "stat": {
         "k": "Tested items",
@@ -71,7 +71,7 @@
       "label": "Recover",
       "blurb": "Help when the ride stops.",
       "detail": "Where to start when the bike will not move and you are a long way from anyone.",
-      "size": "signal",
+      "size": "standard",
       "image": null,
       "stat": {
         "k": "Response",

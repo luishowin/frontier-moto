@@ -34,14 +34,13 @@ def rel(href, depth):
 # assets with a long cache life and there is no build step to hash filenames,
 # so without this a deploy can leave readers on the previous stylesheet. The
 # house sites use the same query string approach.
-ASSET_VERSION = "7"
+ASSET_VERSION = "9"
 
 
 BEACON = (
     '<svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" '
     'aria-hidden="true" focusable="false">'
-    '<path d="M8 0.6 15.4 14H0.6L8 0.6Zm0 4.6L4.6 11.6h6.8L8 5.2Z"/>'
-    '<path d="M7.1 6.9h1.8v2.4H7.1V6.9Zm0 3.1h1.8v1.1H7.1V10Z"/>'
+    '<path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/>'
     "</svg>"
 )
 
@@ -79,7 +78,7 @@ def wordmark(site, depth, tag="a"):
 
 
 def recovery_action(site, depth, extra=""):
-    """RecoveryAction. Present at every width, never inside the menu."""
+    """Primary header action. Present at every width, never inside the menu."""
     r = site["recovery"]
     cls = "recovery-action" + (f" {extra}" if extra else "")
     return (
@@ -161,7 +160,7 @@ def head(site, page, depth):
 
 
 def header(site, page, depth):
-    """SiteHeader with PrimaryNav and RecoveryAction."""
+    """SiteHeader with PrimaryNav and the primary market action."""
     over = ' data-over="dark"' if page.get("dark_hero") else ""
 
     links = []
@@ -193,7 +192,7 @@ def header(site, page, depth):
 
 
 def overlay(site, page, depth):
-    """The mobile menu. Recovery is repeated here for reach, not for discovery."""
+    """The mobile menu. The market action is repeated here for reach, not for discovery."""
     items = []
     for i, item in enumerate(site["nav"], start=1):
         current = ' aria-current="page"' if item["slug"] == page.get("slug") else ""
@@ -214,8 +213,7 @@ def overlay(site, page, depth):
   </nav>
   <div class="menu-overlay__foot">
     {recovery_action(site, depth)}
-    <p class="menu-overlay__note">{esc(site["recovery"]["note"])}. Recovery is not an
-    emergency service. If anyone is hurt, contact local emergency services first.</p>
+    <p class="menu-overlay__note">{esc(site["recovery"]["note"])}. Start in the Market.</p>
   </div>
 </div>"""
 

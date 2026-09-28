@@ -68,13 +68,14 @@
 }
 
 :root {
-    /* One accent. Signal orange carries recovery, focus and active state and
-       nothing else. It measures about 3:1 on bone, so it is never body text:
-       --signal-ink is the darkened form for type, and orange fills always take
-       ink-black labels, about 7.6:1, which is how safety signage works too. */
-    --signal:        #FF5A1F;
-    --signal-deep:   #E8461B;
-    --signal-ink:    #A8330C;
+    /* One accent. Safety yellow carries the primary market action, focus and
+       active state and nothing else. It measures about 1.3:1 on bone, so it
+       is never body text: --signal-ink is the darkened form for type, and
+       yellow fills always take ink-black labels, about 12.4:1, which is how
+       safety signage works too. */
+    --signal:        #EED202;
+    --signal-deep:   #CAB200;
+    --signal-ink:    #5F5600;
     --on-signal:     #121212;
 
     --font-display:  'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -166,6 +167,11 @@ ul, ol { list-style: none; }
     outline-offset: 2px;
     border-radius: 1px;
 }
+/* Safety yellow measures about 1.3:1 on bone, so it cannot carry the focus
+   ring on light surfaces. The darkened ink form clears 4.5:1 there; the
+   yellow stays on dark, where it measures about 12:1. */
+:root[data-theme="light"] :focus-visible { outline-color: var(--signal-ink); }
+:root[data-theme="dark"] :focus-visible { outline-color: var(--signal); }
 
 [hidden] { display: none !important; }
 
@@ -398,7 +404,6 @@ p { text-wrap: pretty; }
     height: var(--header-h);
     display: flex;
     align-items: center;
-    padding-inline: var(--gutter);
     padding-top: env(safe-area-inset-top);
     border-bottom: 1px solid transparent;
     transition: height var(--dur) var(--ease),
@@ -427,6 +432,7 @@ p { text-wrap: pretty; }
     width: 100%;
     max-width: var(--container);
     margin-inline: auto;
+    padding-inline: var(--gutter);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -473,7 +479,7 @@ p { text-wrap: pretty; }
 .primary-nav__link {
     position: relative;
     font-family: var(--font-mono);
-    font-size: var(--t-label);
+    font-size: calc(var(--t-label) * 1.5);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
     font-weight: 500;
@@ -495,9 +501,9 @@ p { text-wrap: pretty; }
 
 .header__actions { display: flex; align-items: center; gap: 0.6rem; }
 
-/* RecoveryAction. Held outside the hamburger at every width, because a rider
-   who is already stranded should never have to open a menu to find it. Marked
-   by the beacon glyph and the border weight as well as by colour. */
+/* Primary header action. Held outside the hamburger at every width, so the
+   market is one tap away without opening a menu. Marked by the arrow glyph
+   and the border weight as well as by colour. */
 .recovery-action {
     display: inline-flex;
     align-items: center;
@@ -522,8 +528,8 @@ p { text-wrap: pretty; }
 
 /* Two labels, one shown at a time: the long one by default, the short one on
    the narrowest screens. This must be declared here rather than after the
-   media query, or it wins on source order and hides both, leaving Recovery as
-   a bare icon. It always keeps a text label: it may not fall back to colour
+   media query, or it wins on source order and hides both, leaving the action
+   as a bare icon. It always keeps a text label: it may not fall back to colour
    and a glyph alone. */
 .recovery-action__short { display: none; }
 
@@ -796,7 +802,8 @@ body.menu-open { overflow: hidden; }
 
 /* Stretched link keeps the whole cell clickable with one real anchor. */
 .index-card__link::after { content: ""; position: absolute; inset: 0; }
-.index-card:focus-within { outline: 3px solid var(--signal); outline-offset: -3px; }
+.index-card:focus-within { outline: 3px solid var(--signal-ink); outline-offset: -3px; }
+:root[data-theme="dark"] .index-card:focus-within { outline-color: var(--signal); }
 .index-card__link:focus-visible { outline: none; }
 
 .index-card--signal {
@@ -933,6 +940,18 @@ body.menu-open { overflow: hidden; }
 }
 .checklist__label { font-weight: 600; }
 .checklist__detail { display: block; color: var(--text-muted); font-size: var(--t-tiny); margin-top: 0.15rem; }
+
+/* Clickable checklist card. Same stretched link pattern as the index and
+   article cards: one real anchor, the whole cell follows it. */
+.checklist--link { position: relative; transition: background var(--dur) var(--ease); }
+.checklist--link:hover { background: var(--bg-soft); }
+.checklist__link { color: inherit; }
+.checklist__link::after { content: ""; position: absolute; inset: 0; }
+.checklist--link:focus-within { outline: 3px solid var(--signal-ink); outline-offset: -3px; }
+:root[data-theme="dark"] .checklist--link:focus-within { outline-color: var(--signal); }
+.checklist__link:focus-visible { outline: none; }
+.checklist__go { display: inline-block; margin-left: 0.5rem; transition: transform var(--dur) var(--ease); }
+.checklist--link:hover .checklist__go { transform: translateX(4px); }
 
 /* Numbered step sequence, used by Survive and Recovery. */
 .steps { border-top: 1px solid var(--line-strong); counter-reset: step; }
@@ -1454,6 +1473,13 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 
 /* ── 20. RESPONSIVE ───────────────────────────────────────────── */
 
+/* The primary nav runs large, so it hands over to the menu overlay before the
+   tablet grids start to reflow. */
+@media (max-width: 1150px) {
+    .primary-nav { display: none; }
+    .menu-trigger { display: inline-flex; }
+}
+
 @media (max-width: 1080px) {
     .site-footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .site-footer__brand { grid-column: 1 / -1; }
@@ -1485,6 +1511,18 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
     .index-card--wide { grid-column: span 1; }
     .index-card { min-height: 0; }
     .index-card--media { min-height: 300px; }
+
+    /* CTAs stack full width: easier targets, no squeezed two button rows. */
+    .btn-row .btn { flex: 1 1 100%; text-align: center; }
+
+    /* The label rail wraps instead of squeezing the title against the aside. */
+    .section-label { flex-wrap: wrap; row-gap: 0.35rem; }
+    .section-label__aside { margin-left: 0; flex-basis: 100%; }
+
+    /* Long uppercase display words never force horizontal scroll. */
+    .hero__title, .recovery-banner__title, .alert-masthead__title {
+        overflow-wrap: break-word;
+    }
 
     .article-row {
         grid-template-columns: minmax(0, 1fr);
@@ -1574,8 +1612,8 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 .alert-masthead__first p + p { margin-top: 0.5rem; }
 .alert-masthead__actions { margin-top: 1.5rem; }
 
-/* On the orange ground, buttons take ink-black rather than the theme's text
-   colour. Without this the dark theme puts bone type on orange at about 3:1.
+/* On the yellow ground, buttons take ink-black rather than the theme's text
+   colour. Without this the dark theme puts bone type on yellow at about 1.4:1.
    Same rule the recovery banner already carries. */
 .alert-masthead .btn { color: var(--on-signal); border-color: var(--on-signal); }
 .alert-masthead .btn:hover { background: var(--on-signal); color: var(--signal); }
@@ -1604,6 +1642,10 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 }
 .service__name { margin-top: 0.7rem; font-size: var(--t-h3); }
 .service__summary { margin-top: 0.5rem; font-size: var(--t-small); color: var(--text-muted); }
+
+/* Inside a service card the two column fact list squeezes the value into a
+   one word column at tablet widths, so the Time / You get rows always stack. */
+.service .fact-list li { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
 
 /* Plain two column fact list, used for scope and practical detail. */
 .fact-list { border-top: 1px solid var(--line-strong); }

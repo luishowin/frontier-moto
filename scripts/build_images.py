@@ -39,7 +39,7 @@ LIGHT = {
     "ink": "#6E6A62",
     "bright": "#2A2C2E",
 }
-SIGNAL = "#FF5A1F"
+SIGNAL = "#EED202"
 MONO = "ui-monospace, 'Roboto Mono', 'DejaVu Sans Mono', 'Courier New', monospace"
 
 
@@ -103,7 +103,7 @@ def subject_highway(w, h, c, rnd):
             f'stroke-width="{1 + 5 * k1:.1f}" opacity="0.55" fill="none"/>'
         )
         t += 0.09
-    # The rider, small and well down the road. Signal orange, the only accent.
+    # The rider, small and well down the road. Safety yellow, the only accent.
     ry = horizon + (h - horizon) * 0.30
     rk = (ry - horizon) / (h - horizon)
     rx = vp + (w * 0.5 - vp) * rk + w * 0.035
