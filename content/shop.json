@@ -1,0 +1,147 @@
+{
+  "note": "Everything here is new stock sold directly by Frontier Moto. Prices include nothing hidden. Availability is stated plainly. No checkout runs on this site yet. To order, write to the address in the footer with the product reference.",
+  "categories": [
+    { "slug": "parts", "label": "Parts", "blurb": "Consumables and service parts we fit ourselves." },
+    { "slug": "tools", "label": "Tools", "blurb": "Roadside and workshop kit that earns its weight." },
+    { "slug": "gear", "label": "Riding Gear", "blurb": "Protection and weather kit judged for heat and dust." },
+    { "slug": "accessories", "label": "Accessories", "blurb": "Luggage and touring additions for loaded machines." },
+    { "slug": "frontier-goods", "label": "Frontier Goods", "blurb": "Workshop goods made or finished by Frontier Moto." }
+  ],
+  "featured": ["SP-01", "SP-05", "SP-08"],
+  "new_arrivals": ["SP-03", "SP-08", "SP-02"],
+  "products": [
+    {
+      "ref": "SP-01",
+      "slug": "sp-01",
+      "title": "Frontier Tyre Plug Kit",
+      "blurb": "Tubeless repair kit",
+      "category": "tools",
+      "category_label": "Tools",
+      "price": "KES 2,400",
+      "stock": "In stock",
+      "badge": "NEW",
+      "description": "New tubeless plug kit stocked by Frontier Moto for roadside punctures. Reamer, plugs, insertion tool and glue in a roll that fits under most seats. Practise once on a dead tyre at home.",
+      "specs": [
+        { "k": "Fits", "v": "Tubeless tyres only" },
+        { "k": "Covers", "v": "Nail and screw holes in tread" }
+      ]
+    },
+    {
+      "ref": "SP-02",
+      "slug": "sp-02",
+      "title": "Compact Tyre Inflator",
+      "blurb": "12V inflator with duty cycle to finish the job",
+      "category": "tools",
+      "category_label": "Tools",
+      "price": "KES 8,500",
+      "stock": "In stock",
+      "badge": "",
+      "description": "New compact inflator sold by Frontier Moto. Sized for a pannier, wired for direct battery connection, with a duty cycle that finishes a rear tyre without a rest stop.",
+      "specs": [
+        { "k": "Power", "v": "Direct battery leads" },
+        { "k": "Watch", "v": "Duty cycle on the label" }
+      ]
+    },
+    {
+      "ref": "SP-03",
+      "slug": "sp-03",
+      "title": "Two Piece Rain Suit",
+      "blurb": "Taped seams, worn over armour",
+      "category": "gear",
+      "category_label": "Riding Gear",
+      "price": "KES 9,800",
+      "stock": "In stock",
+      "badge": "NEW",
+      "description": "New two piece rain suit chosen for the long rains. Taped seams, ankle gussets, cut to go over armour rather than under it. Packs smaller than a one piece.",
+      "specs": [
+        { "k": "Use", "v": "Long rains" },
+        { "k": "Fit", "v": "Over armour" }
+      ]
+    },
+    {
+      "ref": "SP-04",
+      "slug": "sp-04",
+      "title": "Dry Bag 40 Litre",
+      "blurb": "Roll closure, four anchor points",
+      "category": "accessories",
+      "category_label": "Accessories",
+      "price": "KES 5,200",
+      "stock": "In stock",
+      "badge": "",
+      "description": "New 40 litre dry bag with roll closure and compression straps. Cheaper and lighter than hard cases, and it does not widen the bike in traffic. No security, which is the honest limit.",
+      "specs": [
+        { "k": "Capacity", "v": "40 litres" },
+        { "k": "Limit", "v": "No security at all" }
+      ]
+    },
+    {
+      "ref": "SP-05",
+      "slug": "sp-05",
+      "title": "Dual Purpose Rear Tyre",
+      "blurb": "Road biased, 80 road 20 loose",
+      "category": "parts",
+      "category_label": "Parts",
+      "price": "KES 14,500",
+      "stock": "Low stock",
+      "badge": "LOW STOCK",
+      "description": "New road biased dual purpose tyre for riders who meet murram occasionally rather than daily. Date codes checked on arrival. State your size when ordering.",
+      "specs": [
+        { "k": "Use", "v": "80 road, 20 loose" },
+        { "k": "Check", "v": "Date code on purchase" }
+      ]
+    },
+    {
+      "ref": "SP-06",
+      "slug": "sp-06",
+      "title": "Vented Full Face Helmet",
+      "blurb": "Vented shell for equatorial midday",
+      "category": "gear",
+      "category_label": "Riding Gear",
+      "price": "KES 18,000",
+      "stock": "In stock",
+      "badge": "",
+      "description": "New vented full face helmet. Ventilation matters more than weight at equatorial midday. Never buy a helmet used: the damage that matters sits inside the shell. State your size when ordering.",
+      "specs": [
+        { "k": "Use", "v": "Highway and mixed" },
+        { "k": "Replace", "v": "After any impact" }
+      ]
+    },
+    {
+      "ref": "SP-07",
+      "slug": "sp-07",
+      "title": "Rated Reflective Vest",
+      "blurb": "Class rated, one you will wear",
+      "category": "gear",
+      "category_label": "Riding Gear",
+      "price": "KES 1,800",
+      "stock": "In stock",
+      "badge": "",
+      "description": "New class rated reflective vest. Any rated vest beats none, and the one you actually wear beats the better one left at home. Fits over a jacket.",
+      "specs": [
+        { "k": "Use", "v": "All conditions" },
+        { "k": "Check", "v": "Class rating on the label" }
+      ]
+    },
+    {
+      "ref": "SP-08",
+      "slug": "sp-08",
+      "title": "Frontier Field Notebook",
+      "blurb": "Wax cover, service log pages",
+      "category": "frontier-goods",
+      "category_label": "Frontier Goods",
+      "price": "KES 2,800",
+      "stock": "In stock",
+      "badge": "NEW",
+      "description": "New workshop notebook finished by Frontier Moto. Wax cover that survives a tank bag, with service log and fuel pages inside. Built for the rider a long way from a workshop.",
+      "specs": [
+        { "k": "Pages", "v": "Service log and fuel log" },
+        { "k": "Cover", "v": "Waxed, water resistant" }
+      ]
+    }
+  ],
+  "guides": [
+    { "title": "What size tyre do I need", "detail": "Read the sidewall, check the date code, match the load.", "href": "/maintain/" },
+    { "title": "Build a roadside kit", "detail": "The set that earns its space, and what stays home.", "href": "/survive/" },
+    { "title": "Helmet fit, honestly", "detail": "Why used is the wrong economy for lids.", "href": "/equip/" }
+  ]
+}

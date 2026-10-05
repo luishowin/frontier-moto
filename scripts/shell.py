@@ -34,11 +34,11 @@ def rel(href, depth):
 # assets with a long cache life and there is no build step to hash filenames,
 # so without this a deploy can leave readers on the previous stylesheet. The
 # house sites use the same query string approach.
-ASSET_VERSION = "9"
+ASSET_VERSION = "11"
 
 
-BEACON = (
-    '<svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" '
+MARKET_ARROW = (
+    '<svg class="market-action__icon" width="13" height="13" viewBox="0 0 16 16" '
     'aria-hidden="true" focusable="false">'
     '<path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/>'
     "</svg>"
@@ -77,17 +77,40 @@ def wordmark(site, depth, tag="a"):
     return f'<span class="wordmark" aria-hidden="true">{rows}</span>'
 
 
-def recovery_action(site, depth, extra=""):
-    """Primary header action. Present at every width, never inside the menu."""
-    r = site["recovery"]
-    cls = "recovery-action" + (f" {extra}" if extra else "")
+def market_action(site, depth, extra=""):
+    """MarketAction. The commercial destination, held outside the menu at every width."""
+    r = site["market_action"]
+    cls = "market-action" + (f" {extra}" if extra else "")
     return (
         f'<a class="{cls}" href="{rel(r["href"], depth)}">'
-        f"{BEACON}"
-        f'<span class="recovery-action__text">{esc(r["short"])}</span>'
-        f'<span class="recovery-action__short">{esc(r["label"])}</span>'
+        f"{MARKET_ARROW}"
+        f'<span class="market-action__text">{esc(r["label"])}</span>'
+        f'<span class="market-action__short">{esc(r["short"])}</span>'
         "</a>"
     )
+
+
+def more_menu(site, page, depth):
+    """MoreMenu. Workshop and Field Notes live here so the header stays six
+    Index sections plus the Market action. The button carries aria-current
+    when the reader is on one of its destinations."""
+    items = list(site["services"]) + [site["field_notes"]]
+    current = any(item["slug"] == page.get("slug") for item in items)
+    links = []
+    for item in items:
+        mark = ' aria-current="page"' if item["slug"] == page.get("slug") else ""
+        links.append(
+            f'<li><a href="{rel(item["href"], depth)}"{mark}>'
+            f'{esc(item["label"])}</a></li>'
+        )
+    button_mark = ' aria-current="true"' if current else ""
+    return f"""<div class="more" data-more>
+  <button class="more__button" type="button" aria-expanded="false"
+          aria-controls="more-panel"{button_mark}>More</button>
+  <div class="more__panel" id="more-panel" role="menu">
+    <ul>{"".join(links)}</ul>
+  </div>
+</div>"""
 
 
 def head(site, page, depth):
@@ -160,7 +183,7 @@ def head(site, page, depth):
 
 
 def header(site, page, depth):
-    """SiteHeader with PrimaryNav and the primary market action."""
+    """SiteHeader with PrimaryNav (the six Index sections), the Market action and More."""
     over = ' data-over="dark"' if page.get("dark_hero") else ""
 
     links = []
@@ -183,7 +206,8 @@ def header(site, page, depth):
     <div class="header__actions">
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"
               aria-label="Switch to dark theme">{SUN}{MOON}</button>
-      {recovery_action(site, depth)}
+      {market_action(site, depth)}
+      {more_menu(site, page, depth)}
       <button class="menu-trigger" id="menu-trigger" type="button" aria-expanded="false"
               aria-controls="menu-overlay" aria-label="Open menu"><span></span></button>
     </div>
@@ -192,14 +216,27 @@ def header(site, page, depth):
 
 
 def overlay(site, page, depth):
-    """The mobile menu. The market action is repeated here for reach, not for discovery."""
-    items = []
+    """The mobile menu. Grouped the way the header thinks: the six Index
+    sections first, then services, then field notes. Each group is one list
+    inside a single labelled nav, so numbering restarts honestly per group."""
+    index = []
     for i, item in enumerate(site["nav"], start=1):
         current = ' aria-current="page"' if item["slug"] == page.get("slug") else ""
-        items.append(
+        index.append(
             f'<li><a href="{rel(item["href"], depth)}"{current}>'
             f'<span class="menu-overlay__n">{i:02d}</span>{esc(item["label"])}</a></li>'
         )
+
+    services = []
+    for item in site["services"]:
+        current = ' aria-current="page"' if item["slug"] == page.get("slug") else ""
+        services.append(
+            f'<li><a href="{rel(item["href"], depth)}"{current}>'
+            f'{esc(item["label"])}</a></li>'
+        )
+
+    notes = site["field_notes"]
+    notes_current = ' aria-current="page"' if notes["slug"] == page.get("slug") else ""
 
     return f"""<div class="menu-overlay" id="menu-overlay" role="dialog" aria-modal="true"
      aria-label="Site navigation">
@@ -209,11 +246,16 @@ def overlay(site, page, depth):
             aria-label="Close menu">&#215;</button>
   </div>
   <nav class="menu-overlay__nav" aria-label="Site">
-    <ul>{"".join(items)}</ul>
+    <p class="menu-overlay__group">Frontier Index</p>
+    <ul>{"".join(index)}</ul>
+    <p class="menu-overlay__group">Services</p>
+    <ul>{"".join(services)}</ul>
+    <p class="menu-overlay__group">Field Notes</p>
+    <ul><li><a href="{rel(notes["href"], depth)}"{notes_current}>{esc(notes["label"])}</a></li></ul>
   </nav>
   <div class="menu-overlay__foot">
-    {recovery_action(site, depth)}
-    <p class="menu-overlay__note">{esc(site["recovery"]["note"])}. Start in the Market.</p>
+    <p class="menu-overlay__note">{esc(site["brand"]["region"])}<br>
+    <a href="mailto:{esc(site["brand"]["email"])}">{esc(site["brand"]["email"])}</a></p>
   </div>
 </div>"""
 
@@ -251,7 +293,7 @@ def footer(site, depth):
         </p>
         <p class="site-footer__contact" style="margin-top:0.75rem">{esc(f["channels_note"])}</p>
         <div class="site-footer__cta">
-          {recovery_action(site, depth)}
+          {market_action(site, depth)}
           <a class="btn btn--ghost-light" href="{rel("/workshop/", depth)}">
             <span class="btn__label">Workshop services</span></a>
         </div>

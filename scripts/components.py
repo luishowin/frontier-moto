@@ -16,12 +16,12 @@ Mapping to the component names used in the brief:
     TechnicalSpecList   spec_list
     Checklist           checklist  /  steps
     WorkshopCallout     workshop_callout
-    RecoveryBanner      recovery_banner
+    RecoverSection      recover_section
     NewsletterForm      newsletter_form
 
-    SiteHeader, FrontierWordmark, PrimaryNav, the primary header action and SiteFooter
-    live in shell.py, because they are part of every document rather than
-    something a page chooses to place.
+    SiteHeader, FrontierWordmark, PrimaryNav, MarketAction, MoreMenu and
+    SiteFooter live in shell.py, because they are part of every document rather
+    than something a page chooses to place.
 """
 
 import datetime
@@ -404,13 +404,20 @@ def workshop_callout(*, depth, slot, caption_left, caption_right, callouts,
 </div>"""
 
 
-# ── RecoveryBanner ───────────────────────────────────────────────────────────
+# ── RecoverSection ───────────────────────────────────────────────────────────
+#
+# The sixth Index section on the homepage. It states what Frontier means by
+# recovery, shows the information worth gathering, and keeps the honesty that
+# dispatch is not live. The class names stay in the banner family so the
+# visual system is untouched.
 
-def recovery_banner(*, depth, ready, title="Everything you need to get moving.",
+def recover_section(*, depth, ready, title="When the ride stops.",
                     body=None, heading_level=2, number="07"):
     body = body or (
-        "Parts, equipment, and know-how for the ride ahead. Start in the Market, "
-        "and keep this list somewhere you can find it when the ride stops."
+        "Recovery at Frontier Moto means the order to work in when the machine "
+        "will not move: people first, then position, then the machine. Frontier "
+        "Moto is not an emergency service and no vehicle is dispatched from this "
+        "website. What is live is the procedure."
     )
     items = "".join(
         f'<li><span class="ready-list__n">{esc(s["n"])}</span>'
@@ -424,13 +431,13 @@ def recovery_banner(*, depth, ready, title="Everything you need to get moving.",
   <div class="container recovery-banner__inner">
     <div>
       <p class="recovery-banner__label">
-        <span>{esc(number)}</span><span>Market</span>
+        <span>{esc(number)}</span><span>Recover</span>
       </p>
       <{h} class="recovery-banner__title" id="recovery-banner-title">{esc(title)}</{h}>
       <p class="recovery-banner__body">{esc(body)}</p>
       <div class="recovery-banner__actions btn-row">
-        <a class="btn btn--solid" href="{rel("/market/", depth)}">
-          <span class="btn__label">Get moving</span></a>
+        <a class="btn btn--solid" href="{rel("/recovery/", depth)}">
+          <span class="btn__label">Recovery guide</span></a>
         <a class="btn" href="{rel("/survive/", depth)}">
           <span class="btn__label">Roadside guidance</span></a>
       </div>
@@ -438,7 +445,7 @@ def recovery_banner(*, depth, ready, title="Everything you need to get moving.",
         <strong>Recovery dispatch is not live.</strong>
         Frontier Moto is not an emergency service and no vehicle is dispatched from
         this website. If anyone is injured, contact local emergency services first.
-        The Recovery page explains what we can and cannot do, and what to do instead
+        The Recover page explains what we can and cannot do, and what to do instead
         where no service is available.
       </p>
     </div>
@@ -497,6 +504,107 @@ def topic_nav(topics):
     return f"""<div>
   <p class="mono" style="color:var(--text-muted);margin-bottom:0.6rem">Covered in this section</p>
   <div class="topic-nav">{items}</div>
+</div>"""
+
+
+# ── Market listing card (classified) ───────────────────────────────────────
+#
+# Market cards read as classifieds, not catalogue entries: reference and
+# category first, condition and location before price, seller and inspection
+# stated rather than implied. The anchor points at the detail block further
+# down the same page, so no JavaScript is involved.
+
+def listing_card(item, depth, i=0):
+    return f"""<article class="listing-card" id="card-{esc(item["slug"])}" data-reveal style="--i:{i}">
+  <p class="listing-card__top"><span>{esc(item["ref"])}</span><span>{esc(item["category_label"])}</span></p>
+  <h3 class="listing-card__title"><a class="listing-card__link" href="#{esc(item["slug"])}">{esc(item["title"])}</a></h3>
+  <p class="listing-card__meta">
+    <span class="pill pill--used">Used</span>
+    <span class="pill">{esc(item["inspection"])}</span>
+  </p>
+  <p class="listing-card__facts">{esc(item["condition"])} · {esc(item["location"])}</p>
+  <p class="listing-card__detail">{esc(item["detail"])}</p>
+  <p class="listing-card__price">{esc(item["price"])}</p>
+  <p class="listing-card__foot"><span>View listing <span aria-hidden="true">&#8594;</span></span><span>{esc(item["status"])}</span></p>
+</article>"""
+
+
+def listing_detail(item, depth, i=0):
+    specs = "".join(
+        f'<li><span class="fact-list__k">{esc(s["k"])}</span><span>{esc(s["v"])}</span></li>'
+        for s in item.get("specs", [])
+    )
+    return f"""<article class="listing-detail" id="{esc(item["slug"])}" data-reveal style="--i:{i}">
+  <p class="listing-card__top"><span>{esc(item["ref"])}</span><span>{esc(item["category_label"])} · {esc(item["location"])}</span></p>
+  <h3 class="listing-detail__title">{esc(item["title"])}</h3>
+  <p class="listing-card__meta">
+    <span class="pill pill--used">Used</span>
+    <span class="pill">{esc(item["condition"])}</span>
+    <span class="pill">{esc(item["inspection"])}</span>
+  </p>
+  <p class="listing-detail__price">{esc(item["price"])}<span>{esc(item["status"])} · Seller: {esc(item["seller"])}</span></p>
+  <p class="listing-detail__body">{esc(item["description"])}</p>
+  <ul class="fact-list" style="margin-top:1.25rem">{specs}</ul>
+  <p class="listing-detail__faults"><strong>Known faults.</strong> {esc(item["faults"])}</p>
+  <p class="listing-detail__contact">
+    <span>Contact seller through Frontier Moto for now: no direct seller inbox exists on this site.</span>
+    <a class="btn" href="mailto:field@frontiermoto.co.ke?subject={esc(item["ref"])}%20{esc(item["title"])}"><span class="btn__label">Enquire about {esc(item["ref"])}</span></a>
+  </p>
+  <p class="listing-detail__back"><a class="tlink" href="#listings">Back to all listings<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a></p>
+</article>"""
+
+
+# ── Shop product card (catalogue) ────────────────────────────────────────────
+#
+# Shop cards read as new stock from Frontier: Frontier eyebrow, name, short
+# descriptor, price and stock state. Same hairline cell system as the listing
+# cards, different copy order and badges, so the two never look identical.
+
+def product_card(item, depth, i=0):
+    badge = f'<span class="pill pill--new">{esc(item["badge"])}</span>' if item.get("badge") else ""
+    stock_cls = "product-card__stock--low" if item.get("stock") == "Low stock" else ""
+    return f"""<article class="product-card" id="card-{esc(item["slug"])}" data-reveal style="--i:{i}">
+  <p class="product-card__top"><span>Frontier</span><span>{esc(item["ref"])}</span></p>
+  <h3 class="product-card__title"><a class="product-card__link" href="#{esc(item["slug"])}">{esc(item["title"])}</a></h3>
+  <p class="product-card__blurb">{esc(item["blurb"])}</p>
+  <p class="product-card__meta"><span>{esc(item["category_label"])}</span>{badge}</p>
+  <p class="product-card__price">{esc(item["price"])}</p>
+  <p class="product-card__foot"><span class="product-card__stock {stock_cls}">{esc(item["stock"])}</span><span>View product <span aria-hidden="true">&#8594;</span></span></p>
+</article>"""
+
+
+def product_detail(item, depth, i=0):
+    badge = f'<span class="pill pill--new">{esc(item["badge"])}</span>' if item.get("badge") else ""
+    specs = "".join(
+        f'<li><span class="fact-list__k">{esc(s["k"])}</span><span>{esc(s["v"])}</span></li>'
+        for s in item.get("specs", [])
+    )
+    return f"""<article class="product-detail" id="{esc(item["slug"])}" data-reveal style="--i:{i}">
+  <p class="product-card__top"><span>Frontier · New</span><span>{esc(item["ref"])}</span></p>
+  <h3 class="product-detail__title">{esc(item["title"])}</h3>
+  <p class="product-card__meta"><span>{esc(item["category_label"])}</span>{badge}</p>
+  <p class="product-detail__price">{esc(item["price"])}<span>{esc(item["stock"])} · Sold by Frontier Moto</span></p>
+  <p class="product-detail__body">{esc(item["description"])}</p>
+  <ul class="fact-list" style="margin-top:1.25rem">{specs}</ul>
+  <p class="listing-detail__contact">
+    <span>No checkout on this site yet. Ordering is by email with the product reference.</span>
+    <a class="btn btn--solid" href="mailto:field@frontiermoto.co.ke?subject=Order%20{esc(item["ref"])}%20{esc(item["title"])}"><span class="btn__label">Order {esc(item["ref"])}</span></a>
+  </p>
+  <p class="listing-detail__back"><a class="tlink" href="#catalogue">Back to the catalogue<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a></p>
+</article>"""
+
+
+def anchor_nav(items):
+    """
+    Category chips as same page anchors. Real links to section ids, so they
+    work with no JavaScript and pass the anchor check.
+    """
+    links = "".join(
+        f'<a href="#{esc(c["slug"])}">{esc(c["label"])}</a>' for c in items
+    )
+    return f"""<div>
+  <p class="mono" style="color:var(--text-muted);margin-bottom:0.6rem">Browse by category</p>
+  <div class="topic-nav">{links}</div>
 </div>"""
 
 

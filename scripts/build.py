@@ -21,8 +21,10 @@ sys.path.insert(0, str(ROOT / "scripts" / "pages"))
 import shell  # noqa: E402
 import article as article_page  # noqa: E402
 import home as home_page  # noqa: E402
+import market as market_page  # noqa: E402
 import recovery as recovery_page  # noqa: E402
 import section as section_page  # noqa: E402
+import shop as shop_page  # noqa: E402
 import simple as simple_pages  # noqa: E402
 import workshop as workshop_page  # noqa: E402
 
@@ -31,7 +33,7 @@ DOCS = ROOT / "docs"
 
 
 def load():
-    names = ["site", "sections", "articles", "checklists", "technical", "market", "workshop", "images"]
+    names = ["site", "sections", "articles", "checklists", "technical", "market", "shop", "workshop", "images"]
     return {n: json.loads((CONTENT / f"{n}.json").read_text(encoding="utf-8")) for n in names}
 
 
@@ -184,10 +186,21 @@ def main():
     write(meta["out"], shell.render(site, meta, meta["depth"], body))
     built.append(meta)
 
-    # The six shared section pages
+    # The shared section pages, except Market which has its own marketplace
+    # builder. Survive keeps its generic section page even though it no longer
+    # sits in the primary nav.
     for page in data["sections"]["pages"]:
+        if page["slug"] == "market":
+            continue
         meta = section_page.page_meta(page, site)
         body = section_page.build(page, data)
+        write(meta["out"], shell.render(site, meta, meta["depth"], body))
+        built.append(meta)
+
+    # Market and Shop: dedicated commerce builders
+    for module in (market_page, shop_page):
+        meta = module.page_meta(site, data)
+        body = module.build(data)
         write(meta["out"], shell.render(site, meta, meta["depth"], body))
         built.append(meta)
 

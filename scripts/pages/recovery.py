@@ -1,5 +1,5 @@
 """
-Recovery.
+Recover.
 
 The one page on the site where speed of comprehension outranks composition. It
 opens with the instruction rather than a photograph, because a rider reading it
@@ -35,7 +35,7 @@ def build(data):
     # ── Masthead. Instruction first, above the fold, no large image. ─────────
     out.append(f"""<section class="alert-masthead">
   <div class="container">
-    <p class="alert-masthead__label"><span>09</span><span>Recovery</span></p>
+    <p class="alert-masthead__label"><span>06</span><span>Recover</span></p>
     <h1 class="alert-masthead__title">Stranded?<br>Start here.</h1>
     <p class="alert-masthead__purpose">
       Work down this page in order. The first three steps matter whether or not any
@@ -59,28 +59,28 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 09.1 Immediate steps ─────────────────────────────────────────────────
+    # ── 06.1 Immediate steps ─────────────────────────────────────────────────
     out.append(f"""<section class="section" aria-labelledby="first-title">
   <div class="container">
-    {section_label("09.1", roadside["title"], "Do this first", heading_id="first-title")}
+    {section_label("06.1", roadside["title"], "Do this first", heading_id="first-title")}
     <p class="lede" style="margin-bottom:1.5rem;max-width:62ch">{esc(roadside["note"])}</p>
     {steps(roadside)}
   </div>
 </section>""")
 
-    # ── 09.2 Information checklist ───────────────────────────────────────────
+    # ── 06.2 Information checklist ───────────────────────────────────────────
     out.append(f"""<section class="section section--soft" aria-labelledby="ready-title">
   <div class="container">
-    {section_label("09.2", "Have this ready", seq["number"], heading_id="ready-title")}
+    {section_label("06.2", "Have this ready", seq["number"], heading_id="ready-title")}
     <p class="lede" style="margin-bottom:1.5rem;max-width:62ch">{esc(seq["note"])}</p>
     {steps(seq)}
   </div>
 </section>""")
 
-    # ── 09.3 Coverage and process, stated plainly ────────────────────────────
+    # ── 06.3 Coverage and process, stated plainly ────────────────────────────
     out.append(f"""<section class="section" id="coverage" aria-labelledby="coverage-title">
   <div class="container">
-    {section_label("09.3", "What this service is", "Read before requesting", heading_id="coverage-title")}
+    {section_label("06.3", "What this service is", "Read before requesting", heading_id="coverage-title")}
     <div class="split">
       <div data-reveal>
         <p class="disclaimer" style="max-width:none">
@@ -120,10 +120,10 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 09.4 The request control ─────────────────────────────────────────────
+    # ── 06.4 The request control ─────────────────────────────────────────────
     out.append(f"""<section class="section section--soft" id="request" aria-labelledby="request-title">
   <div class="container">
-    {section_label("09.4", "Recovery request", "Demonstration only", heading_id="request-title")}
+    {section_label("06.4", "Recovery request", "Demonstration only", heading_id="request-title")}
     <div class="split">
       <div data-reveal>
         <p class="lede" style="max-width:none">
@@ -203,10 +203,10 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 09.5 Alternatives ────────────────────────────────────────────────────
+    # ── 06.5 Alternatives ────────────────────────────────────────────────────
     out.append(f"""<section class="section" id="alternatives" aria-labelledby="alt-title">
   <div class="container">
-    {section_label("09.5", "If no service is available", "Which is currently always", heading_id="alt-title")}
+    {section_label("06.5", "If no service is available", "Which is currently always", heading_id="alt-title")}
     <div class="split split--wide-left">
       <ul class="fact-list fact-list--marks" data-reveal>
         <li><span class="fact-list__mark">01</span>
@@ -251,14 +251,14 @@ def build(data):
     ]
     out.append(f"""<section class="section section--soft" aria-labelledby="related-title">
   <div class="container">
-    {section_label("09.6", "Adjacent sections", "Where this leads", heading_id="related-title")}
+    {section_label("06.6", "Adjacent sections", "Where this leads", heading_id="related-title")}
     {related_cards(related, DEPTH)}
   </div>
 </section>""")
 
     out.append(f"""<section class="section" aria-labelledby="notes-title">
   <div class="container">
-    {section_label("09.7", "Field notes", "One email, occasionally", heading_id="notes-title")}
+    {section_label("06.7", "Newsletter", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
   </div>
 </section>""")
@@ -273,7 +273,7 @@ def page_meta(site, data):
         "out": "recovery/index.html",
         "depth": DEPTH,
         "slug": "recovery",
-        "title": "Recovery",
+        "title": "Recover",
         "description": (
             "What to do when the ride stops: immediate safety steps, the information to "
             "gather, and an honest account of what recovery support does and does not "

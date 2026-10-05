@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap">
 
-<link rel="stylesheet" href="assets/css/index.css?v=9">
+<link rel="stylesheet" href="assets/css/index.css?v=11">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest">
@@ -81,12 +81,19 @@
   <div class="site-header__inner">
     <a class="wordmark" href="./" aria-label="Frontier Moto, home"><span>FRON</span><span>TIER</span><span>MOTO</span></a>
     <nav class="primary-nav" aria-label="Primary">
-      <ul class="primary-nav__list"><li><a class="primary-nav__link" href="ride/">Ride</a></li><li><a class="primary-nav__link" href="navigate/">Navigate</a></li><li><a class="primary-nav__link" href="survive/">Survive</a></li><li><a class="primary-nav__link" href="maintain/">Maintain</a></li><li><a class="primary-nav__link" href="market/">Market</a></li><li><a class="primary-nav__link" href="news/">News</a></li><li><a class="primary-nav__link" href="workshop/">Workshop</a></li></ul>
+      <ul class="primary-nav__list"><li><a class="primary-nav__link" href="ride/">Ride</a></li><li><a class="primary-nav__link" href="navigate/">Navigate</a></li><li><a class="primary-nav__link" href="shop/">Shop</a></li><li><a class="primary-nav__link" href="maintain/">Maintain</a></li><li><a class="primary-nav__link" href="equip/">Equip</a></li><li><a class="primary-nav__link" href="recovery/">Recover</a></li></ul>
     </nav>
     <div class="header__actions">
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"
               aria-label="Switch to dark theme"><svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg><svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/></svg></button>
-      <a class="recovery-action" href="market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
+      <a class="market-action" href="market/"><svg class="market-action__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="market-action__text">Market</span><span class="market-action__short">Market</span></a>
+      <div class="more" data-more>
+  <button class="more__button" type="button" aria-expanded="false"
+          aria-controls="more-panel">More</button>
+  <div class="more__panel" id="more-panel" role="menu">
+    <ul><li><a href="market/">Market</a></li><li><a href="workshop/">Workshop</a></li><li><a href="survive/">Survive</a></li><li><a href="news/">Field Notes</a></li></ul>
+  </div>
+</div>
       <button class="menu-trigger" id="menu-trigger" type="button" aria-expanded="false"
               aria-controls="menu-overlay" aria-label="Open menu"><span></span></button>
     </div>
@@ -100,11 +107,16 @@
             aria-label="Close menu">&#215;</button>
   </div>
   <nav class="menu-overlay__nav" aria-label="Site">
-    <ul><li><a href="ride/"><span class="menu-overlay__n">01</span>Ride</a></li><li><a href="navigate/"><span class="menu-overlay__n">02</span>Navigate</a></li><li><a href="survive/"><span class="menu-overlay__n">03</span>Survive</a></li><li><a href="maintain/"><span class="menu-overlay__n">04</span>Maintain</a></li><li><a href="market/"><span class="menu-overlay__n">05</span>Market</a></li><li><a href="news/"><span class="menu-overlay__n">06</span>News</a></li><li><a href="workshop/"><span class="menu-overlay__n">07</span>Workshop</a></li></ul>
+    <p class="menu-overlay__group">Frontier Index</p>
+    <ul><li><a href="ride/"><span class="menu-overlay__n">01</span>Ride</a></li><li><a href="navigate/"><span class="menu-overlay__n">02</span>Navigate</a></li><li><a href="shop/"><span class="menu-overlay__n">03</span>Shop</a></li><li><a href="maintain/"><span class="menu-overlay__n">04</span>Maintain</a></li><li><a href="equip/"><span class="menu-overlay__n">05</span>Equip</a></li><li><a href="recovery/"><span class="menu-overlay__n">06</span>Recover</a></li></ul>
+    <p class="menu-overlay__group">Services</p>
+    <ul><li><a href="market/">Market</a></li><li><a href="workshop/">Workshop</a></li><li><a href="survive/">Survive</a></li></ul>
+    <p class="menu-overlay__group">Field Notes</p>
+    <ul><li><a href="news/">Field Notes</a></li></ul>
   </nav>
   <div class="menu-overlay__foot">
-    <a class="recovery-action" href="market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
-    <p class="menu-overlay__note">Everything you need to get moving. Start in the Market.</p>
+    <p class="menu-overlay__note">East Africa. Kenya, Uganda, Tanzania and Rwanda.<br>
+    <a href="mailto:field@frontiermoto.co.ke">field@frontiermoto.co.ke</a></p>
   </div>
 </div>
 <main id="main">
@@ -115,7 +127,7 @@
     
     <h1 class="hero__title"><span>Ride farther.</span><span>Ride smarter.</span><span>Get home.</span></h1>
     <p class="hero__lede">Motorcycle knowledge, equipment and support for riders across East Africa.</p>
-    <div class="hero__actions btn-row"><a class="btn btn--ghost-light" href="#index"><span class="btn__label">Explore Frontier</span></a><a class="btn btn--signal" href="market/"><span class="btn__label">Everything you need to get moving</span></a></div>
+    <div class="hero__actions btn-row"><a class="btn btn--ghost-light" href="#index"><span class="btn__label">Explore Frontier</span></a><a class="btn btn--signal" href="market/"><span class="btn__label">Browse the Market</span></a></div>
     
   </div>
 </section>
@@ -158,7 +170,7 @@
 </article><article class="index-card index-card--media index-card--signal" data-reveal style="--i:4">
   <div class="index-card__media"><picture><source type="image/avif" srcset="assets/img/index-equip.avif 715w" sizes="(max-width: 720px) 100vw, 45vw"><img src="assets/img/index-equip.jpg" srcset="assets/img/index-equip.jpg 715w" width="715" height="477" alt="A partly stripped motorcycle in a home garage surrounded by tool cases, a workbench and stacked parts" sizes="(max-width: 720px) 100vw, 45vw" decoding="async" loading="lazy"></picture></div>
   <p class="index-card__n">05</p>
-  <h3 class="index-card__title"><a class="index-card__link" href="market/">Equip</a></h3>
+  <h3 class="index-card__title"><a class="index-card__link" href="equip/">Equip</a></h3>
   <p class="index-card__blurb">Gear, loadout, buying guidance.</p>
   <p class="index-card__detail">Helmets, wet weather gear, luggage and tyres, judged against heat, dust and price.</p>
   <div class="index-card__foot"><span>Open</span><span class="index-card__stat">Tested items<b>46</b></span></div>
@@ -200,7 +212,7 @@
 </section>
 <section class="section" aria-labelledby="ready-title">
   <div class="container">
-    <h2 class="section-label" id="ready-title"><span class="section-label__n">04</span><span class="section-label__title">Ride ready</span><span class="section-label__aside">Field guide, not a shop</span></h2>
+    <h2 class="section-label" id="ready-title"><span class="section-label__n">04</span><span class="section-label__title">Ride ready</span><span class="section-label__aside">Before a long day</span></h2>
     <p class="lede" style="margin-bottom:2rem;max-width:62ch">
       Five lists worth running before a long day. None of this is equipment you need to
       buy. Most of it is ten minutes and a decision made while you are still somewhere
@@ -269,11 +281,8 @@
 </section>
 <section class="section" aria-labelledby="equip-title">
   <div class="container">
-    <h2 class="section-label" id="equip-title"><span class="section-label__n">06</span><span class="section-label__title">Equip and market</span><span class="section-label__aside">Tested, not sponsored</span></h2>
-    <div class="split split--wide-left" style="margin-bottom:2rem">
-      <p class="lede" style="max-width:none">Frontier Moto does not sell equipment and takes no commission. Items appear here because they were used on a route or inspected in person. Where we have not tested something, it is marked untested.</p>
-      <ul style="display:grid;gap:1rem"><li><a class="tlink" href="market/#inspect">What to inspect<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a><span class="checklist__detail">The twenty minute sequence that ends an inspection early when it should end early.</span></li><li><a class="tlink" href="survive/#carry">What to carry<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a><span class="checklist__detail">The set that earns its space on almost any route, and what does not.</span></li><li><a class="tlink" href="market/#price">What a fair price looks like<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a><span class="checklist__detail">How condition, history and parts availability move a number, and which of the three matters most.</span></li></ul>
-    </div>
+    <h2 class="section-label" id="equip-title"><span class="section-label__n">06</span><span class="section-label__title">Equip</span><span class="section-label__aside">Tested, not sponsored</span></h2>
+    <p class="lede" style="margin-bottom:2rem;max-width:62ch">What riders should carry, use and choose. Equipment judged against heat, dust, load and price, tested where possible and marked honestly where not.</p>
     <div class="gear-grid"><article class="gear-item" data-reveal style="--i:0">
       <p class="gear-item__top"><span>EQ-01</span><span>Head</span></p>
       <h3 class="gear-item__name">Full face helmet, vented</h3>
@@ -304,8 +313,12 @@
       </p>
     </article></div>
     <div class="btn-row" style="margin-top:1.75rem">
+      <a class="btn btn--solid" href="equip/">
+        <span class="btn__label">Equipment guides</span></a>
       <a class="btn" href="market/">
-        <span class="btn__label">All equipment and listings</span></a>
+        <span class="btn__label">Second hand in the Market</span></a>
+      <a class="btn" href="shop/">
+        <span class="btn__label">New stock in the Shop</span></a>
     </div>
   </div>
 </section>
@@ -313,13 +326,13 @@
   <div class="container recovery-banner__inner">
     <div>
       <p class="recovery-banner__label">
-        <span>07</span><span>Market</span>
+        <span>07</span><span>Recover</span>
       </p>
-      <h2 class="recovery-banner__title" id="recovery-banner-title">Everything you need to get moving.</h2>
-      <p class="recovery-banner__body">Parts, equipment, and know-how for the ride ahead. Start in the Market, and keep this list somewhere you can find it when the ride stops.</p>
+      <h2 class="recovery-banner__title" id="recovery-banner-title">When the ride stops.</h2>
+      <p class="recovery-banner__body">Recovery at Frontier Moto means the order to work in when the machine will not move: people first, then position, then the machine. Frontier Moto is not an emergency service and no vehicle is dispatched from this website. What is live is the procedure.</p>
       <div class="recovery-banner__actions btn-row">
-        <a class="btn btn--solid" href="market/">
-          <span class="btn__label">Get moving</span></a>
+        <a class="btn btn--solid" href="recovery/">
+          <span class="btn__label">Recovery guide</span></a>
         <a class="btn" href="survive/">
           <span class="btn__label">Roadside guidance</span></a>
       </div>
@@ -327,7 +340,7 @@
         <strong>Recovery dispatch is not live.</strong>
         Frontier Moto is not an emergency service and no vehicle is dispatched from
         this website. If anyone is injured, contact local emergency services first.
-        The Recovery page explains what we can and cannot do, and what to do instead
+        The Recover page explains what we can and cannot do, and what to do instead
         where no service is available.
       </p>
     </div>
@@ -341,7 +354,7 @@
 </section>
 <section class="section" aria-labelledby="latest-title">
   <div class="container">
-    <h2 class="section-label" id="latest-title"><span class="section-label__n">08</span><span class="section-label__title">Latest and field notes</span><span class="section-label__aside">Updated 24 Aug 2026</span></h2>
+    <h2 class="section-label" id="latest-title"><span class="section-label__n">08</span><span class="section-label__title">Field Notes</span><span class="section-label__aside">Updated 24 Aug 2026</span></h2>
     <div class="card-grid"><article class="article-card" data-reveal style="--i:0">
   
   <p class="article-card__meta">
@@ -398,14 +411,14 @@
   <p class="article-card__foot">4 min read</p>
 </article></div>
     <div class="btn-row" style="margin-top:2rem">
-      <a class="btn" href="news/"><span class="btn__label">All news</span></a>
+      <a class="btn" href="news/"><span class="btn__label">All field notes</span></a>
       <a class="btn" href="ride/"><span class="btn__label">Riding guides</span></a>
     </div>
   </div>
 </section>
 <section class="section section--soft" aria-labelledby="notes-title">
   <div class="container">
-    <h2 class="section-label" id="notes-title"><span class="section-label__n">09</span><span class="section-label__title">Field notes</span><span class="section-label__aside">One email, occasionally</span></h2>
+    <h2 class="section-label" id="notes-title"><span class="section-label__n">09</span><span class="section-label__title">Newsletter</span><span class="section-label__aside">One email, occasionally</span></h2>
     <div class="newsletter">
   <div data-reveal>
     <h2 class="newsletter__title">Field notes for the ride ahead</h2>
@@ -444,7 +457,7 @@
         <span class="wordmark" aria-hidden="true"><span>FRON</span><span>TIER</span><span>MOTO</span></span>
         <p class="site-footer__mission">Frontier Moto exists so that riders across East Africa can leave with better information than they arrived with. We publish what we have tested, we say plainly what we do not know, and we build for the rider who is a long way from a workshop.</p>
       </div>
-      <div><h2>Sections</h2><ul class="site-footer__links"><li><a href="ride/">Ride</a></li><li><a href="navigate/">Navigate</a></li><li><a href="survive/">Survive</a></li><li><a href="maintain/">Maintain</a></li></ul></div><div><h2>More</h2><ul class="site-footer__links"><li><a href="market/">Market</a></li><li><a href="news/">News</a></li><li><a href="workshop/">Workshop</a></li><li><a href="recovery/">Recovery</a></li></ul></div>
+      <div><h2>Frontier Index</h2><ul class="site-footer__links"><li><a href="ride/">Ride</a></li><li><a href="navigate/">Navigate</a></li><li><a href="survive/">Survive</a></li><li><a href="maintain/">Maintain</a></li><li><a href="equip/">Equip</a></li><li><a href="recovery/">Recover</a></li></ul></div><div><h2>More</h2><ul class="site-footer__links"><li><a href="market/">Market</a></li><li><a href="shop/">Shop</a></li><li><a href="workshop/">Workshop</a></li><li><a href="survive/">Survive</a></li><li><a href="news/">Field Notes</a></li></ul></div>
       <div>
         <h2>Contact</h2>
         <p class="site-footer__contact">
@@ -453,7 +466,7 @@
         </p>
         <p class="site-footer__contact" style="margin-top:0.75rem">Social channels are not open yet. Email reaches us directly.</p>
         <div class="site-footer__cta">
-          <a class="recovery-action" href="market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
+          <a class="market-action" href="market/"><svg class="market-action__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="market-action__text">Market</span><span class="market-action__short">Market</span></a>
           <a class="btn btn--ghost-light" href="workshop/">
             <span class="btn__label">Workshop services</span></a>
         </div>
@@ -466,6 +479,6 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/index.js?v=9" defer></script>
+<script src="assets/js/index.js?v=11" defer></script>
 </body>
 </html>

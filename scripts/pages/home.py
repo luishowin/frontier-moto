@@ -1,4 +1,5 @@
-"""Homepage. Nine numbered blocks, in the order the brief sets out."""
+"""Homepage. The hero plus eight numbered blocks: the Index, field knowledge,
+readiness, maintenance, equipment, recovery, field notes and the newsletter."""
 
 from components import (
     article_card,
@@ -8,7 +9,7 @@ from components import (
     feature_story,
     index_card,
     newsletter_form,
-    recovery_banner,
+    recover_section,
     rel,
     section_label,
     workshop_callout,
@@ -46,14 +47,14 @@ def build(data):
             '<a class="btn btn--ghost-light" href="#index">'
             '<span class="btn__label">Explore Frontier</span></a>'
             f'<a class="btn btn--signal" href="{rel("/market/", DEPTH)}">'
-            '<span class="btn__label">Everything you need to get moving</span></a>'
+            '<span class="btn__label">Browse the Market</span></a>'
         ),
     ))
 
     # ── 02 The Frontier Index ────────────────────────────────────────────────
     hrefs = {
         "ride": "/ride/", "navigate": "/navigate/", "survive": "/survive/",
-        "maintain": "/maintain/", "market": "/market/", "recovery": "/recovery/",
+        "maintain": "/maintain/", "equip": "/equip/", "recovery": "/recovery/",
     }
     cards = "".join(
         index_card(entry, DEPTH, hrefs[entry["slug"]], i)
@@ -96,7 +97,7 @@ def build(data):
     )
     out.append(f"""<section class="section" aria-labelledby="ready-title">
   <div class="container">
-    {section_label("04", "Ride ready", "Field guide, not a shop", heading_id="ready-title")}
+    {section_label("04", "Ride ready", "Before a long day", heading_id="ready-title")}
     <p class="lede" style="margin-bottom:2rem;max-width:62ch">
       Five lists worth running before a long day. None of this is equipment you need to
       buy. Most of it is ten minutes and a decision made while you are still somewhere
@@ -139,7 +140,10 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 06 Equipment and market ──────────────────────────────────────────────
+    # ── 06 Equip ─────────────────────────────────────────────────────────────
+    # The knowledge layer: what to carry and why. Sourcing and availability
+    # live on the Market page, linked from here rather than repeated.
+    equip_page = next(p for p in sections["pages"] if p["slug"] == "equip")
     gear = "".join(
         f"""<article class="gear-item" data-reveal style="--i:{i}">
       <p class="gear-item__top"><span>{esc(g["ref"])}</span><span>{esc(g["category"])}</span></p>
@@ -152,44 +156,38 @@ def build(data):
         for i, g in enumerate(market["gear"][:4])
     )
 
-    guides = "".join(
-        f'<li><a class="tlink" href="{rel(g["href"], DEPTH)}">{esc(g["title"])}'
-        f'<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a>'
-        f'<span class="checklist__detail">{esc(g["detail"])}</span></li>'
-        for g in market["guides"]
-    )
-
     out.append(f"""<section class="section" aria-labelledby="equip-title">
   <div class="container">
-    {section_label("06", "Equip and market", "Tested, not sponsored", heading_id="equip-title")}
-    <div class="split split--wide-left" style="margin-bottom:2rem">
-      <p class="lede" style="max-width:none">{esc(market["note"])}</p>
-      <ul style="display:grid;gap:1rem">{guides}</ul>
-    </div>
+    {section_label("06", "Equip", "Tested, not sponsored", heading_id="equip-title")}
+    <p class="lede" style="margin-bottom:2rem;max-width:62ch">{esc(equip_page["purpose"])}</p>
     <div class="gear-grid">{gear}</div>
     <div class="btn-row" style="margin-top:1.75rem">
+      <a class="btn btn--solid" href="{rel("/equip/", DEPTH)}">
+        <span class="btn__label">Equipment guides</span></a>
       <a class="btn" href="{rel("/market/", DEPTH)}">
-        <span class="btn__label">All equipment and listings</span></a>
+        <span class="btn__label">Second hand in the Market</span></a>
+      <a class="btn" href="{rel("/shop/", DEPTH)}">
+        <span class="btn__label">New stock in the Shop</span></a>
     </div>
   </div>
 </section>""")
 
-    # ── 07 Recovery ──────────────────────────────────────────────────────────
-    out.append(recovery_banner(
+    # ── 07 Recover ─────────────────────────────────────────────────────────
+    out.append(recover_section(
         depth=DEPTH,
         number="07",
         ready=data["checklists"]["steps"]["recovery"]["steps"][:5],
     ))
 
-    # ── 08 Latest ────────────────────────────────────────────────────────────
+    # ── 08 Field Notes ───────────────────────────────────────────────────────
     cards = "".join(article_card(a, DEPTH, i, with_media=bool(a.get("image")))
                     for i, a in enumerate(latest))
     out.append(f"""<section class="section" aria-labelledby="latest-title">
   <div class="container">
-    {section_label("08", "Latest and field notes", "Updated 24 Aug 2026", heading_id="latest-title")}
+    {section_label("08", "Field Notes", "Updated 24 Aug 2026", heading_id="latest-title")}
     <div class="card-grid">{cards}</div>
     <div class="btn-row" style="margin-top:2rem">
-      <a class="btn" href="{rel("/news/", DEPTH)}"><span class="btn__label">All news</span></a>
+      <a class="btn" href="{rel("/news/", DEPTH)}"><span class="btn__label">All field notes</span></a>
       <a class="btn" href="{rel("/ride/", DEPTH)}"><span class="btn__label">Riding guides</span></a>
     </div>
   </div>
@@ -198,7 +196,7 @@ def build(data):
     # ── 09 Newsletter ────────────────────────────────────────────────────────
     out.append(f"""<section class="section section--soft" aria-labelledby="notes-title">
   <div class="container">
-    {section_label("09", "Field notes", "One email, occasionally", heading_id="notes-title")}
+    {section_label("09", "Newsletter", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
   </div>
 </section>""")

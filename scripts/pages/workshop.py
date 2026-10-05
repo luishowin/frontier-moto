@@ -29,8 +29,8 @@ def build(data):
     out.append(editorial_hero(
         slot="hero-workshop",
         depth=DEPTH,
-        label_accent="07",
-        label="Workshop",
+        label_accent="W",
+        label="Frontier Services",
         title_lines=["Workshop"],
         lede=(
             "Service, inspection and diagnostics for the machines people actually ride "
@@ -45,14 +45,14 @@ def build(data):
             '<span class="btn__label">Booking enquiry</span></a>'
         ),
         field=[
-            ("Section", "07 / Workshop"),
+            ("Section", "W / Workshop"),
             ("Services", f'{len(ws["services"])} categories'),
             ("Records", "Written, every job"),
             ("Updated", "24 AUG 2026"),
         ],
     ))
 
-    # ── 07.1 Scope ───────────────────────────────────────────────────────────
+    # ── W.1 Scope ───────────────────────────────────────────────────────────
     handles = "".join(
         f'<li><span class="fact-list__mark">&#43;</span><span>{esc(h)}</span></li>'
         for h in ws["handles"]
@@ -64,7 +64,7 @@ def build(data):
 
     out.append(f"""<section class="section" aria-labelledby="scope-title">
   <div class="container">
-    {section_label("07.1", "What the workshop handles", "And what it does not", heading_id="scope-title")}
+    {section_label("W.1", "What the workshop handles", "And what it does not", heading_id="scope-title")}
     <p class="lede" style="margin-bottom:2rem;max-width:64ch">{esc(ws["intro"])}</p>
     <div class="split">
       <div data-reveal>
@@ -83,7 +83,7 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 07.2 Services ────────────────────────────────────────────────────────
+    # ── W.2 Services ────────────────────────────────────────────────────────
     services = "".join(
         f"""<article class="service" data-reveal style="--i:{i}">
       <p class="service__ref">{esc(s["ref"])}</p>
@@ -99,7 +99,7 @@ def build(data):
 
     out.append(f"""<section class="section section--soft" id="services" aria-labelledby="services-title">
   <div class="container">
-    {section_label("07.2", "Service and inspection", f'{len(ws["services"])} categories', heading_id="services-title")}
+    {section_label("W.2", "Service and inspection", f'{len(ws["services"])} categories', heading_id="services-title")}
     <div class="service-grid">{services}</div>
     <p class="scroll-hint" style="margin-top:1.25rem">
       Times are typical rather than promised, and depend on what the machine turns out
@@ -108,10 +108,10 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 07.3 Preparation ─────────────────────────────────────────────────────
+    # ── W.3 Preparation ─────────────────────────────────────────────────────
     out.append(f"""<section class="section" aria-labelledby="prep-title">
   <div class="container">
-    {section_label("07.3", "Preparing your motorcycle", "Five things, before you arrive", heading_id="prep-title")}
+    {section_label("W.3", "Preparing your motorcycle", "Five things, before you arrive", heading_id="prep-title")}
     <div class="split split--wide-left">
       <div data-reveal>{checklist(data["checklists"]["checklists"]["workshop-prep"], 0)}</div>
       <div data-reveal style="--i:1">
@@ -135,14 +135,14 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 07.4 How we work ─────────────────────────────────────────────────────
+    # ── W.4 How we work ─────────────────────────────────────────────────────
     practical = "".join(
         f'<li><span class="fact-list__k">{esc(p["k"])}</span><span>{esc(p["v"])}</span></li>'
         for p in ws["practical"]
     )
     out.append(f"""<section class="section section--soft" aria-labelledby="how-title">
   <div class="container">
-    {section_label("07.4", "How the work is quoted and recorded", "Practical detail", heading_id="how-title")}
+    {section_label("W.4", "How the work is quoted and recorded", "Practical detail", heading_id="how-title")}
     <div class="split split--wide-left">
       <ul class="fact-list" data-reveal>{practical}</ul>
       <figure data-reveal style="--i:1;margin:0">
@@ -155,12 +155,12 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 07.5 Booking ─────────────────────────────────────────────────────────
+    # ── W.5 Booking ─────────────────────────────────────────────────────────
     options = "".join(f'<option>{esc(s["name"])}</option>' for s in ws["services"])
 
     out.append(f"""<section class="section" id="booking" aria-labelledby="booking-title">
   <div class="container">
-    {section_label("07.5", "Booking enquiry", "Demonstration only", heading_id="booking-title")}
+    {section_label("W.5", "Booking enquiry", "Demonstration only", heading_id="booking-title")}
     <div class="split">
       <div data-reveal>
         <p class="lede" style="max-width:none">
@@ -226,19 +226,20 @@ def build(data):
 
     related = [
         {"number": "01", "title": "Maintain", "blurb": "Intervals, diagnostics and what to check yourself.", "href": "/maintain/"},
-        {"number": "02", "title": "Market", "blurb": "Buying guidance and pre-purchase inspection.", "href": "/market/"},
-        {"number": "03", "title": "Recovery", "blurb": "What to do before the machine reaches a workshop.", "href": "/recovery/"},
+        {"number": "02", "title": "Market", "blurb": "Used machines and parts, plus pre-purchase inspection.", "href": "/market/"},
+        {"number": "03", "title": "Shop", "blurb": "New parts, tools and gear sold by Frontier Moto.", "href": "/shop/"},
+        {"number": "04", "title": "Recover", "blurb": "What to do before the machine reaches a workshop.", "href": "/recovery/"},
     ]
     out.append(f"""<section class="section section--soft" aria-labelledby="related-title">
   <div class="container">
-    {section_label("07.6", "Adjacent sections", "Where this leads", heading_id="related-title")}
+    {section_label("W.6", "Adjacent sections", "Where this leads", heading_id="related-title")}
     {related_cards(related, DEPTH)}
   </div>
 </section>""")
 
     out.append(f"""<section class="section" aria-labelledby="notes-title">
   <div class="container">
-    {section_label("07.7", "Field notes", "One email, occasionally", heading_id="notes-title")}
+    {section_label("W.7", "Newsletter", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
   </div>
 </section>""")

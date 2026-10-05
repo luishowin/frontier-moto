@@ -54,7 +54,7 @@
     },
     {
       "number": "05",
-      "slug": "market",
+      "slug": "equip",
       "label": "Equip",
       "blurb": "Gear, loadout, buying guidance.",
       "detail": "Helmets, wet weather gear, luggage and tyres, judged against heat, dust and price.",
@@ -179,24 +179,24 @@
     },
     {
       "number": "05",
-      "slug": "market",
-      "title": "Market",
-      "purpose": "Equipment, motorcycle listings and buying guidance, tested rather than sponsored.",
+      "slug": "equip",
+      "title": "Equip",
+      "purpose": "What riders should carry, use and choose. Equipment judged against heat, dust, load and price, tested where possible and marked honestly where not.",
       "lede": "Everything here has either been used on a route or inspected in person. Where we have not tested something we say so, and where a price moves with the exchange rate we say that too.",
-      "hero_image": "hero-market",
+      "hero_image": "index-equip",
       "topics": [
         "Helmets",
         "Wet weather",
         "Luggage",
         "Tyres",
         "Tools",
-        "Used bikes"
+        "Loadouts"
       ],
       "related": [
-        "maintain",
-        "ride"
+        "market",
+        "survive"
       ],
-      "module": "listings",
+      "module": "equipment",
       "module_key": null,
       "plate": {
         "image": "market-gear",
@@ -209,10 +209,32 @@
       }
     },
     {
-      "number": "06",
+      "number": "M",
+      "slug": "market",
+      "title": "Market",
+      "purpose": "Second hand motorcycles, used parts and pre owned tools sold by their owners, not by Frontier Moto.",
+      "lede": "Every listing here is second hand and sold by its owner. Condition is stated before price, known faults are listed, and anything only seen rather than inspected is marked as such.",
+      "hero_image": "hero-market",
+      "status_row": ["Market", "Used and secondary"],
+      "topics": [
+        "Used motorcycles",
+        "Used parts",
+        "Used tools",
+        "Inspection",
+        "Fair pricing"
+      ],
+      "related": [
+        "equip",
+        "maintain"
+      ],
+      "module": "supply",
+      "module_key": null
+    },
+    {
+      "number": "N",
       "slug": "news",
-      "title": "News",
-      "purpose": "Motorcycle news and field reports from across the region.",
+      "title": "Field Notes",
+      "purpose": "Dated observations, route reports, road conditions, regulations, tests and things Frontier has learned.",
       "lede": "Road works, fuel prices, regulation, import duty, and what riders are reporting from routes we have not covered yet.",
       "hero_image": "hero-news",
       "topics": [
@@ -224,8 +246,8 @@
         "Reviews"
       ],
       "related": [
-        "market",
-        "navigate"
+        "navigate",
+        "ride"
       ],
       "module": "none",
       "module_key": null

@@ -17,37 +17,47 @@
   "nav": [
     { "slug": "ride",     "label": "Ride",     "href": "/ride/" },
     { "slug": "navigate", "label": "Navigate", "href": "/navigate/" },
-    { "slug": "survive",  "label": "Survive",  "href": "/survive/" },
+    { "slug": "shop",     "label": "Shop",     "href": "/shop/" },
     { "slug": "maintain", "label": "Maintain", "href": "/maintain/" },
-    { "slug": "market",   "label": "Market",   "href": "/market/" },
-    { "slug": "news",     "label": "News",     "href": "/news/" },
-    { "slug": "workshop", "label": "Workshop", "href": "/workshop/" }
+    { "slug": "equip",    "label": "Equip",    "href": "/equip/" },
+    { "slug": "recovery", "label": "Recover",  "href": "/recovery/" }
   ],
-  "recovery": {
-    "slug": "market",
+  "services": [
+    { "slug": "market",   "label": "Market",   "href": "/market/" },
+    { "slug": "workshop", "label": "Workshop", "href": "/workshop/" },
+    { "slug": "survive",  "label": "Survive",  "href": "/survive/" }
+  ],
+  "field_notes": {
+    "slug": "news",
+    "label": "Field Notes",
+    "href": "/news/"
+  },
+  "market_action": {
     "label": "Market",
-    "href": "/market/",
-    "short": "Get moving",
-    "note": "Everything you need to get moving"
+    "short": "Market",
+    "href": "/market/"
   },
   "footer": {
     "columns": [
       {
-        "title": "Sections",
+        "title": "Frontier Index",
         "links": [
           { "label": "Ride", "href": "/ride/" },
           { "label": "Navigate", "href": "/navigate/" },
           { "label": "Survive", "href": "/survive/" },
-          { "label": "Maintain", "href": "/maintain/" }
+          { "label": "Maintain", "href": "/maintain/" },
+          { "label": "Equip", "href": "/equip/" },
+          { "label": "Recover", "href": "/recovery/" }
         ]
       },
       {
         "title": "More",
         "links": [
           { "label": "Market", "href": "/market/" },
-          { "label": "News", "href": "/news/" },
+          { "label": "Shop", "href": "/shop/" },
           { "label": "Workshop", "href": "/workshop/" },
-          { "label": "Recovery", "href": "/recovery/" }
+          { "label": "Survive", "href": "/survive/" },
+          { "label": "Field Notes", "href": "/news/" }
         ]
       }
     ],

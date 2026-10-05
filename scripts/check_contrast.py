@@ -65,6 +65,12 @@ for section in ("ride", "navigate", "survive", "maintain", "market", "news", "wo
         f"{section} hero", f"hero-{section}", (1440, 560),
         [(0.00, 0.48), (0.38, 0.82), (1.00, 0.93)], "y", (0.06, 0.52, 0.30, 0.95), HERO_TEXT,
     ))
+# Equip reuses the index-equip photograph as a compact section hero under the
+# same flat scrim, so it gets the hero treatment rather than only the card one.
+CASES.append((
+    "equip hero", "index-equip", (1440, 560),
+    [(0.00, 0.48), (0.38, 0.82), (1.00, 0.93)], "y", (0.06, 0.52, 0.30, 0.95), HERO_TEXT,
+))
 for card in ("index-ride", "index-navigate", "index-equip"):
     CASES.append((
         f"{card} card", card, (620, 460),

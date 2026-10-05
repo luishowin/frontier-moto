@@ -67,8 +67,8 @@ document.documentElement.classList.add('js');
 
     // ── 3. MENU OVERLAY ──────────────────────────────────────────
     // Full screen, focus trapped while open, focus restored to the trigger on
-    // close. Recovery lives in the header rather than in here, so a stranded
-    // rider never has to open a menu to reach it.
+    // close. The Market action lives in the header rather than in here, so
+    // supply is one tap away without opening a menu.
 
     var trigger = document.getElementById('menu-trigger');
     var overlay = document.getElementById('menu-overlay');
@@ -143,10 +143,50 @@ document.documentElement.classList.add('js');
 
         // A width change that reveals the desktop nav should not leave a
         // full screen overlay stranded on top of the page.
-        window.matchMedia('(min-width: 961px)').addEventListener('change', function (e) {
+        window.matchMedia('(min-width: 1151px)').addEventListener('change', function (e) {
             if (e.matches && overlay.classList.contains('is-open')) closeMenu();
         });
     }
+
+    // ── 3b. MORE MENU ────────────────────────────────────────────
+    // One disclosure holding Workshop and Field Notes, so the header stays six
+    // Index sections plus the Market action. Click toggles, Escape closes and
+    // returns focus, a pointer down outside closes. No animation beyond the
+    // global transition, which reduced motion already neutralises.
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-more]'), function (box) {
+        var button = box.querySelector('.more__button');
+        if (!button) return;
+
+        function closeMore(refocus) {
+            box.removeAttribute('data-open');
+            button.setAttribute('aria-expanded', 'false');
+            if (refocus && button.focus) button.focus();
+        }
+
+        button.addEventListener('click', function () {
+            var open = box.getAttribute('data-open') === 'true';
+            if (open) {
+                closeMore(false);
+            } else {
+                box.setAttribute('data-open', 'true');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (box.getAttribute('data-open') === 'true' && !box.contains(e.target)) {
+                closeMore(false);
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && box.getAttribute('data-open') === 'true') {
+                e.preventDefault();
+                closeMore(true);
+            }
+        });
+    });
 
     // ── 4. STAGGERED REVEAL ──────────────────────────────────────
     // Stagger comes from the --i custom property in the markup, not from JS

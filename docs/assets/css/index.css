@@ -504,7 +504,7 @@ p { text-wrap: pretty; }
 /* Primary header action. Held outside the hamburger at every width, so the
    market is one tap away without opening a menu. Marked by the arrow glyph
    and the border weight as well as by colour. */
-.recovery-action {
+.market-action {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
@@ -521,17 +521,77 @@ p { text-wrap: pretty; }
     font-weight: 700;
     transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
-.recovery-action:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
-.recovery-action:active { transform: translateY(1px); }
-.recovery-action__beacon { flex: none; }
-.recovery-action__beacon path { fill: currentColor; }
+.market-action:hover { background: var(--signal-deep); border-color: var(--signal-deep); }
+.market-action:active { transform: translateY(1px); }
+.market-action__icon { flex: none; }
+.market-action__icon path { fill: currentColor; }
 
 /* Two labels, one shown at a time: the long one by default, the short one on
    the narrowest screens. This must be declared here rather than after the
    media query, or it wins on source order and hides both, leaving the action
    as a bare icon. It always keeps a text label: it may not fall back to colour
    and a glyph alone. */
-.recovery-action__short { display: none; }
+.market-action__short { display: none; }
+
+/* MoreMenu. Workshop and Field Notes sit behind one button so the header stays
+   six Index sections plus the Market action. The panel is a bordered list in
+   the same mono treatment as the nav, not a floating card. */
+.more { position: relative; }
+.more__button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.55rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: calc(var(--t-label) * 1.5);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+.more__button:hover { border-color: var(--line-strong); }
+.more__button[aria-current="true"] { font-weight: 700; }
+.more__button::after {
+    content: "";
+    width: 0.45em; height: 0.45em;
+    margin-left: 0.5em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-0.15em) rotate(45deg);
+    transition: transform var(--dur-fast) var(--ease);
+}
+.more[data-open="true"] .more__button::after { transform: translateY(0.1em) rotate(225deg); }
+.more__panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.6rem);
+    min-width: 13rem;
+    background: var(--header-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    z-index: 130;
+}
+.more[data-open="true"] .more__panel { display: block; }
+.more__panel ul { display: grid; }
+.more__panel li + li { border-top: 1px solid var(--line); }
+.more__panel a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.more__panel a:hover { background: var(--bg-soft); }
+.more__panel a[aria-current="page"] { font-weight: 700; }
 
 .theme-toggle {
     display: inline-flex;
@@ -602,6 +662,16 @@ p { text-wrap: pretty; }
     font-size: 1.2rem;
 }
 .menu-overlay__nav { margin-top: auto; padding-top: 2.5rem; }
+.menu-overlay__group {
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: #8E8A82;
+    font-weight: 500;
+    padding: 1.4rem 0 0.2rem;
+}
+.menu-overlay__group:first-child { padding-top: 0; }
 .menu-overlay__nav li { border-top: 1px solid rgba(237, 233, 225, 0.16); }
 .menu-overlay__nav li:last-child { border-bottom: 1px solid rgba(237, 233, 225, 0.16); }
 .menu-overlay__nav a {
@@ -622,7 +692,7 @@ p { text-wrap: pretty; }
     font-weight: 500;
 }
 .menu-overlay__foot { margin-top: 2rem; display: grid; gap: 1rem; }
-.menu-overlay__foot .recovery-action { justify-content: center; min-height: 54px; }
+.menu-overlay__foot a { text-decoration: underline; text-underline-offset: 0.2em; }
 .menu-overlay__note {
     font-family: var(--font-mono);
     font-size: var(--t-tiny);
@@ -1192,6 +1262,162 @@ body.menu-open { overflow: hidden; }
 .verdict--untested { color: var(--text-muted); }
 .verdict--untested::before { background: transparent; border: 1.5px solid currentColor; }
 
+/* ── 13b. MARKET LISTINGS AND SHOP CATALOGUE ──────────────────── */
+
+/* Listing and product grids follow the same hairline cell system as the
+   gear and service grids. Cards differ in copy order and badges, not in
+   shape, so the two destinations read as one brand with two jobs. */
+.listing-grid,
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+.listing-card,
+.product-card {
+    padding: clamp(1.15rem, 0.9rem + 0.8vw, 1.6rem);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.listing-card__top,
+.product-card__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.listing-card__title,
+.product-card__title { margin-top: 0.8rem; font-size: var(--t-h4); }
+.listing-card__link::after,
+.product-card__link::after { content: ""; position: absolute; inset: 0; }
+.listing-card:focus-within,
+.product-card:focus-within { outline: 3px solid var(--signal-ink); outline-offset: -3px; }
+:root[data-theme="dark"] .listing-card:focus-within,
+:root[data-theme="dark"] .product-card:focus-within { outline-color: var(--signal); }
+.listing-card__link:focus-visible,
+.product-card__link:focus-visible { outline: none; }
+
+/* Small mono badges. Bordered, never filled except the stock states, so they
+   stay quiet on the page. */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    padding: 0.1rem 0.55rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 1px;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.pill--used { border-width: 2px; color: var(--text); font-weight: 700; }
+.pill--new {
+    border-color: var(--signal-ink);
+    color: var(--signal-ink);
+    font-weight: 700;
+}
+:root[data-theme="dark"] .pill--new { border-color: var(--signal); color: var(--signal); }
+.listing-card__meta,
+.product-card__meta {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+.product-card__meta { justify-content: space-between; }
+.listing-card__facts {
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.listing-card__detail,
+.product-card__blurb { margin-top: 0.5rem; font-size: var(--t-small); color: var(--text-muted); }
+.listing-card__price,
+.product-card__price {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-h4);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+.listing-card__foot,
+.product-card__foot {
+    margin-top: auto;
+    padding-top: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.product-card__stock { font-weight: 700; color: var(--signal-ink); }
+:root[data-theme="dark"] .product-card__stock { color: var(--signal); }
+.product-card__stock--low { text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* Detail blocks: full notes on one listing or product. Stacked rows with a
+   hairline top, same rhythm as the article rows. */
+.detail-list { border-top: 1px solid var(--line-strong); }
+.listing-detail,
+.product-detail {
+    padding: clamp(1.25rem, 1rem + 1vw, 2rem) 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+}
+.listing-detail__title,
+.product-detail__title { margin-top: 0.8rem; font-size: var(--t-h3); }
+.listing-detail__price,
+.product-detail__price {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-h4);
+    font-weight: 700;
+}
+.listing-detail__price span,
+.product-detail__price span {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: var(--t-label);
+    font-weight: 500;
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.listing-detail__body,
+.product-detail__body { margin-top: 0.9rem; font-size: var(--t-small); max-width: 68ch; }
+.listing-detail__faults { margin-top: 1rem; font-size: var(--t-small); max-width: 68ch; }
+.listing-detail__faults strong {
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+}
+.listing-detail__contact {
+    margin-top: 1.25rem;
+    display: grid;
+    gap: 0.9rem;
+    font-size: var(--t-small);
+    color: var(--text-muted);
+    max-width: 68ch;
+}
+.listing-detail__back { margin-top: 1.25rem; }
+
 /* ── 14. RECOVERY BANNER ──────────────────────────────────────── */
 
 .recovery-banner {
@@ -1477,6 +1703,7 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
    tablet grids start to reflow. */
 @media (max-width: 1150px) {
     .primary-nav { display: none; }
+    .more { display: none; }
     .menu-trigger { display: inline-flex; }
 }
 
@@ -1544,9 +1771,9 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 
 @media (max-width: 420px) {
     .header__actions { gap: 0.4rem; }
-    .recovery-action { padding-inline: 0.7rem; gap: 0.4rem; }
-    .recovery-action__text { display: none; }
-    .recovery-action__short { display: inline; }
+    .market-action { padding-inline: 0.7rem; gap: 0.4rem; }
+    .market-action__text { display: none; }
+    .market-action__short { display: inline; }
     .hero__field { grid-template-columns: minmax(0, 1fr); }
 }
 

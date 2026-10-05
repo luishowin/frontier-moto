@@ -74,15 +74,169 @@
       ]
     }
   ],
+  "categories": [
+    { "slug": "motorcycles", "label": "Motorcycles", "blurb": "Complete machines from riders and working fleets, sold as seen and described." },
+    { "slug": "parts", "label": "Parts", "blurb": "Second hand components with honest wear, fitment and fault notes." },
+    { "slug": "tools", "label": "Tools", "blurb": "Pre owned workshop and roadside kit that still earns its space." }
+  ],
   "listings": [
-    { "ref": "ML-118", "title": "150 cc commuter, single owner", "detail": "Service history present, chain set recent, tyres at half.", "meta": "Central Kenya", "status": "Inspected" },
-    { "ref": "ML-121", "title": "250 cc dual sport", "detail": "Higher mileage, fork seals weeping, otherwise sound.", "meta": "Nairobi", "status": "Inspected" },
-    { "ref": "ML-124", "title": "125 cc, stage retired", "detail": "Working machine, honest wear, priced accordingly.", "meta": "Nakuru", "status": "Inspected" },
-    { "ref": "ML-127", "title": "400 cc adventure, imported", "detail": "Low mileage, no local service history, parts lead time is the risk.", "meta": "Nairobi", "status": "Seen only" }
+    {
+      "ref": "ML-118",
+      "slug": "ml-118",
+      "title": "150 cc commuter, single owner",
+      "category": "motorcycles",
+      "category_label": "Motorcycle",
+      "condition": "Used",
+      "location": "Central Kenya",
+      "price": "KES 165,000",
+      "status": "Available",
+      "inspection": "Inspected",
+      "seller": "Private seller",
+      "detail": "Service history present, chain set recent, tyres at half.",
+      "description": "One owner commuter kept on a written service routine. Starts clean, idles steady, chain and sprockets recent. Tyres at roughly half, priced to allow a fresh rear within the season.",
+      "specs": [
+        { "k": "Engine", "v": "150 cc, single" },
+        { "k": "Ownership", "v": "Single owner" },
+        { "k": "History", "v": "Service book present" },
+        { "k": "Consumables", "v": "Chain set recent, tyres at half" }
+      ],
+      "faults": "Honest wear on paint and seat cover. Nothing structural found at inspection.",
+      "meta": "Central Kenya"
+    },
+    {
+      "ref": "ML-121",
+      "slug": "ml-121",
+      "title": "250 cc dual sport",
+      "category": "motorcycles",
+      "category_label": "Motorcycle",
+      "condition": "Used",
+      "location": "Nairobi",
+      "price": "KES 285,000",
+      "status": "Available",
+      "inspection": "Inspected",
+      "seller": "Private seller",
+      "detail": "Higher mileage, fork seals weeping, otherwise sound.",
+      "description": "Leggy but honest dual sport that has done real distance. Engine pulls clean through the range and the chassis tracks straight. Fork seals are weeping and priced into the number.",
+      "specs": [
+        { "k": "Engine", "v": "250 cc, single" },
+        { "k": "Mileage", "v": "High, with history" },
+        { "k": "Suspension", "v": "Fork seals weeping" },
+        { "k": "Use", "v": "Mixed tarmac and murram" }
+      ],
+      "faults": "Fork seals weeping. Budget for seals and fork oil before a long route.",
+      "meta": "Nairobi"
+    },
+    {
+      "ref": "ML-124",
+      "slug": "ml-124",
+      "title": "125 cc, stage retired",
+      "category": "motorcycles",
+      "category_label": "Motorcycle",
+      "condition": "Used",
+      "location": "Nakuru",
+      "price": "KES 95,000",
+      "status": "Available",
+      "inspection": "Inspected",
+      "seller": "Fleet seller",
+      "detail": "Working machine, honest wear, priced accordingly.",
+      "description": "Retired working bike with honest wear and no surprises at inspection. A practical first machine or a spare for the shamba run, priced for its condition rather than its story.",
+      "specs": [
+        { "k": "Engine", "v": "125 cc, single" },
+        { "k": "Past life", "v": "Working fleet" },
+        { "k": "Condition", "v": "Honest wear throughout" }
+      ],
+      "faults": "Cosmetic wear on plastics and rack. Consumables due on normal schedule.",
+      "meta": "Nakuru"
+    },
+    {
+      "ref": "ML-127",
+      "slug": "ml-127",
+      "title": "400 cc adventure, imported",
+      "category": "motorcycles",
+      "category_label": "Motorcycle",
+      "condition": "Used",
+      "location": "Nairobi",
+      "price": "KES 685,000",
+      "status": "Available",
+      "inspection": "Seen only",
+      "seller": "Dealer",
+      "detail": "Low mileage, no local service history, parts lead time is the risk.",
+      "description": "Low mileage import with no local service history on file. Clean presentation and tidy running gear. The risk is parts lead time rather than condition, so check shelf availability before committing.",
+      "specs": [
+        { "k": "Engine", "v": "400 cc, single" },
+        { "k": "Mileage", "v": "Low, unverified locally" },
+        { "k": "History", "v": "No local service record" },
+        { "k": "Risk", "v": "Parts lead time" }
+      ],
+      "faults": "No faults found on a visual check. Full inspection recommended before purchase.",
+      "meta": "Nairobi"
+    },
+    {
+      "ref": "ML-130",
+      "slug": "ml-130",
+      "title": "Aluminium pannier set with mounts",
+      "category": "parts",
+      "category_label": "Part",
+      "condition": "Used",
+      "location": "Nairobi",
+      "price": "KES 28,500",
+      "status": "Available",
+      "inspection": "Inspected",
+      "seller": "Private seller",
+      "detail": "Scuffed cases, straight mounts, seals intact and dry inside.",
+      "description": "Second hand pannier set removed after a bike change. Cases are scuffed from use but mounts are straight, latches close properly and seals kept dust out on a dry run.",
+      "specs": [
+        { "k": "Fitment", "v": "Check mount pattern before viewing" },
+        { "k": "Seals", "v": "Intact, dry inside" },
+        { "k": "Locks", "v": "Both keys present" }
+      ],
+      "faults": "Scuffs and one shallow dent on the left case. No cracks or leaks.",
+      "meta": "Nairobi"
+    },
+    {
+      "ref": "ML-133",
+      "slug": "ml-133",
+      "title": "Field tool roll with plug kit",
+      "category": "tools",
+      "category_label": "Tool",
+      "condition": "Used",
+      "location": "Nanyuki",
+      "price": "KES 6,800",
+      "status": "Available",
+      "inspection": "Seen only",
+      "seller": "Private seller",
+      "detail": "Complete roadside roll, used but complete, inflator tested working.",
+      "description": "Pre owned roadside roll covering punctures, fasteners and chain adjustment. Plug kit unused, inflator tested working, spanners with normal workshop marks.",
+      "specs": [
+        { "k": "Covers", "v": "Puncture, fasteners, chain" },
+        { "k": "Inflator", "v": "Tested working" },
+        { "k": "Roll", "v": "Stitching sound" }
+      ],
+      "faults": "Normal tool marks. One tyre lever shows grinding from a previous repair.",
+      "meta": "Nanyuki"
+    }
   ],
   "guides": [
     { "title": "What to inspect", "detail": "The twenty minute sequence that ends an inspection early when it should end early.", "href": "/market/#inspect" },
-    { "title": "What to carry", "detail": "The set that earns its space on almost any route, and what does not.", "href": "/survive/#carry" },
+    { "title": "What to carry", "detail": "The set that earns its space on almost any route, and what does not.", "href": "/survive/" },
     { "title": "What a fair price looks like", "detail": "How condition, history and parts availability move a number, and which of the three matters most.", "href": "/market/#price" }
-  ]
+  ],
+  "supply": {
+    "status": "No checkout here. Every listing below is second hand and sold by its owner, not by Frontier Moto. Prices are set by sellers. Frontier notes condition and inspection honestly and takes no commission.",
+    "standards": [
+      "Used on a route or inspected in person before it is listed",
+      "Suited to heat, dust, load and poor fuel before it is suited to a catalogue",
+      "Repairable where possible, and marked honestly where it is not",
+      "Priced against what it replaces, not what it promises"
+    ],
+    "categories": [
+      "Service parts and consumables",
+      "Tools and emergency kits",
+      "Luggage and touring equipment",
+      "Rider safety equipment",
+      "Electrical and lighting",
+      "Inspected motorcycles"
+    ],
+    "price_note": "A fair price follows condition, history and parts availability, in that order. Condition is what the machine is today. History is what was done, by whom, and how long ago in kilometres. Parts availability is the risk most buyers underweight: a sound machine with a six week parts lead time is a different purchase from the same machine with parts on the shelf."
+  }
 }

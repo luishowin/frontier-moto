@@ -1,9 +1,11 @@
 """
 The shared editorial page system.
 
-Ride, Navigate, Survive, Maintain, Market and News are all the same page with
-different content and a different practical data module. Workshop and Recovery
-have their own stricter structures and live in their own modules.
+Ride, Navigate, Survive, Maintain and Equip are the knowledge sections of the
+Frontier Index. Market is the commercial destination and News carries the
+Field Notes publication; all three reuse this page shape with different
+content and a different practical data module. Workshop and Recovery have
+their own stricter structures and live in their own modules.
 
 Every section page carries: a masthead, a lead block, one data module that is
 actually useful, the full listing for that section, cross-links to adjacent
@@ -31,8 +33,10 @@ DEPTH = 1
 
 SECTION_TITLES = {
     "ride": "Ride", "navigate": "Navigate", "survive": "Survive",
-    "maintain": "Maintain", "market": "Market", "news": "News",
-    "workshop": "Workshop", "recovery": "Recovery",
+    "maintain": "Maintain", "equip": "Equip", "market": "Market",
+    "shop": "Shop",
+    "news": "Field Notes",
+    "workshop": "Workshop", "recovery": "Recover",
 }
 
 SECTION_BLURBS = {
@@ -40,11 +44,31 @@ SECTION_BLURBS = {
     "navigate": "Routes, maps, fuel and terrain preparation.",
     "survive": "Breakdowns, preparedness and roadside resilience.",
     "maintain": "Service, diagnostics and workshop knowledge.",
-    "market": "Gear, loadout and buying guidance.",
-    "news": "Field reports and regional motorcycle news.",
+    "equip": "Equipment judged against heat, dust, load and price.",
+    "market": "Used machines, parts and tools sold by their owners.",
+    "shop": "New stock sold directly by Frontier Moto.",
+    "news": "Dated observations, route reports and road conditions.",
     "workshop": "Service, inspection and repair.",
     "recovery": "Help when the ride stops.",
 }
+
+# The masthead eyebrow names the layer, not just the section. Index sections
+# carry the Frontier Index; Market and Workshop are services, Shop is the
+# Frontier store, and News carries the Field Notes publication.
+# Survive keeps its generic section page even though it no longer sits in the
+# primary nav; it stays reachable through the More menu, the footer and the
+# Navigate cross links.
+INDEX_SLUGS = {"ride", "navigate", "survive", "maintain", "equip"}
+
+
+def kind_label(slug):
+    if slug in INDEX_SLUGS:
+        return "Frontier Index"
+    if slug == "news":
+        return "Field Notes"
+    if slug == "shop":
+        return "Frontier Store"
+    return "Frontier Services"
 
 
 # ── Data modules ─────────────────────────────────────────────────────────────
@@ -123,7 +147,10 @@ def _module_intervals(page, data):
     return "Service intervals", "Tarmac against murram", table
 
 
-def _module_listings(page, data):
+def _module_equipment(page, data):
+    """The Equip knowledge layer: evaluations, verdicts and buying guidance.
+    Availability lives on the Market page; this module links there instead of
+    repeating it."""
     market = data["market"]
     gear = "".join(
         f"""<article class="gear-item" data-reveal style="--i:{i}">
@@ -138,25 +165,26 @@ def _module_listings(page, data):
         for i, g in enumerate(market["gear"])
     )
 
-    listings = "".join(
-        f"""<article class="article-row" data-reveal style="--i:{i}">
-      <p class="article-row__cat">{esc(l["ref"])}</p>
-      <div>
-        <h3 class="article-row__title">{esc(l["title"])}</h3>
-        <p class="article-row__excerpt">{esc(l["detail"])}</p>
-      </div>
-      <p class="article-row__meta">{esc(l["meta"])}<br>{esc(l["status"])}</p>
-    </article>"""
-        for i, l in enumerate(market["listings"])
+    guides = "".join(
+        f'<li><a class="tlink" href="{rel(g["href"], DEPTH)}">{esc(g["title"])}'
+        f'<span class="tlink__arrow" aria-hidden="true">&#8594;</span></a>'
+        f'<span class="checklist__detail">{esc(g["detail"])}</span></li>'
+        for g in market["guides"]
     )
 
-    return "Equipment", "Six items, one untested", f"""<div class="gear-grid" id="inspect">{gear}</div>
-  <h3 style="margin-top:3rem" id="price">Motorcycles seen</h3>
-  <p class="lede" style="margin-top:0.6rem;margin-bottom:1.25rem;max-width:62ch">
-    Machines we have inspected or, where marked, only seen. Frontier Moto does not
-    broker sales and holds no stock. These are notes on condition, not offers.
-  </p>
-  <div class="row-list">{listings}</div>"""
+    return "Equipment evaluations", "Tested, not sponsored", f"""<div class="gear-grid" id="evaluations">{gear}</div>
+  <div class="split split--wide-left" style="margin-top:2.5rem">
+    <div data-reveal>
+      <p class="lede" style="max-width:none">{esc(market["note"])}</p>
+      <div class="btn-row" style="margin-top:1.75rem">
+        <a class="btn btn--solid" href="{rel("/market/", DEPTH)}">
+          <span class="btn__label">Sourcing and availability</span></a>
+        <a class="btn" href="{rel("/survive/", DEPTH)}">
+          <span class="btn__label">Roadside preparation</span></a>
+      </div>
+    </div>
+    <ul data-reveal style="--i:1;display:grid;gap:1rem">{guides}</ul>
+  </div>"""
 
 
 MODULES = {
@@ -164,7 +192,7 @@ MODULES = {
     "steps": _module_steps,
     "routes": _module_routes,
     "intervals": _module_intervals,
-    "listings": _module_listings,
+    "equipment": _module_equipment,
 }
 
 
@@ -192,18 +220,21 @@ def build(page, data):
         return f'{n}.{counter["i"]}'
 
     # ── Masthead ─────────────────────────────────────────────────────────────
+    guide_row = ("Guides", f"{len(mine)} listed")
+    if page.get("status_row"):
+        guide_row = tuple(page["status_row"])
     out.append(editorial_hero(
         slot=page["hero_image"],
         depth=DEPTH,
         label_accent=n,
-        label="Frontier Index",
+        label=kind_label(page["slug"]),
         title_lines=[page["title"]],
         lede=page["purpose"],
         compact=True,
         flat=True,
         field=[
             ("Section", f'{n} / {page["title"]}'),
-            ("Guides", f"{len(mine)} listed"),
+            guide_row,
             ("Topics", str(len(page["topics"]))),
             ("Updated", "24 AUG 2026"),
         ],
@@ -215,11 +246,16 @@ def build(page, data):
     else:
         # No full article in this section yet, so the lead block is the section
         # statement and its topic list rather than a card pretending to be one.
+        # The guide button only appears when a listing block exists below it.
+        guide_button = (
+            f"""<a class="btn btn--solid" href="#guides"><span class="btn__label">Guides in this section</span></a>"""
+            if rest else ""
+        )
         body = f"""<div class="split split--wide-left">
       <div data-reveal>
         <p class="lede" style="max-width:none;color:var(--text)">{esc(page["lede"])}</p>
         <div class="btn-row" style="margin-top:1.75rem">
-          <a class="btn btn--solid" href="#guides"><span class="btn__label">Guides in this section</span></a>
+          {guide_button}
           <a class="btn" href="#module"><span class="btn__label">Practical module</span></a>
         </div>
       </div>
@@ -311,7 +347,7 @@ def build(page, data):
     # ── Newsletter ───────────────────────────────────────────────────────────
     out.append(f"""<section class="section" aria-labelledby="notes-title">
   <div class="container">
-    {section_label(sub(), "Field notes", "One email, occasionally", heading_id="notes-title")}
+    {section_label(sub(), "Newsletter", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
   </div>
 </section>""")

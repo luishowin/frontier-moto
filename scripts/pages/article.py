@@ -17,13 +17,9 @@ from components import (
     section_label,
     spec_list,
 )
+from section import SECTION_TITLES
 
 DEPTH = 2
-
-SECTION_TITLES = {
-    "ride": "Ride", "navigate": "Navigate", "survive": "Survive",
-    "maintain": "Maintain", "market": "Market", "news": "News",
-}
 
 
 def _block(b):
@@ -131,7 +127,7 @@ def build(article, data):
 
     out.append(f"""<section class="section" aria-labelledby="notes-title">
   <div class="container">
-    {section_label("End", "Field notes", "One email, occasionally", heading_id="notes-title")}
+    {section_label("End", "Newsletter", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
   </div>
 </section>""")

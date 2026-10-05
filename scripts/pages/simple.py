@@ -114,7 +114,7 @@ def not_found(data):
       <a class="btn btn--solid" href="{rel("/", NOTFOUND_DEPTH)}">
         <span class="btn__label">Home</span></a>
       <a class="btn btn--signal" href="{rel("/market/", NOTFOUND_DEPTH)}">
-        <span class="btn__label">Get moving</span></a>
+        <span class="btn__label">Market</span></a>
     </div>
 
     <nav aria-label="All sections" style="margin-top:3rem">

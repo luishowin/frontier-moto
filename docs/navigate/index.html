@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap">
 
-<link rel="stylesheet" href="../assets/css/index.css?v=9">
+<link rel="stylesheet" href="../assets/css/index.css?v=11">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="../site.webmanifest">
@@ -85,12 +85,19 @@
   <div class="site-header__inner">
     <a class="wordmark" href="../" aria-label="Frontier Moto, home"><span>FRON</span><span>TIER</span><span>MOTO</span></a>
     <nav class="primary-nav" aria-label="Primary">
-      <ul class="primary-nav__list"><li><a class="primary-nav__link" href="../ride/">Ride</a></li><li><a class="primary-nav__link" href="../navigate/" aria-current="page">Navigate</a></li><li><a class="primary-nav__link" href="../survive/">Survive</a></li><li><a class="primary-nav__link" href="../maintain/">Maintain</a></li><li><a class="primary-nav__link" href="../market/">Market</a></li><li><a class="primary-nav__link" href="../news/">News</a></li><li><a class="primary-nav__link" href="../workshop/">Workshop</a></li></ul>
+      <ul class="primary-nav__list"><li><a class="primary-nav__link" href="../ride/">Ride</a></li><li><a class="primary-nav__link" href="../navigate/" aria-current="page">Navigate</a></li><li><a class="primary-nav__link" href="../shop/">Shop</a></li><li><a class="primary-nav__link" href="../maintain/">Maintain</a></li><li><a class="primary-nav__link" href="../equip/">Equip</a></li><li><a class="primary-nav__link" href="../recovery/">Recover</a></li></ul>
     </nav>
     <div class="header__actions">
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"
               aria-label="Switch to dark theme"><svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg><svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/></svg></button>
-      <a class="recovery-action" href="../market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
+      <a class="market-action" href="../market/"><svg class="market-action__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="market-action__text">Market</span><span class="market-action__short">Market</span></a>
+      <div class="more" data-more>
+  <button class="more__button" type="button" aria-expanded="false"
+          aria-controls="more-panel">More</button>
+  <div class="more__panel" id="more-panel" role="menu">
+    <ul><li><a href="../market/">Market</a></li><li><a href="../workshop/">Workshop</a></li><li><a href="../survive/">Survive</a></li><li><a href="../news/">Field Notes</a></li></ul>
+  </div>
+</div>
       <button class="menu-trigger" id="menu-trigger" type="button" aria-expanded="false"
               aria-controls="menu-overlay" aria-label="Open menu"><span></span></button>
     </div>
@@ -104,11 +111,16 @@
             aria-label="Close menu">&#215;</button>
   </div>
   <nav class="menu-overlay__nav" aria-label="Site">
-    <ul><li><a href="../ride/"><span class="menu-overlay__n">01</span>Ride</a></li><li><a href="../navigate/" aria-current="page"><span class="menu-overlay__n">02</span>Navigate</a></li><li><a href="../survive/"><span class="menu-overlay__n">03</span>Survive</a></li><li><a href="../maintain/"><span class="menu-overlay__n">04</span>Maintain</a></li><li><a href="../market/"><span class="menu-overlay__n">05</span>Market</a></li><li><a href="../news/"><span class="menu-overlay__n">06</span>News</a></li><li><a href="../workshop/"><span class="menu-overlay__n">07</span>Workshop</a></li></ul>
+    <p class="menu-overlay__group">Frontier Index</p>
+    <ul><li><a href="../ride/"><span class="menu-overlay__n">01</span>Ride</a></li><li><a href="../navigate/" aria-current="page"><span class="menu-overlay__n">02</span>Navigate</a></li><li><a href="../shop/"><span class="menu-overlay__n">03</span>Shop</a></li><li><a href="../maintain/"><span class="menu-overlay__n">04</span>Maintain</a></li><li><a href="../equip/"><span class="menu-overlay__n">05</span>Equip</a></li><li><a href="../recovery/"><span class="menu-overlay__n">06</span>Recover</a></li></ul>
+    <p class="menu-overlay__group">Services</p>
+    <ul><li><a href="../market/">Market</a></li><li><a href="../workshop/">Workshop</a></li><li><a href="../survive/">Survive</a></li></ul>
+    <p class="menu-overlay__group">Field Notes</p>
+    <ul><li><a href="../news/">Field Notes</a></li></ul>
   </nav>
   <div class="menu-overlay__foot">
-    <a class="recovery-action" href="../market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
-    <p class="menu-overlay__note">Everything you need to get moving. Start in the Market.</p>
+    <p class="menu-overlay__note">East Africa. Kenya, Uganda, Tanzania and Rwanda.<br>
+    <a href="mailto:field@frontiermoto.co.ke">field@frontiermoto.co.ke</a></p>
   </div>
 </div>
 <main id="main">
@@ -266,7 +278,7 @@
 </section>
 <section class="section" aria-labelledby="notes-title">
   <div class="container">
-    <h2 class="section-label" id="notes-title"><span class="section-label__n">02.6</span><span class="section-label__title">Field notes</span><span class="section-label__aside">One email, occasionally</span></h2>
+    <h2 class="section-label" id="notes-title"><span class="section-label__n">02.6</span><span class="section-label__title">Newsletter</span><span class="section-label__aside">One email, occasionally</span></h2>
     <div class="newsletter">
   <div data-reveal>
     <h2 class="newsletter__title">Field notes for the ride ahead</h2>
@@ -305,7 +317,7 @@
         <span class="wordmark" aria-hidden="true"><span>FRON</span><span>TIER</span><span>MOTO</span></span>
         <p class="site-footer__mission">Frontier Moto exists so that riders across East Africa can leave with better information than they arrived with. We publish what we have tested, we say plainly what we do not know, and we build for the rider who is a long way from a workshop.</p>
       </div>
-      <div><h2>Sections</h2><ul class="site-footer__links"><li><a href="../ride/">Ride</a></li><li><a href="../navigate/">Navigate</a></li><li><a href="../survive/">Survive</a></li><li><a href="../maintain/">Maintain</a></li></ul></div><div><h2>More</h2><ul class="site-footer__links"><li><a href="../market/">Market</a></li><li><a href="../news/">News</a></li><li><a href="../workshop/">Workshop</a></li><li><a href="../recovery/">Recovery</a></li></ul></div>
+      <div><h2>Frontier Index</h2><ul class="site-footer__links"><li><a href="../ride/">Ride</a></li><li><a href="../navigate/">Navigate</a></li><li><a href="../survive/">Survive</a></li><li><a href="../maintain/">Maintain</a></li><li><a href="../equip/">Equip</a></li><li><a href="../recovery/">Recover</a></li></ul></div><div><h2>More</h2><ul class="site-footer__links"><li><a href="../market/">Market</a></li><li><a href="../shop/">Shop</a></li><li><a href="../workshop/">Workshop</a></li><li><a href="../survive/">Survive</a></li><li><a href="../news/">Field Notes</a></li></ul></div>
       <div>
         <h2>Contact</h2>
         <p class="site-footer__contact">
@@ -314,7 +326,7 @@
         </p>
         <p class="site-footer__contact" style="margin-top:0.75rem">Social channels are not open yet. Email reaches us directly.</p>
         <div class="site-footer__cta">
-          <a class="recovery-action" href="../market/"><svg class="recovery-action__beacon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="recovery-action__text">Get moving</span><span class="recovery-action__short">Market</span></a>
+          <a class="market-action" href="../market/"><svg class="market-action__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 7.2h8.6V4.1L14.5 8l-4.4 3.9V8.8H1.5V7.2Z"/></svg><span class="market-action__text">Market</span><span class="market-action__short">Market</span></a>
           <a class="btn btn--ghost-light" href="../workshop/">
             <span class="btn__label">Workshop services</span></a>
         </div>
@@ -327,6 +339,6 @@
     </div>
   </div>
 </footer>
-<script src="../assets/js/index.js?v=9" defer></script>
+<script src="../assets/js/index.js?v=11" defer></script>
 </body>
 </html>

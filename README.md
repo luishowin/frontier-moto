@@ -17,7 +17,7 @@ hand written static site.
 ```
 docs/                       the published site (GitHub Pages serves from here)
   index.html                homepage
-  ride/ navigate/ survive/ maintain/ market/ news/   section pages
+  ride/ navigate/ survive/ maintain/ equip/ market/ news/   section pages
   workshop/ recovery/       the two pages with their own structure
   field/<slug>/             article detail pages
   legal/ 404.html           support pages
@@ -156,7 +156,7 @@ of a card, a spec list or a checklist.
 
 | Component | Where |
 | --- | --- |
-| `SiteHeader`, `FrontierWordmark`, `PrimaryNav`, `RecoveryAction`, `SiteFooter` | `shell.py` |
+| `SiteHeader`, `FrontierWordmark`, `PrimaryNav`, `MarketAction`, `MoreMenu`, `SiteFooter` | `shell.py` |
 | `SectionLabel` | `components.section_label` |
 | `EditorialHero` | `components.editorial_hero` |
 | `IndexCard` | `components.index_card` |
@@ -166,7 +166,7 @@ of a card, a spec list or a checklist.
 | `TechnicalSpecList` | `components.spec_list` |
 | `Checklist` | `components.checklist`, `components.steps` |
 | `WorkshopCallout` | `components.workshop_callout` |
-| `RecoveryBanner` | `components.recovery_banner` |
+| `RecoverSection` | `components.recover_section` |
 | `NewsletterForm` | `components.newsletter_form` |
 | Responsive image, `<picture>` and hero preload | `components.image`, `components.srcset`, `components.preload_link` |
 
