@@ -34,7 +34,7 @@ def rel(href, depth):
 # assets with a long cache life and there is no build step to hash filenames,
 # so without this a deploy can leave readers on the previous stylesheet. The
 # house sites use the same query string approach.
-ASSET_VERSION = "9"
+ASSET_VERSION = "12"
 
 
 BEACON = (
@@ -213,7 +213,7 @@ def overlay(site, page, depth):
   </nav>
   <div class="menu-overlay__foot">
     {recovery_action(site, depth)}
-    <p class="menu-overlay__note">{esc(site["recovery"]["note"])}. Start in the Market.</p>
+    <p class="menu-overlay__note">{esc(site["recovery"]["note"])}. Workshop opening soon.</p>
   </div>
 </div>"""
 
@@ -247,13 +247,16 @@ def footer(site, depth):
         <h2>Contact</h2>
         <p class="site-footer__contact">
           {esc(site["brand"]["region"])}<br>
-          <a href="mailto:{esc(site["brand"]["email"])}">{esc(site["brand"]["email"])}</a>
+          <a href="mailto:{esc(site["brand"]["email"])}">{esc(site["brand"]["email"])}</a><br>
+          <a href="tel:+254700000000">{esc(site["brand"].get("phone", "+254 700 000 000"))}</a>
+          <span class="hint">Placeholder, not answered. {esc(site["brand"].get("hours", ""))}</span>
         </p>
         <p class="site-footer__contact" style="margin-top:0.75rem">{esc(f["channels_note"])}</p>
+        <p class="site-footer__contact" style="margin-top:0.5rem">Workshop opening soon. {esc(site["brand"].get("design_credit", ""))}</p>
         <div class="site-footer__cta">
           {recovery_action(site, depth)}
           <a class="btn btn--ghost-light" href="{rel("/workshop/", depth)}">
-            <span class="btn__label">Workshop services</span></a>
+            <span class="btn__label">Workshop, opening soon</span></a>
         </div>
       </div>
     </div>

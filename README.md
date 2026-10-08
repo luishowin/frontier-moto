@@ -1,9 +1,9 @@
 # Frontier Moto
 
 Source for Frontier Moto, an East African motorcycle competence, support and
-culture brand. Riding skills, route notes, roadside survival, maintenance,
-equipment, workshop services and recovery guidance for riders across Kenya,
-Uganda, Tanzania and Rwanda.
+culture brand. Riding guides, used bikes and gear in the market, new spares
+and accessories in the shop, and workshop services with rider recovery
+(opening soon) for riders across Kenya, Uganda, Tanzania and Rwanda.
 
 **Live:** https://luishowin.github.io/frontier-moto/
 
@@ -16,9 +16,10 @@ hand written static site.
 
 ```
 docs/                       the published site (GitHub Pages serves from here)
-  index.html                homepage
-  ride/ navigate/ survive/ maintain/ market/ news/   section pages
-  workshop/ recovery/       the two pages with their own structure
+  index.html                homepage, previews of the four sections
+  ride/ market/ shop/       section pages (ride is the guides library,
+                            market is used goods, shop is new goods)
+  workshop/                 services plus rider recovery, opening soon
   field/<slug>/             article detail pages
   legal/ 404.html           support pages
   robots.txt sitemap.xml site.webmanifest favicon.svg favicon.ico
@@ -29,14 +30,18 @@ docs/                       the published site (GitHub Pages serves from here)
 assets/photos/              SOURCE photographs, not published
 
 content/                    the SOURCE. Never edit docs/*.html by hand
-  site.json                 brand, nav, footer, base URL
-  sections.json             the six index entries and the six section pages,
+  site.json                 brand, nav, footer, base URL, placeholder contact
+  sections.json             the four index entries and the three section pages,
                             plus the optional reference plate some carry
-  articles.json             every article preview, plus full bodies for three
+  articles.json             every article preview, plus full bodies for three.
+                            author_role (staff/pro/guest) drives the byline tag
   checklists.json           checklists and numbered step sequences
   technical.json            routes, service intervals, component callouts
-  market.json               equipment, listings, buying guides
-  workshop.json             services, scope, quoting practice
+  market.json               used bikes, tools and gear listings, buying guides
+  shop.json                 placeholder catalogue: promos, makes, categories,
+                            products with placeholder KSh prices
+  workshop.json             services, rider recovery, opening-soon status,
+                            placeholder contact, quoting practice
   images.json               every image slot: caption and alt text by hand,
                             dimensions and widths written by build_photos.py
 
@@ -48,7 +53,8 @@ scripts/
   check_contrast.py         text over photographs, measured (Pillow)
   shell.py                  head, header, menu overlay, footer
   components.py             the component library
-  pages/                    one module per page kind
+  pages/                    one module per page kind (home, section, shop,
+                            workshop, article, simple)
 ```
 
 ## Build
@@ -78,7 +84,8 @@ configuration in `.claude/launch.json`.
 links resolve, images carry alt text and explicit dimensions, titles and
 descriptions are unique and present, canonical and social metadata exist, JSON-LD
 parses, heading levels never skip, `aria-labelledby` targets exist, every form is
-marked as a demonstration, the Recovery page states that dispatch is not live,
+marked as a demonstration, the Workshop page states that booking and rider
+recovery dispatch are not live (opening soon, placeholder contact),
 and no em dash appears anywhere. It also resolves every `srcset` candidate, so a
 photograph that is referenced but missing fails the build rather than the page.
 
@@ -141,11 +148,11 @@ URLs and the sitemap all derive from that one value.
   set to the lightest value that still clears 4.5:1 so the photograph stays as
   visible as legibility allows. Re-measure when the photographs change.
 - **One type scale.** Every size comes from the `--t-*` tokens. No ad hoc sizes.
-- **Layout.** Full bleed sections, a 1320px `.container` inside. Soft sections
-  alternate down the page.
-- **Motion.** `[data-reveal]` with an `--i` stagger, one shared observer in
-  `index.js`. Never add a per-page observer. Reduced motion shows everything
-  immediately and constructs no observer at all.
+- **Layout.** Full bleed sections, a 1680px `.container` inside with a vertical
+  index list on the homepage. Soft sections alternate down the page.
+- **Motion.** `[data-reveal]` with an `--i` stagger plus a hero entrance,
+  one shared observer in `index.js`. Never add a per-page observer. Reduced
+  motion shows everything immediately and constructs no observer at all.
 - **Copy.** No em dashes. `check.py` enforces it.
 
 ## Components
@@ -159,14 +166,16 @@ of a card, a spec list or a checklist.
 | `SiteHeader`, `FrontierWordmark`, `PrimaryNav`, `RecoveryAction`, `SiteFooter` | `shell.py` |
 | `SectionLabel` | `components.section_label` |
 | `EditorialHero` | `components.editorial_hero` |
-| `IndexCard` | `components.index_card` |
+| `IndexCard` / `IndexRow` | `components.index_card` (legacy), `components.index_row` (vertical list with diagonal link) |
+| `AuthorBadge` | `components.author_badge` (staff/pro/guest byline tags, bottom of card) |
 | `FeatureStory` | `components.feature_story` |
 | `ArticleCard` | `components.article_card` |
 | `ArticleListRow` | `components.article_row` |
 | `TechnicalSpecList` | `components.spec_list` |
 | `Checklist` | `components.checklist`, `components.steps` |
 | `WorkshopCallout` | `components.workshop_callout` |
-| `RecoveryBanner` | `components.recovery_banner` |
+| `RecoveryBanner` | `components.recovery_banner` (workshop opening-soon variant) |
+| `ShopCommerce` | `pages/shop.py` (promos, makes, categories, products; not in `components.py`) |
 | `NewsletterForm` | `components.newsletter_form` |
 | Responsive image, `<picture>` and hero preload | `components.image`, `components.srcset`, `components.preload_link` |
 
@@ -188,9 +197,9 @@ ones:
 
 - **Nothing is upscaled.** Most sources are about 1170px wide, so slot
   dimensions are whatever the photograph can honestly deliver after cropping.
-  Workshop and Recovery draw on portrait sources and their heroes are 687px
-  wide, which is soft on a large screen. A soft hero is worse than a small one,
-  and both were the most apt pictures available for those pages.
+  The Workshop hero draws on a portrait source at 687px wide, which is soft on
+  a large screen. A soft hero is worse than a small one, and it was the most
+  apt picture available for that page.
 - **The focal point is set per photograph.** A centre crop decapitates riders.
 
 `maintain-diagram` stays a generated SVG. Its six numbered callouts are keyed to
@@ -220,8 +229,13 @@ None of it is implied to work in the meantime.
 - **Canonical domain.** `site.base_url` currently points at the GitHub Pages URL,
   which is where the site actually lives. Move it to the real domain when there
   is one, so canonicals do not advertise an address that does not resolve.
-- **Recovery.** No dispatch, no coverage area, no response time, no phone number.
-  The page says so three times and the request form transmits nothing.
+- **Market and Shop.** Nothing is for sale. Market listings are inspected
+  notes or demos, shop items are a placeholder catalogue with placeholder KSh
+  prices, and cart controls are disabled demonstrations.
+- **Workshop and rider recovery.** Opening soon. No booking, no dispatch, no
+  coverage area, no response time yet; the phone number is a placeholder that
+  is not answered. The page says so beside the forms and the forms transmit
+  nothing.
 - **Workshop booking.** No calendar, no inbox, no booking system.
 - **Newsletter.** No list and no endpoint.
 - **Photography.** Stock and reference imagery standing in for commissioned
@@ -229,7 +243,10 @@ None of it is implied to work in the meantime.
   knows, and captioned accordingly. See Provenance above.
 - **Social channels.** None open, so none are linked.
 - **Schema.** Organization only. Not LocalBusiness, which needs a real street
-  address, and no telephone, opening hours, ratings or reviews.
+  address. The placeholder phone, hours and coverage appear in page copy only,
+  never in structured data, and there are no ratings or reviews.
+- **Design credit.** Placeholder content and design work by Luis Howin Maina,
+  stated on the legal page and footer.
 
 ## Deploy
 

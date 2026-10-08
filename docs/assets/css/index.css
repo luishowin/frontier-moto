@@ -40,6 +40,7 @@
 
     --header-bg:     rgba(242, 239, 233, 0.92);
     --overlay-bg:    #121212;
+    --card-bg:       rgba(242, 239, 233, 0.92);
 }
 
 :root[data-theme="dark"] {
@@ -65,6 +66,7 @@
 
     --header-bg:     rgba(19, 20, 22, 0.92);
     --overlay-bg:    #0E0F11;
+    --card-bg:       rgba(19, 20, 22, 0.92);
 }
 
 :root {
@@ -98,12 +100,12 @@
 
     --header-h:      92px;
     --header-h-pin:  66px;
-    --gutter:        clamp(1.25rem, 0.6rem + 2.4vw, 3rem);
+    --gutter:        clamp(1rem, 0.5rem + 2vw, 2rem);
     /* Archivo's zero is narrower than its average lowercase letter, so 68ch
        renders as about 74 characters a line. 62ch lands near 68, inside the
        comfortable range rather than at the top of it. */
     --measure:       62ch;
-    --container:     1320px;
+    --container:     1680px;
 
     --ease:          cubic-bezier(0.22, 0.90, 0.32, 1);
     --dur-fast:      160ms;
@@ -256,7 +258,8 @@ p { text-wrap: pretty; }
     padding-inline: var(--gutter);
 }
 
-.section { padding-block: clamp(3.5rem, 2rem + 5vw, 7rem); }
+.section { padding-block: clamp(4.5rem, 3rem + 6vw, 8.5rem); scroll-margin-top: calc(var(--header-h-pin) + 1rem); }
+main > section + section { margin-top: clamp(1.5rem, 1rem + 2vw, 3rem); }
 .section--tight { padding-block: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
 .section--soft { background: var(--bg-soft); }
 .section--dark {
@@ -470,11 +473,11 @@ p { text-wrap: pretty; }
 
 /* PrimaryNav. The list itself is the flex container rather than the nav with a
    display:contents ul, which drops list semantics in some browsers. */
-.primary-nav { display: flex; align-items: center; }
+.primary-nav { display: flex; align-items: center; margin-left: auto; }
 .primary-nav__list {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 0.4rem + 1.3vw, 2.1rem);
+    gap: clamp(1.25rem, 0.6rem + 1.6vw, 2.5rem);
 }
 .primary-nav__link {
     position: relative;
@@ -637,7 +640,8 @@ body.menu-open { overflow: hidden; }
     position: relative;
     display: flex;
     align-items: flex-end;
-    min-height: min(92vh, 860px);
+    min-height: 100vh;
+    min-height: 100svh;
     padding-top: calc(var(--header-h) + 3rem);
     padding-bottom: clamp(2rem, 1rem + 4vw, 4.5rem);
     background: var(--surface-dark);
@@ -645,7 +649,7 @@ body.menu-open { overflow: hidden; }
     overflow: hidden;
     isolation: isolate;
 }
-.hero--compact { min-height: min(62vh, 560px); }
+.hero--compact { min-height: 100vh; min-height: 100svh; }
 
 .hero__media { position: absolute; inset: 0; z-index: -2; }
 .hero__media img { width: 100%; height: 100%; object-fit: cover; }
@@ -726,8 +730,74 @@ body.menu-open { overflow: hidden; }
 
 /* ── 8. FRONTIER INDEX ────────────────────────────────────────── */
 
-/* Cells divided by rules rather than six identical cards. Sizes vary by
-   design: one wide, one tall, one signal, three standard. */
+/* Vertical list of individual cards. One row per service, number left,
+   body middle, stat plus diagonal link bottom-right. */
+.index-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+}
+.index-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr) auto;
+    gap: clamp(1rem, 0.75rem + 1.5vw, 2.5rem);
+    align-items: start;
+    padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    border: 1px solid var(--line);
+    background: var(--card-bg);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    overflow: hidden;
+    isolation: isolate;
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.index-row:hover { border-color: var(--line-strong); background: var(--bg-soft); }
+.index-row__n {
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    color: var(--text-muted);
+    padding-top: 0.35rem;
+}
+.index-row__title {
+    font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.1rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+.index-row__link::after { content: ""; position: absolute; inset: 0; }
+.index-row:focus-within { outline: 3px solid var(--signal-ink); outline-offset: -3px; }
+:root[data-theme="dark"] .index-row:focus-within { outline-color: var(--signal); }
+.index-row__link:focus-visible { outline: none; }
+.index-row__blurb { margin-top: 0.5rem; font-size: var(--t-small); color: var(--text-muted); max-width: 70ch; }
+.index-row__detail { margin-top: 0.6rem; font-size: var(--t-tiny); color: var(--text-muted); max-width: 80ch; }
+.index-row__side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    min-height: 100%;
+}
+.index-row__stat { color: var(--text-muted); text-align: right; font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: var(--track-label); text-transform: uppercase; }
+.index-row__stat b { display: block; color: var(--text); font-size: var(--t-small); letter-spacing: 0.04em; }
+.index-row__go {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--text);
+    margin-top: auto;
+    align-self: flex-end;
+}
+.index-row__go:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+/* Legacy bento cells kept for compatibility. New home uses .index-list. */
 .index-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -744,6 +814,7 @@ body.menu-open { overflow: hidden; }
     border-bottom: 1px solid var(--line);
     overflow: hidden;
     isolation: isolate;
+    background: var(--card-bg);
     transition: background var(--dur) var(--ease);
 }
 .index-card:hover { background: var(--bg-soft); }
@@ -910,6 +981,7 @@ body.menu-open { overflow: hidden; }
     padding: clamp(1.15rem, 0.9rem + 0.8vw, 1.6rem);
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
+    background: var(--card-bg);
 }
 .checklist__head { display: flex; align-items: baseline; gap: 0.7rem; }
 .checklist__n {
@@ -1064,7 +1136,7 @@ body.menu-open { overflow: hidden; }
     gap: clamp(1.25rem, 0.8rem + 1.6vw, 2.25rem);
 }
 
-.article-card { position: relative; display: flex; flex-direction: column; }
+.article-card { position: relative; display: flex; flex-direction: column; background: var(--card-bg); padding: clamp(1rem, 0.85rem + 0.6vw, 1.5rem); border: 1px solid var(--line); }
 .article-card__media { overflow: hidden; background: var(--bg-soft); margin-bottom: 1rem; }
 .article-card__media img { width: 100%; height: auto; transition: transform var(--dur-slow) var(--ease); }
 .article-card:hover .article-card__media img { transform: scale(1.04); }
@@ -1093,7 +1165,16 @@ body.menu-open { overflow: hidden; }
     letter-spacing: var(--track-label);
     text-transform: uppercase;
     color: var(--text-muted);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
+.card-tags, .row-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.card-tags .tag-role, .card-tags .tag-upcoming,
+.row-tags .tag-role, .row-tags .tag-upcoming { margin-left: 0; }
+.row-tags { margin-top: 0.6rem; }
 
 /* ArticleListRow. The denser listing form. */
 .row-list { border-top: 1px solid var(--line-strong); }
@@ -1103,8 +1184,9 @@ body.menu-open { overflow: hidden; }
     grid-template-columns: 8.5rem minmax(0, 1fr) 7rem;
     gap: clamp(0.75rem, 0.4rem + 1.2vw, 2rem);
     align-items: baseline;
-    padding: clamp(0.95rem, 0.75rem + 0.7vw, 1.4rem) 0;
+    padding: clamp(0.95rem, 0.75rem + 0.7vw, 1.4rem) clamp(0.75rem, 0.5rem + 0.8vw, 1.25rem);
     border-bottom: 1px solid var(--line);
+    background: var(--card-bg);
     transition: background var(--dur-fast) var(--ease);
 }
 .article-row:hover { background: var(--bg-soft); }
@@ -1135,6 +1217,24 @@ body.menu-open { overflow: hidden; }
     color: var(--text-muted);
     vertical-align: 0.15em;
 }
+
+/* Tiny byline role tags. Standard CMS field author_role: staff/pro/guest. */
+.tag-role {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 1px;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    vertical-align: 0.15em;
+}
+.tag-role--pro { color: var(--signal-ink); border-color: var(--signal-ink); }
+:root[data-theme="dark"] .tag-role--pro { color: var(--signal); border-color: var(--signal); }
+.tag-role--guest { border-style: dashed; }
 
 /* Static topic navigation. Not a filter, and does not pretend to be one. */
 .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -1167,6 +1267,7 @@ body.menu-open { overflow: hidden; }
     border-bottom: 1px solid var(--line);
     display: flex;
     flex-direction: column;
+    background: var(--card-bg);
 }
 .gear-item__top {
     display: flex;
@@ -1395,7 +1496,7 @@ body.menu-open { overflow: hidden; }
 .split--wide-left { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
 
 .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.related-card { background: var(--bg); padding: clamp(1.15rem, 0.9rem + 0.8vw, 1.6rem); position: relative; transition: background var(--dur-fast) var(--ease); }
+.related-card { background: var(--card-bg); padding: clamp(1.15rem, 0.9rem + 0.8vw, 1.6rem); position: relative; transition: background var(--dur-fast) var(--ease); }
 .related-card:hover { background: var(--bg-soft); }
 .related-card__n { font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: var(--track-label); color: var(--text-muted); }
 .related-card__title { margin-top: 0.5rem; font-size: var(--t-h3); text-transform: uppercase; }
@@ -1453,12 +1554,24 @@ body.menu-open { overflow: hidden; }
 
 [data-reveal] {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(28px) scale(0.995);
     transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
-    transition-delay: calc(var(--i, 0) * 70ms);
+    transition-delay: calc(var(--i, 0) * 90ms);
+    will-change: opacity, transform;
 }
 [data-reveal].is-visible { opacity: 1; transform: none; }
 html:not(.js) [data-reveal] { opacity: 1; transform: none; }
+
+/* Hero entrance on first paint. Respects reduced motion via the block below. */
+@keyframes hero-rise {
+    from { opacity: 0; transform: translateY(26px); }
+    to { opacity: 1; transform: none; }
+}
+.hero__inner > * { animation: hero-rise 800ms var(--ease) both; }
+.hero__inner > *:nth-child(2) { animation-delay: 90ms; }
+.hero__inner > *:nth-child(3) { animation-delay: 180ms; }
+.hero__inner > *:nth-child(4) { animation-delay: 270ms; }
+.hero__inner > *:nth-child(5) { animation-delay: 360ms; }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -1469,6 +1582,7 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
         scroll-behavior: auto !important;
     }
     [data-reveal] { opacity: 1; transform: none; }
+    .hero__inner > * { animation: none; }
 }
 
 /* ── 20. RESPONSIVE ───────────────────────────────────────────── */
@@ -1511,6 +1625,9 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
     .index-card--wide { grid-column: span 1; }
     .index-card { min-height: 0; }
     .index-card--media { min-height: 300px; }
+    .index-row { grid-template-columns: minmax(0, 1fr); }
+    .index-row__side { flex-direction: row; align-items: center; justify-content: space-between; }
+    .index-row__stat { text-align: left; }
 
     /* CTAs stack full width: easier targets, no squeezed two button rows. */
     .btn-row .btn { flex: 1 1 100%; text-align: center; }
@@ -1537,7 +1654,7 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
     .site-footer__top { grid-template-columns: minmax(0, 1fr); }
     .site-footer__meta { flex-direction: column; }
 
-    .hero { min-height: min(88vh, 720px); }
+    .hero { min-height: 100vh; min-height: 100svh; }
     .hero__title { max-width: none; }
     .step { grid-template-columns: 2.5rem minmax(0, 1fr); }
 }
@@ -1633,6 +1750,7 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
     border-bottom: 1px solid var(--line);
     display: flex;
     flex-direction: column;
+    background: var(--card-bg);
 }
 .service__ref {
     font-family: var(--font-mono);
@@ -1671,4 +1789,142 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 @media (max-width: 720px) {
     .fact-list li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
     .fact-list--marks li { grid-template-columns: 1.5rem minmax(0, 1fr); }
+}
+
+/* ── 22. SHOP COMMERCE ────────────────────────────────────────── */
+
+/* Promo grid: large feature left, tall seller right, two smalls beneath. */
+.promo-grid {
+    display: grid;
+    grid-template-columns: 1.35fr minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.promo-grid > :nth-child(2) { grid-row: span 2; }
+.promo {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+    background: var(--card-bg);
+    min-height: 230px;
+    overflow: hidden;
+}
+.promo--large { grid-column: span 2; min-height: 300px; }
+.promo__badge {
+    display: inline-block;
+    background: var(--signal);
+    color: var(--on-signal);
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--track-label);
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+    margin-bottom: 0.9rem;
+}
+.promo__title { font-size: var(--t-h3); text-transform: uppercase; letter-spacing: -0.015em; }
+.promo__detail { margin-top: 0.5rem; font-size: var(--t-tiny); color: var(--text-muted); }
+.promo__price { margin-top: 1rem; font-family: var(--font-mono); font-size: var(--t-small); font-weight: 700; }
+.promo__price s { color: var(--text-muted); font-weight: 400; margin-left: 0.5rem; }
+.promo__media { overflow: hidden; background: var(--bg-soft); }
+.promo__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Pick by bike make. Letter squares carry the index, makes sit beside. */
+.makes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: clamp(1rem, 0.75rem + 1vw, 2rem);
+}
+.makes__group { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+.makes__letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem; height: 1.75rem;
+    border: 1px solid var(--signal-ink);
+    border-radius: 1px;
+    color: var(--signal-ink);
+    font-family: var(--font-mono);
+    font-size: var(--t-label);
+    font-weight: 700;
+}
+:root[data-theme="dark"] .makes__letter { color: var(--signal); border-color: var(--signal); }
+.makes__group ul { display: grid; gap: 0.15rem; font-size: var(--t-small); color: var(--text-muted); }
+
+/* Pick by category. Text left, reference image right. */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.cat-tile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: 1rem;
+    align-items: center;
+    padding: clamp(1rem, 0.85rem + 0.8vw, 1.5rem);
+    background: var(--card-bg);
+    min-height: 130px;
+}
+.cat-tile__title { font-size: var(--t-label); font-family: var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; }
+.cat-tile__count { margin-top: 0.4rem; font-size: var(--t-tiny); color: var(--text-muted); }
+.cat-tile__media { overflow: hidden; background: var(--bg-soft); }
+.cat-tile__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Popular products. Hairline cells, stock rail, price row, demo cart. */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1rem, 0.85rem + 0.8vw, 1.5rem);
+    background: var(--card-bg);
+    min-height: 320px;
+}
+.product__stock { font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+.product__stock::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: 0.45rem; vertical-align: 1px; }
+.product__media { overflow: hidden; background: var(--bg-soft); margin-bottom: 1rem; }
+.product__media img { width: 100%; height: auto; }
+.product__name { font-size: var(--t-h4); }
+.product__cat { margin-top: 0.3rem; font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--text-muted); }
+.product__price { margin-top: 0.7rem; font-family: var(--font-mono); font-size: var(--t-small); font-weight: 700; }
+.product__price s { color: var(--text-muted); font-weight: 400; margin-left: 0.5rem; }
+.product__cart {
+    position: absolute;
+    right: 1rem; bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem; height: 2.5rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    font-size: 1.1rem;
+}
+.product__cart:disabled { opacity: 0.55; cursor: not-allowed; }
+
+@media (max-width: 960px) {
+    .promo-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .promo-grid > :nth-child(2) { grid-row: auto; }
+    .promo--large { grid-column: span 2; }
+    .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+    .promo-grid { grid-template-columns: minmax(0, 1fr); }
+    .promo--large { grid-column: span 1; }
+    .cat-grid { grid-template-columns: minmax(0, 1fr); }
+    .product-grid { grid-template-columns: minmax(0, 1fr); }
 }

@@ -1,9 +1,9 @@
 """
-Workshop.
+Workshop, opening soon.
 
-Scope first, then services, then how to prepare a machine, then how the work is
-actually quoted and recorded, then the booking control. The practical detail is
-the trust building, not adjectives about quality.
+Scope first, then services including rider recovery, then recovery detail with
+placeholder contact, then preparation, quoting, booking demo, related, newsletter.
+Nothing here is bookable or dispatchable yet.
 """
 
 from components import (
@@ -23,36 +23,37 @@ DEPTH = 1
 def build(data):
     site = data["site"]
     ws = data["workshop"]
+    contact = ws.get("contact", {})
+    recovery = ws.get("recovery", {})
 
     out = []
 
     out.append(editorial_hero(
         slot="hero-workshop",
         depth=DEPTH,
-        label_accent="07",
-        label="Workshop",
+        label_accent="04",
+        label="Workshop, opening soon",
         title_lines=["Workshop"],
         lede=(
-            "Service, inspection and diagnostics for the machines people actually ride "
-            "here. Commuters and working bikes as readily as touring machines."
+            ws["intro"] + " " + ws.get("status_note", "")
         ),
         compact=True,
         flat=True,
         actions=(
             '<a class="btn btn--ghost-light" href="#services">'
             '<span class="btn__label">Service categories</span></a>'
-            '<a class="btn btn--signal" href="#booking">'
-            '<span class="btn__label">Booking enquiry</span></a>'
+            '<a class="btn btn--signal" href="#recovery">'
+            '<span class="btn__label">Rider recovery</span></a>'
         ),
         field=[
-            ("Section", "07 / Workshop"),
+            ("Section", "04 / Workshop"),
             ("Services", f'{len(ws["services"])} categories'),
-            ("Records", "Written, every job"),
+            ("Status", ws.get("status", "Opening soon")),
             ("Updated", "24 AUG 2026"),
         ],
     ))
 
-    # ── 07.1 Scope ───────────────────────────────────────────────────────────
+    # ── 04.1 Scope ───────────────────────────────────────────────────────────
     handles = "".join(
         f'<li><span class="fact-list__mark">&#43;</span><span>{esc(h)}</span></li>'
         for h in ws["handles"]
@@ -64,11 +65,15 @@ def build(data):
 
     out.append(f"""<section class="section" aria-labelledby="scope-title">
   <div class="container">
-    {section_label("07.1", "What the workshop handles", "And what it does not", heading_id="scope-title")}
-    <p class="lede" style="margin-bottom:2rem;max-width:64ch">{esc(ws["intro"])}</p>
+    {section_label("04.1", "What the workshop handles", "Opening soon", heading_id="scope-title")}
+    <p class="lede" style="margin-bottom:1rem;max-width:64ch">{esc(ws["intro"])}</p>
+    <p class="disclaimer" style="margin-bottom:2rem;max-width:none">
+      <strong>{esc(ws.get("status", "Opening soon"))}.</strong>
+      {esc(ws.get("status_note", ""))}
+    </p>
     <div class="split">
       <div data-reveal>
-        <h3 style="margin-bottom:1rem">Handled here</h3>
+        <h3 style="margin-bottom:1rem">Handled here at opening</h3>
         <ul class="fact-list fact-list--marks">{handles}</ul>
       </div>
       <div data-reveal style="--i:1">
@@ -83,7 +88,7 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 07.2 Services ────────────────────────────────────────────────────────
+    # ── 04.2 Services ────────────────────────────────────────────────────────
     services = "".join(
         f"""<article class="service" data-reveal style="--i:{i}">
       <p class="service__ref">{esc(s["ref"])}</p>
@@ -99,19 +104,68 @@ def build(data):
 
     out.append(f"""<section class="section section--soft" id="services" aria-labelledby="services-title">
   <div class="container">
-    {section_label("07.2", "Service and inspection", f'{len(ws["services"])} categories', heading_id="services-title")}
+    {section_label("04.2", "Service and inspection", f'{len(ws["services"])} categories, opening soon', heading_id="services-title")}
     <div class="service-grid">{services}</div>
     <p class="scroll-hint" style="margin-top:1.25rem">
       Times are typical rather than promised, and depend on what the machine turns out
-      to need. Prices are quoted per job after the bike is seen.
+      to need. Prices are quoted per job after the bike is seen. Nothing bookable yet.
     </p>
   </div>
 </section>""")
 
-    # ── 07.3 Preparation ─────────────────────────────────────────────────────
-    out.append(f"""<section class="section" aria-labelledby="prep-title">
+    # ── 04.3 Recovery ────────────────────────────────────────────────────────
+    how = "".join(
+        f'<li><span class="fact-list__k">Step {i+1}</span><span>{esc(h)}</span></li>'
+        for i, h in enumerate(recovery.get("how", []))
+    )
+    needs = "".join(
+        f'<li><span class="fact-list__mark">&#43;</span><span>{esc(n)}</span></li>'
+        for n in recovery.get("needs", [])
+    )
+    limits = "".join(
+        f'<li><span class="fact-list__mark">&#8594;</span><span>{esc(n)}</span></li>'
+        for n in recovery.get("limits", [])
+    )
+    out.append(f"""<section class="section" id="recovery" aria-labelledby="recovery-title">
   <div class="container">
-    {section_label("07.3", "Preparing your motorcycle", "Five things, before you arrive", heading_id="prep-title")}
+    {section_label("04.3", recovery.get("title", "Rider recovery"), recovery.get("status", "Opening soon"), heading_id="recovery-title")}
+    <p class="lede" style="margin-bottom:1rem;max-width:64ch">{esc(recovery.get("model", ""))}</p>
+    <p class="disclaimer" style="margin-bottom:2rem;max-width:none">
+      <strong>Recovery dispatch is not live.</strong>
+      No rider is on standby and no call is answered yet. If anyone is injured,
+      contact local emergency services first. Frontier Moto is not an emergency service.
+    </p>
+    <div class="split">
+      <div data-reveal>
+        <h3 style="margin-bottom:1rem">How it will work</h3>
+        <ul class="fact-list">{how}</ul>
+        <h3 style="margin:1.5rem 0 1rem">Placeholder contact</h3>
+        <ul class="fact-list">
+          <li><span class="fact-list__k">Phone</span><span><a href="tel:+254700000000">{esc(contact.get("phone", "+254 700 000 000"))}</a> ({esc(contact.get("phone_note", "Placeholder"))})</span></li>
+          <li><span class="fact-list__k">Email</span><span><a href="mailto:{esc(contact.get("email", site["brand"]["email"]))}">{esc(contact.get("email", site["brand"]["email"]))}</a></span></li>
+          <li><span class="fact-list__k">Hours</span><span>{esc(contact.get("hours", ""))}</span></li>
+          <li><span class="fact-list__k">Base</span><span>{esc(contact.get("base", ""))}</span></li>
+          <li><span class="fact-list__k">Coverage</span><span>{esc(contact.get("coverage", ""))}</span></li>
+        </ul>
+      </div>
+      <div data-reveal style="--i:1">
+        <h3 style="margin-bottom:1rem">Have this ready when you call</h3>
+        <ul class="fact-list fact-list--marks">{needs}</ul>
+        <h3 style="margin:1.5rem 0 1rem">Limits, stated plainly</h3>
+        <ul class="fact-list fact-list--marks">{limits}</ul>
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn" href="{rel("/ride/", DEPTH)}">
+            <span class="btn__label">Roadside guidance in Ride</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>""")
+
+    # ── 04.4 Preparation ─────────────────────────────────────────────────────
+    out.append(f"""<section class="section section--soft" aria-labelledby="prep-title">
+  <div class="container">
+    {section_label("04.4", "Preparing your motorcycle", "Five things, before you arrive", heading_id="prep-title")}
     <div class="split split--wide-left">
       <div data-reveal>{checklist(data["checklists"]["checklists"]["workshop-prep"], 0)}</div>
       <div data-reveal style="--i:1">
@@ -127,22 +181,22 @@ def build(data):
           noticing the detail that matters.
         </p>
         <div class="btn-row" style="margin-top:1.5rem">
-          <a class="btn" href="{rel("/maintain/", DEPTH)}">
-            <span class="btn__label">Maintenance guides</span></a>
+          <a class="btn" href="{rel("/ride/", DEPTH)}">
+            <span class="btn__label">Maintenance guides in Ride</span></a>
         </div>
       </div>
     </div>
   </div>
 </section>""")
 
-    # ── 07.4 How we work ─────────────────────────────────────────────────────
+    # ── 04.5 How we work ─────────────────────────────────────────────────────
     practical = "".join(
         f'<li><span class="fact-list__k">{esc(p["k"])}</span><span>{esc(p["v"])}</span></li>'
         for p in ws["practical"]
     )
-    out.append(f"""<section class="section section--soft" aria-labelledby="how-title">
+    out.append(f"""<section class="section" aria-labelledby="how-title">
   <div class="container">
-    {section_label("07.4", "How the work is quoted and recorded", "Practical detail", heading_id="how-title")}
+    {section_label("04.5", "How the work is quoted and recorded", "Practical detail", heading_id="how-title")}
     <div class="split split--wide-left">
       <ul class="fact-list" data-reveal>{practical}</ul>
       <figure data-reveal style="--i:1;margin:0">
@@ -155,12 +209,12 @@ def build(data):
   </div>
 </section>""")
 
-    # ── 07.5 Booking ─────────────────────────────────────────────────────────
+    # ── 04.6 Booking ─────────────────────────────────────────────────────────
     options = "".join(f'<option>{esc(s["name"])}</option>' for s in ws["services"])
 
-    out.append(f"""<section class="section" id="booking" aria-labelledby="booking-title">
+    out.append(f"""<section class="section section--soft" id="booking" aria-labelledby="booking-title">
   <div class="container">
-    {section_label("07.5", "Booking enquiry", "Demonstration only", heading_id="booking-title")}
+    {section_label("04.6", "Booking enquiry", "Opening soon, demonstration only", heading_id="booking-title")}
     <div class="split">
       <div data-reveal>
         <p class="lede" style="max-width:none">
@@ -168,16 +222,17 @@ def build(data):
           whether it is a morning job, a day job, or something we would refer out.
         </p>
         <p class="disclaimer" style="margin-top:1.5rem;max-width:none">
-          <strong>This booking form is a front end demonstration.</strong>
+          <strong>Workshop is opening soon. This booking form is a front end demonstration.</strong>
           It is not connected to a calendar, an inbox or a booking system. Nothing you
-          enter is stored or sent, and no appointment is created. Until a real endpoint
-          is connected, use the email address in the footer.
+          enter is stored or sent, and no appointment is created. Placeholder contact:
+          {esc(contact.get("phone", ""))} ({esc(contact.get("phone_note", ""))}), {esc(contact.get("hours", ""))}.
+          Until opening, use the email address in the footer.
         </p>
       </div>
 
       <form data-reveal style="--i:1" data-demo-form novalidate
             aria-labelledby="booking-form-title"
-            data-demo-message="Demonstration only. No booking was created and nothing was sent. To reach the workshop for real, use the email address in the footer.">
+            data-demo-message="Demonstration only. Workshop is opening soon. No booking was created and nothing was sent.">
         <h3 id="booking-form-title" style="margin-bottom:1.25rem">Enquiry details</h3>
         <div class="form-grid">
           <div class="field">
@@ -225,20 +280,20 @@ def build(data):
 </section>""")
 
     related = [
-        {"number": "01", "title": "Maintain", "blurb": "Intervals, diagnostics and what to check yourself.", "href": "/maintain/"},
-        {"number": "02", "title": "Market", "blurb": "Buying guidance and pre-purchase inspection.", "href": "/market/"},
-        {"number": "03", "title": "Recovery", "blurb": "What to do before the machine reaches a workshop.", "href": "/recovery/"},
+        {"number": "01", "title": "Ride", "blurb": "Guides, maintenance and roadside knowledge.", "href": "/ride/"},
+        {"number": "02", "title": "Market", "blurb": "Used bikes, tools and gear, plus buying guidance.", "href": "/market/"},
+        {"number": "03", "title": "Shop", "blurb": "New spares, accessories, oils, kits, nav and audio.", "href": "/shop/"},
     ]
-    out.append(f"""<section class="section section--soft" aria-labelledby="related-title">
+    out.append(f"""<section class="section" aria-labelledby="related-title">
   <div class="container">
-    {section_label("07.6", "Adjacent sections", "Where this leads", heading_id="related-title")}
+    {section_label("04.7", "Adjacent sections", "Where this leads", heading_id="related-title")}
     {related_cards(related, DEPTH)}
   </div>
 </section>""")
 
-    out.append(f"""<section class="section" aria-labelledby="notes-title">
+    out.append(f"""<section class="section section--soft" aria-labelledby="notes-title">
   <div class="container">
-    {section_label("07.7", "Field notes", "One email, occasionally", heading_id="notes-title")}
+    {section_label("04.8", "Field notes", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
   </div>
 </section>""")
@@ -253,11 +308,10 @@ def page_meta(site, data):
         "out": "workshop/index.html",
         "depth": DEPTH,
         "slug": "workshop",
-        "title": "Workshop",
+        "title": "Workshop, opening soon",
         "description": (
-            "Routine service, pre-route and pre-purchase inspection, diagnostics and "
-            "suspension setup, with the scope, preparation and quoting practice stated "
-            "plainly."
+            "Workshop opening soon: routine service, inspection, diagnostics and rider "
+            "recovery dispatch, with placeholder contact stated plainly."
         ),
         "dark_hero": True,
         "preload_image": "hero-workshop",

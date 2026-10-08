@@ -9,6 +9,7 @@ the reading sequence on narrow screens.
 
 from components import (
     article_card,
+    author_badge,
     esc,
     fmt_date,
     image,
@@ -21,8 +22,7 @@ from components import (
 DEPTH = 2
 
 SECTION_TITLES = {
-    "ride": "Ride", "navigate": "Navigate", "survive": "Survive",
-    "maintain": "Maintain", "market": "Market", "news": "News",
+    "ride": "Ride", "market": "Market", "shop": "Shop",
 }
 
 
@@ -79,7 +79,7 @@ def build(article, data):
     </h1>
     <p class="lede" style="margin-top:1.1rem;max-width:56ch">{esc(article["dek"])}</p>
     <p class="feature__eyebrow" style="margin-top:1.75rem;border-bottom:none;padding-bottom:0">
-      <span>{esc(article["author"])}</span>
+      <span>{esc(article["author"])}</span>{author_badge(article)}
       <span>{esc(article["location"])}</span>
       <span>
         <time datetime="{esc(article["date"])}">{esc(fmt_date(article["date"]))}</time>

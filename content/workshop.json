@@ -1,5 +1,15 @@
 {
   "intro": "The workshop handles routine service, diagnostics and pre-route inspections. We work on the machines people actually ride here, which means commuters and working bikes as readily as touring machines.",
+  "status": "Opening soon",
+  "status_note": "Workshop and rider recovery are opening soon. Nothing is bookable or dispatchable yet. The forms on this page are demonstrations that transmit nothing.",
+  "contact": {
+    "phone": "+254 700 000 000",
+    "phone_note": "Placeholder number, not answered yet.",
+    "email": "field@frontiermoto.co.ke",
+    "hours": "Mon to Sat 08:00 to 17:00 EAT (planned)",
+    "base": "Nanyuki, Kenya (planned)",
+    "coverage": "Nairobi to Nanyuki corridor (planned, to be confirmed at opening)"
+  },
   "handles": [
     "Routine service and scheduled maintenance",
     "Pre-route and pre-purchase inspection",
@@ -55,8 +65,38 @@
       "summary": "Tyres, brakes, visibility, electrical sealing and chain protection ahead of the long rains.",
       "time": "2 hours",
       "output": "Seasonal checklist completed and signed"
+    },
+    {
+      "ref": "WS-07",
+      "name": "Rider recovery",
+      "summary": "Stuck somewhere? Call and the nearest rider is dispatched. Roadside fix first where possible, transport where not. Opening soon.",
+      "time": "Opening soon",
+      "output": "Call record and cost agreed before loading"
     }
   ],
+  "recovery": {
+    "title": "Rider recovery",
+    "model": "Call and the nearest rider is dispatched.",
+    "status": "Opening soon",
+    "how": [
+      "Call the workshop line with location, machine and fault.",
+      "We confirm position and safety status by call back.",
+      "Roadside fix attempted first where the fault allows it.",
+      "Transport to a workshop where it does not.",
+      "Cost agreed before anything is loaded, not after."
+    ],
+    "needs": [
+      "Map screenshot with road, direction and last town passed",
+      "Make, model, weight, and whether the rear wheel turns",
+      "Symptom in plain words, not a diagnosis",
+      "Safety status, water, daylight and whether you are alone"
+    ],
+    "limits": [
+      "Not an emergency or medical service. If anyone is injured, contact local emergency services first.",
+      "No rider on standby, no live coverage map and no answered line until opening.",
+      "Coverage, hours and phone details will be stated here in full at launch."
+    ]
+  },
   "practical": [
     { "k": "How we quote", "v": "Labour by time, parts at cost plus a stated margin. You are called before the estimate is exceeded." },
     { "k": "Parts", "v": "We will fit parts you supply, and we will tell you plainly if we think they are the wrong ones." },

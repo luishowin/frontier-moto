@@ -1,0 +1,182 @@
+{
+  "note": "Placeholder catalogue for new goods. Spare parts, rider and bike accessories, oils, kits, maps, navigation systems and audio. Categories will be refined as shop operations grow. Nothing for sale yet. Prices are placeholders in Kenya shillings.",
+  "categories": [
+    "Spare parts",
+    "Rider accessories",
+    "Bike accessories",
+    "Oils",
+    "Kits",
+    "Maps",
+    "Navigation",
+    "Audio"
+  ],
+  "promos": [
+    {
+      "badge": "-10%",
+      "title": "Brake pads, sintered",
+      "detail": "Front sets for common commuter sizes in one order.",
+      "price": "KSh 12,000",
+      "old_price": "KSh 14,000",
+      "image": "feature-chain",
+      "sizes": "(max-width: 960px) 100vw, 55vw"
+    },
+    {
+      "badge": "Top seller",
+      "title": "Dual purpose tyres",
+      "detail": "Road biased pairs for mixed tarmac and murram.",
+      "price": "KSh 30,400",
+      "old_price": "KSh 34,000",
+      "image": "index-equip",
+      "sizes": "(max-width: 960px) 100vw, 30vw"
+    },
+    {
+      "badge": null,
+      "title": "Engine oil 10W-40",
+      "detail": "1 litre, routine service grade.",
+      "price": "KSh 1,040",
+      "old_price": "KSh 1,400",
+      "image": "hero-maintain",
+      "sizes": "(max-width: 960px) 100vw, 25vw"
+    },
+    {
+      "badge": null,
+      "title": "Suspension service kit",
+      "detail": "Seals, oil and setup notes for load.",
+      "price": "KSh 6,040",
+      "old_price": "KSh 7,000",
+      "image": "workshop-bay",
+      "sizes": "(max-width: 960px) 100vw, 25vw"
+    }
+  ],
+  "brands": [
+    { "letter": "B", "makes": ["Bajaj", "BMW"] },
+    { "letter": "H", "makes": ["Hero", "Honda"] },
+    { "letter": "K", "makes": ["Kawasaki", "KTM"] },
+    { "letter": "S", "makes": ["Suzuki"] },
+    { "letter": "T", "makes": ["TVS"] },
+    { "letter": "Y", "makes": ["Yamaha"] }
+  ],
+  "items": [
+    {
+      "ref": "SH-01",
+      "category": "Spare parts",
+      "name": "Chain and sprocket set, common sizes",
+      "verdict": "Untested",
+      "summary": "Placeholder. Sizing and stock to be confirmed at opening.",
+      "price": "KSh 8,500",
+      "old_price": "KSh 9,800",
+      "stock": "Opening soon",
+      "image": "feature-chain",
+      "spec": [
+        { "k": "Use", "v": "Chain drive commuters" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-02",
+      "category": "Rider accessories",
+      "name": "Vented gloves, short cuff",
+      "verdict": "Untested",
+      "summary": "Placeholder. Sizing and stock to be confirmed at opening.",
+      "price": "KSh 3,200",
+      "old_price": "KSh 3,900",
+      "stock": "Opening soon",
+      "image": "market-gear",
+      "spec": [
+        { "k": "Use", "v": "Daily and touring" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-03",
+      "category": "Bike accessories",
+      "name": "Tank bag with map window",
+      "verdict": "Untested",
+      "summary": "Placeholder. Fitment list to be confirmed at opening.",
+      "price": "KSh 6,500",
+      "old_price": "KSh 7,400",
+      "stock": "Opening soon",
+      "image": "index-equip",
+      "spec": [
+        { "k": "Use", "v": "Touring" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-04",
+      "category": "Oils",
+      "name": "Engine oil, 10W-40, 1 litre",
+      "verdict": "Untested",
+      "summary": "Placeholder. Brand and spec to be confirmed at opening.",
+      "price": "KSh 1,040",
+      "old_price": "KSh 1,400",
+      "stock": "Opening soon",
+      "image": "hero-maintain",
+      "spec": [
+        { "k": "Use", "v": "Routine service" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-05",
+      "category": "Kits",
+      "name": "Puncture repair kit with inflator",
+      "verdict": "Untested",
+      "summary": "Placeholder. Contents list to be confirmed at opening.",
+      "price": "KSh 2,800",
+      "old_price": "KSh 3,300",
+      "stock": "Opening soon",
+      "image": "hero-maintain",
+      "spec": [
+        { "k": "Use", "v": "Tubeless" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-06",
+      "category": "Maps",
+      "name": "Regional road map, laminated",
+      "verdict": "Untested",
+      "summary": "Placeholder. Coverage and edition to be confirmed at opening.",
+      "price": "KSh 900",
+      "old_price": "KSh 1,200",
+      "stock": "Opening soon",
+      "image": "index-navigate",
+      "spec": [
+        { "k": "Use", "v": "Route planning" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-07",
+      "category": "Navigation",
+      "name": "Handlebar phone mount, vibration damped",
+      "verdict": "Untested",
+      "summary": "Placeholder. Mount standard to be confirmed at opening.",
+      "price": "KSh 2,400",
+      "old_price": "KSh 2,900",
+      "stock": "Opening soon",
+      "image": "hero-news",
+      "spec": [
+        { "k": "Use", "v": "Offline maps" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    },
+    {
+      "ref": "SH-08",
+      "category": "Audio",
+      "name": "Helmet intercom, single set",
+      "verdict": "Untested",
+      "summary": "Placeholder. Range and pairing to be confirmed at opening.",
+      "price": "KSh 9,500",
+      "old_price": "KSh 11,000",
+      "stock": "Opening soon",
+      "image": "index-ride",
+      "spec": [
+        { "k": "Use", "v": "Rider to pillion" },
+        { "k": "Status", "v": "Placeholder" }
+      ]
+    }
+  ],
+  "about": "Frontier Moto Shop stocks new spares, accessories, oils, kits, maps, navigation and audio for riders across East Africa. The catalogue below is a placeholder that will grow with operations. Nothing is for sale yet. Prices are placeholders in Kenya shillings."
+}

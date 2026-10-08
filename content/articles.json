@@ -3,7 +3,7 @@
   "articles": [
     {
       "slug": "escarpment-wet-season",
-      "section": "navigate",
+      "section": "ride",
       "category": "Route feature",
       "issue": "Field 014",
       "title": "The escarpment in wet season",
@@ -12,6 +12,7 @@
       "date": "2026-08-11",
       "read": "9 min",
       "author": "Frontier Field Desk",
+      "author_role": "staff",
       "image": "feature-escarpment",
       "image_alt": "A forested escarpment with exposed rock cliffs dropping away to a wide wooded valley under high cloud",
       "location": "Old Naivasha Road, Kenya",
@@ -45,7 +46,7 @@
     },
     {
       "slug": "chain-service-in-dust",
-      "section": "maintain",
+      "section": "ride",
       "category": "Maintenance guide",
       "issue": "Field 013",
       "title": "Chain service intervals when the road is dust",
@@ -54,6 +55,7 @@
       "date": "2026-08-04",
       "read": "7 min",
       "author": "Frontier Workshop",
+      "author_role": "staff",
       "image": "feature-chain",
       "image_alt": "A gloved hand holding a component clear of the frame of a partly stripped motorcycle on a workbench",
       "location": "Frontier Workshop bench",
@@ -88,7 +90,7 @@
     },
     {
       "slug": "boda-stage-field-report",
-      "section": "news",
+      "section": "ride",
       "category": "Field report",
       "issue": "Field 012",
       "title": "What a boda stage already knows",
@@ -97,6 +99,7 @@
       "date": "2026-07-28",
       "read": "11 min",
       "author": "Frontier Field Desk",
+      "author_role": "staff",
       "image": "feature-stage",
       "image_alt": "A scrambler style motorcycle parked on a concrete apron in front of a plain concrete building, photographed from a low angle",
       "location": "Market road stage, central Kenya",
@@ -126,33 +129,37 @@
         { "type": "pull", "text": "Ask at a stage what a road did last week. The answer will be more current than any map." },
         { "type": "h2", "text": "Where the knowledge stops" },
         { "type": "p", "text": "The gaps are consistent and worth naming, because they are the places where good information is actually useful. Braking technique is largely self taught and often front biased in exactly the wrong conditions. Protective equipment is understood as a cost rather than as equipment. And electrical faults, which are the most common cause of a machine stopping outright, are the least well understood category by a wide margin." },
-        { "type": "p", "text": "None of that is a criticism of riders working long days on thin margins. It is a description of where a guide is worth writing, and it has shaped most of what is in the Maintain and Ride sections of this site." }
+        { "type": "p", "text": "None of that is a criticism of riders working long days on thin margins. It is a description of where a guide is worth writing, and it has shaped most of what is in the Ride section of this site." }
       ]
     },
 
-    { "slug": null, "section": "ride", "category": "Road craft", "title": "Reading a matatu before it moves", "excerpt": "The signals that come three seconds before a sudden stop, and the following distance that makes them useful.", "date": "2026-08-18", "read": "6 min", "status": "upcoming" },
-    { "slug": null, "section": "ride", "category": "Technique", "title": "Braking on loose surface without locking", "excerpt": "Rear bias, progressive input, and why the front brake is not the enemy on murram.", "date": "2026-08-09", "read": "8 min", "status": "upcoming" },
-    { "slug": null, "section": "ride", "category": "Night riding", "title": "Glare, unlit vehicles and the speed that fits your headlight", "excerpt": "If you cannot stop inside the light you are producing, you are riding faster than you can see.", "date": "2026-07-30", "read": "7 min", "status": "upcoming" },
-    { "slug": null, "section": "ride", "category": "Load", "title": "Carrying a pillion who has never ridden", "excerpt": "A ninety second briefing that changes how the bike behaves for the next two hours.", "date": "2026-07-19", "read": "5 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Road craft", "author_role": "staff", "title": "Reading a matatu before it moves", "excerpt": "The signals that come three seconds before a sudden stop, and the following distance that makes them useful.", "date": "2026-08-18", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Technique", "author_role": "staff", "title": "Braking on loose surface without locking", "excerpt": "Rear bias, progressive input, and why the front brake is not the enemy on murram.", "date": "2026-08-09", "read": "8 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Night riding", "author_role": "pro", "title": "Glare, unlit vehicles and the speed that fits your headlight", "excerpt": "If you cannot stop inside the light you are producing, you are riding faster than you can see.", "date": "2026-07-30", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Load", "author_role": "staff", "title": "Carrying a pillion who has never ridden", "excerpt": "A ninety second briefing that changes how the bike behaves for the next two hours.", "date": "2026-07-19", "read": "5 min", "status": "upcoming" },
 
-    { "slug": null, "section": "navigate", "category": "Route note", "title": "Nanyuki to Archers Post, surface report", "excerpt": "Where the tarmac holds, where it does not, and the last certain fuel before the northern stretch.", "date": "2026-08-14", "read": "6 min", "status": "upcoming" },
-    { "slug": null, "section": "navigate", "category": "Planning", "title": "Building a fuel plan around the longest gap", "excerpt": "Plan for the gap you cannot avoid, not the average distance between stations.", "date": "2026-08-02", "read": "7 min", "status": "upcoming" },
-    { "slug": null, "section": "navigate", "category": "Maps", "title": "Offline maps that still work with no signal", "excerpt": "What to download before you leave, and the failure mode that catches people at the border.", "date": "2026-07-21", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Route note", "author_role": "staff", "title": "Nanyuki to Archers Post, surface report", "excerpt": "Where the tarmac holds, where it does not, and the last certain fuel before the northern stretch.", "date": "2026-08-14", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Planning", "author_role": "staff", "title": "Building a fuel plan around the longest gap", "excerpt": "Plan for the gap you cannot avoid, not the average distance between stations.", "date": "2026-08-02", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Maps", "author_role": "pro", "title": "Offline maps that still work with no signal", "excerpt": "What to download before you leave, and the failure mode that catches people at the border.", "date": "2026-07-21", "read": "6 min", "status": "upcoming" },
 
-    { "slug": null, "section": "survive", "category": "Roadside", "title": "The first ninety seconds after you stop", "excerpt": "Position, visibility, then the machine. In that order, every time.", "date": "2026-08-16", "read": "5 min", "status": "upcoming" },
-    { "slug": null, "section": "survive", "category": "First aid", "title": "A riders kit that fits under the seat", "excerpt": "What is worth the space, what is not, and what you need to know how to use before you need it.", "date": "2026-08-06", "read": "8 min", "status": "upcoming" },
-    { "slug": null, "section": "survive", "category": "Weather", "title": "Riding out a downpour instead of through it", "excerpt": "Twenty minutes of shelter against two hours of reduced grip and zero visibility.", "date": "2026-07-25", "read": "5 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Roadside", "author_role": "staff", "title": "The first ninety seconds after you stop", "excerpt": "Position, visibility, then the machine. In that order, every time.", "date": "2026-08-16", "read": "5 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "First aid", "author_role": "pro", "title": "A riders kit that fits under the seat", "excerpt": "What is worth the space, what is not, and what you need to know how to use before you need it.", "date": "2026-08-06", "read": "8 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Weather", "author_role": "staff", "title": "Riding out a downpour instead of through it", "excerpt": "Twenty minutes of shelter against two hours of reduced grip and zero visibility.", "date": "2026-07-25", "read": "5 min", "status": "upcoming" },
 
-    { "slug": null, "section": "maintain", "category": "Diagnostics", "title": "It will not start, and it is almost always one of five things", "excerpt": "A sequence that finds the fault without removing anything you do not need to remove.", "date": "2026-08-12", "read": "9 min", "status": "upcoming" },
-    { "slug": null, "section": "maintain", "category": "Tyres", "title": "Pressure, load and heat on a long day", "excerpt": "The pressure on the sticker assumes one rider and no luggage. You are rarely either.", "date": "2026-07-31", "read": "6 min", "status": "upcoming" },
-    { "slug": null, "section": "maintain", "category": "Electrical", "title": "Charging faults you can find with a multimeter", "excerpt": "Three measurements that separate a dying battery from a dying regulator.", "date": "2026-07-17", "read": "8 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Diagnostics", "author_role": "pro", "title": "It will not start, and it is almost always one of five things", "excerpt": "A sequence that finds the fault without removing anything you do not need to remove.", "date": "2026-08-12", "read": "9 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Tyres", "author_role": "staff", "title": "Pressure, load and heat on a long day", "excerpt": "The pressure on the sticker assumes one rider and no luggage. You are rarely either.", "date": "2026-07-31", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Electrical", "author_role": "guest", "title": "Charging faults you can find with a multimeter", "excerpt": "Three measurements that separate a dying battery from a dying regulator.", "date": "2026-07-17", "read": "8 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Packing", "author_role": "staff", "title": "Packing for three days on a 150 cc", "excerpt": "Weight low and forward, and what stays home when space runs out.", "date": "2026-08-10", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Sport", "author_role": "guest", "title": "Dakar lessons for dusty riding", "excerpt": "What rally navigation and pacing teach the everyday murram rider.", "date": "2026-08-05", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "Sport", "author_role": "pro", "title": "MotoGP braking, translated for the road", "excerpt": "Why professionals trail brake, and what to leave on the circuit.", "date": "2026-07-26", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "ride", "category": "History", "author_role": "staff", "title": "Boda culture and the Kenyan commuter", "excerpt": "How working bikes shaped maintenance habits across the region.", "date": "2026-07-20", "read": "8 min", "status": "upcoming" },
 
-    { "slug": null, "section": "market", "category": "Buying guide", "title": "Inspecting a used bike in twenty minutes", "excerpt": "The order to check things in, so that a fault ends the inspection before you waste an hour.", "date": "2026-08-15", "read": "10 min", "status": "upcoming" },
-    { "slug": null, "section": "market", "category": "Gear", "title": "Wet weather kit that survives one season", "excerpt": "Tested through a full set of long rains, including the two that did not make it.", "date": "2026-08-03", "read": "7 min", "status": "upcoming" },
-    { "slug": null, "section": "market", "category": "Helmets", "title": "Ventilation and heat, judged locally", "excerpt": "A helmet rated for European weather behaves differently at midday on the equator.", "date": "2026-07-22", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "market", "category": "Buying guide", "author_role": "staff", "title": "Inspecting a used bike in twenty minutes", "excerpt": "The order to check things in, so that a fault ends the inspection before you waste an hour.", "date": "2026-08-15", "read": "10 min", "status": "upcoming" },
+    { "slug": null, "section": "market", "category": "Gear", "author_role": "staff", "title": "Wet weather kit that survives one season", "excerpt": "Tested through a full set of long rains, including the two that did not make it.", "date": "2026-08-03", "read": "7 min", "status": "upcoming" },
+    { "slug": null, "section": "market", "category": "Helmets", "author_role": "pro", "title": "Ventilation and heat, judged locally", "excerpt": "A helmet rated for European weather behaves differently at midday on the equator.", "date": "2026-07-22", "read": "6 min", "status": "upcoming" },
+    { "slug": null, "section": "market", "category": "Used tools", "author_role": "staff", "title": "Judging used tools before you pay", "excerpt": "Wear that matters against wear that does not, across hand tools and inflators.", "date": "2026-08-01", "read": "5 min", "status": "upcoming" },
 
-    { "slug": null, "section": "news", "category": "Regulation", "title": "Helmet and reflective requirements, what changed", "excerpt": "A plain reading of current requirements for riders and pillions, with the parts that remain unclear marked as unclear.", "date": "2026-08-19", "read": "5 min", "status": "upcoming" },
-    { "slug": null, "section": "news", "category": "Roads", "title": "Resurfacing works and the diversions they create", "excerpt": "Reported by riders, updated when we can confirm it, dated so you can judge how stale it is.", "date": "2026-08-13", "read": "4 min", "status": "upcoming" },
-    { "slug": null, "section": "news", "category": "Fuel", "title": "Price movement and what it does to route planning", "excerpt": "When fuel moves, the calculation that decides whether you carry a spare litre moves with it.", "date": "2026-08-07", "read": "5 min", "status": "upcoming" }
+    { "slug": null, "section": "shop", "category": "Oils", "author_role": "staff", "title": "Which oil for heat and dust", "excerpt": "Placeholder guide. Grades and change points for local use.", "date": "2026-08-08", "read": "5 min", "status": "upcoming" },
+    { "slug": null, "section": "shop", "category": "Navigation", "author_role": "pro", "title": "Nav systems against phone plus mount", "excerpt": "Placeholder guide. Power, vibration and offline behaviour compared.", "date": "2026-07-29", "read": "6 min", "status": "upcoming" }
   ]
 }

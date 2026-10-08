@@ -206,10 +206,17 @@ def editorial_hero(*, slot, depth, label=None, label_accent=None, title_lines, l
 
 # ── IndexCard ────────────────────────────────────────────────────────────────
 
+def author_badge(article):
+    role = (article.get("author_role") or "staff").lower()
+    label = {"staff": "Frontier", "pro": "Pro", "guest": "Guest"}.get(role, "Frontier")
+    return f' <span class="tag-role tag-role--{esc(role)}">{esc(label)}</span>'
+
+
 def index_card(entry, depth, href, i=0):
     """
     Deliberately not six identical cards. Size, media and treatment vary with
     the entry's own `size` field so the grid has a rhythm.
+    Kept for compatibility. New home uses index_row vertical list.
     """
     size = entry.get("size", "standard")
     classes = ["index-card"]
@@ -240,6 +247,26 @@ def index_card(entry, depth, href, i=0):
   <p class="index-card__blurb">{esc(entry["blurb"])}</p>
   <p class="index-card__detail">{esc(entry["detail"])}</p>
   <div class="index-card__foot"><span>Open</span>{stat_html}</div>
+</article>"""
+
+
+def index_row(entry, depth, href, i=0):
+    stat = entry.get("stat")
+    stat_html = ""
+    if stat:
+        stat_html = (
+            f'<span class="index-row__stat">{esc(stat["k"])}<b>{esc(stat["v"])}</b></span>'
+        )
+    return f"""<article class="index-row" data-reveal style="--i:{i}">
+  <p class="index-row__n">{esc(entry["number"])}</p>
+  <div class="index-row__body">
+    <h3 class="index-row__title"><a class="index-row__link" href="{rel(href, depth)}">{esc(entry["label"])}</a></h3>
+    <p class="index-row__blurb">{esc(entry["blurb"])}</p>
+    <p class="index-row__detail">{esc(entry["detail"])}</p>
+  </div>
+  <div class="index-row__side">{stat_html}
+    <a class="index-row__go" href="{rel(href, depth)}" aria-label="Open {esc(entry["label"])}"><span aria-hidden="true">&#8599;</span></a>
+  </div>
 </article>"""
 
 
@@ -295,14 +322,13 @@ def article_card(article, depth, i=0, with_media=True):
     if with_media and article.get("image"):
         media = f'<div class="article-card__media">{image(article["image"], depth, sizes="(max-width: 720px) 100vw, 30vw")}</div>'
 
+    role_tag = author_badge(article)
     if href:
         title = f'<a href="{href}">{esc(article["title"])}</a>'
-        tag = ""
+        prep_tag = ""
     else:
         title = esc(article["title"])
-        # The leading space matters: without it the title and the tag run
-        # together when the markup is flattened to text or read aloud.
-        tag = ' <span class="tag-upcoming">In preparation</span>'
+        prep_tag = '<span class="tag-upcoming">In preparation</span>'
 
     return f"""<article class="article-card" data-reveal style="--i:{i}">
   {media}
@@ -310,26 +336,28 @@ def article_card(article, depth, i=0, with_media=True):
     <span class="article-card__cat">{esc(article["category"])}</span>
     <span>{esc(fmt_date(article["date"]))}</span>
   </p>
-  <h3 class="article-card__title">{title}{tag}</h3>
+  <h3 class="article-card__title">{title}</h3>
   <p class="article-card__excerpt">{esc(article["excerpt"])}</p>
-  <p class="article-card__foot">{esc(article["read"])} read</p>
+  <p class="article-card__foot"><span>{esc(article["read"])} read</span><span class="card-tags">{role_tag}{prep_tag}</span></p>
 </article>"""
 
 
 def article_row(article, depth, i=0):
     href = _article_href(article, depth)
+    role_tag = author_badge(article)
     if href:
         title = f'<a href="{href}">{esc(article["title"])}</a>'
-        tag = ""
+        prep_tag = ""
     else:
         title = esc(article["title"])
-        tag = ' <span class="tag-upcoming">In preparation</span>'
+        prep_tag = '<span class="tag-upcoming">In preparation</span>'
 
     return f"""<article class="article-row" data-reveal style="--i:{i}">
   <p class="article-row__cat">{esc(article["category"])}</p>
   <div>
-    <h3 class="article-row__title">{title}{tag}</h3>
+    <h3 class="article-row__title">{title}</h3>
     <p class="article-row__excerpt">{esc(article["excerpt"])}</p>
+    <p class="row-tags">{role_tag}{prep_tag}</p>
   </div>
   <p class="article-row__meta">{esc(fmt_date(article["date"]))}<br>{esc(article["read"])}</p>
 </article>"""
@@ -406,11 +434,11 @@ def workshop_callout(*, depth, slot, caption_left, caption_right, callouts,
 
 # ── RecoveryBanner ───────────────────────────────────────────────────────────
 
-def recovery_banner(*, depth, ready, title="Everything you need to get moving.",
-                    body=None, heading_level=2, number="07"):
+def recovery_banner(*, depth, ready, title="Workshop and recovery. Opening soon.",
+                    body=None, heading_level=2, number="04"):
     body = body or (
-        "Parts, equipment, and know-how for the ride ahead. Start in the Market, "
-        "and keep this list somewhere you can find it when the ride stops."
+        "Routine service, inspection and rider recovery dispatch at opening. "
+        "Workshop line is a placeholder until then."
     )
     items = "".join(
         f'<li><span class="ready-list__n">{esc(s["n"])}</span>'
@@ -424,22 +452,22 @@ def recovery_banner(*, depth, ready, title="Everything you need to get moving.",
   <div class="container recovery-banner__inner">
     <div>
       <p class="recovery-banner__label">
-        <span>{esc(number)}</span><span>Market</span>
+        <span>{esc(number)}</span><span>Workshop</span>
       </p>
       <{h} class="recovery-banner__title" id="recovery-banner-title">{esc(title)}</{h}>
       <p class="recovery-banner__body">{esc(body)}</p>
       <div class="recovery-banner__actions btn-row">
-        <a class="btn btn--solid" href="{rel("/market/", depth)}">
-          <span class="btn__label">Get moving</span></a>
-        <a class="btn" href="{rel("/survive/", depth)}">
+        <a class="btn btn--solid" href="{rel("/workshop/", depth)}">
+          <span class="btn__label">Workshop, opening soon</span></a>
+        <a class="btn" href="{rel("/ride/", depth)}">
           <span class="btn__label">Roadside guidance</span></a>
       </div>
       <p class="disclaimer">
-        <strong>Recovery dispatch is not live.</strong>
-        Frontier Moto is not an emergency service and no vehicle is dispatched from
-        this website. If anyone is injured, contact local emergency services first.
-        The Recovery page explains what we can and cannot do, and what to do instead
-        where no service is available.
+        <strong>Workshop and recovery are opening soon.</strong>
+        No service is bookable and no rider is dispatched from
+        this website yet. If anyone is injured, contact local emergency services first.
+        The Workshop page states the placeholder contact and what to do instead
+        until opening.
       </p>
     </div>
     <div>

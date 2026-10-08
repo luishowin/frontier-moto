@@ -21,8 +21,8 @@ sys.path.insert(0, str(ROOT / "scripts" / "pages"))
 import shell  # noqa: E402
 import article as article_page  # noqa: E402
 import home as home_page  # noqa: E402
-import recovery as recovery_page  # noqa: E402
 import section as section_page  # noqa: E402
+import shop as shop_page  # noqa: E402
 import simple as simple_pages  # noqa: E402
 import workshop as workshop_page  # noqa: E402
 
@@ -31,7 +31,7 @@ DOCS = ROOT / "docs"
 
 
 def load():
-    names = ["site", "sections", "articles", "checklists", "technical", "market", "workshop", "images"]
+    names = ["site", "sections", "articles", "checklists", "technical", "market", "shop", "workshop", "images"]
     return {n: json.loads((CONTENT / f"{n}.json").read_text(encoding="utf-8")) for n in names}
 
 
@@ -184,19 +184,22 @@ def main():
     write(meta["out"], shell.render(site, meta, meta["depth"], body))
     built.append(meta)
 
-    # The six shared section pages
+    # The shared section pages: ride, market. Shop has its own commerce layout.
     for page in data["sections"]["pages"]:
-        meta = section_page.page_meta(page, site)
-        body = section_page.build(page, data)
+        if page["slug"] == "shop":
+            meta = shop_page.page_meta(site, data)
+            body = shop_page.build(data)
+        else:
+            meta = section_page.page_meta(page, site)
+            body = section_page.build(page, data)
         write(meta["out"], shell.render(site, meta, meta["depth"], body))
         built.append(meta)
 
-    # Workshop and Recovery
-    for module, builder in ((workshop_page, workshop_page.build), (recovery_page, recovery_page.build)):
-        meta = module.page_meta(site, data)
-        body = builder(data)
-        write(meta["out"], shell.render(site, meta, meta["depth"], body))
-        built.append(meta)
+    # Workshop
+    meta = workshop_page.page_meta(site, data)
+    body = workshop_page.build(data)
+    write(meta["out"], shell.render(site, meta, meta["depth"], body))
+    built.append(meta)
 
     # Article detail pages
     for art in data["articles"]["articles"]:

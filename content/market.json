@@ -1,5 +1,5 @@
 {
-  "note": "Frontier Moto does not sell equipment and takes no commission. Items appear here because they were used on a route or inspected in person. Where we have not tested something, it is marked untested.",
+  "note": "Used two wheelers, used tools and biking related goods from the local and used market. Everything here was inspected in person or is shown as a demo listing. Frontier Moto holds no stock yet and brokers no sales. Notes on condition, not offers. Nothing transacts yet.",
   "gear": [
     {
       "ref": "EQ-01",
@@ -75,14 +75,16 @@
     }
   ],
   "listings": [
-    { "ref": "ML-118", "title": "150 cc commuter, single owner", "detail": "Service history present, chain set recent, tyres at half.", "meta": "Central Kenya", "status": "Inspected" },
-    { "ref": "ML-121", "title": "250 cc dual sport", "detail": "Higher mileage, fork seals weeping, otherwise sound.", "meta": "Nairobi", "status": "Inspected" },
-    { "ref": "ML-124", "title": "125 cc, stage retired", "detail": "Working machine, honest wear, priced accordingly.", "meta": "Nakuru", "status": "Inspected" },
-    { "ref": "ML-127", "title": "400 cc adventure, imported", "detail": "Low mileage, no local service history, parts lead time is the risk.", "meta": "Nairobi", "status": "Seen only" }
+    { "ref": "ML-118", "title": "150 cc commuter, single owner", "detail": "Service history present, chain set recent, tyres at half.", "meta": "Central Kenya", "status": "Inspected", "category": "Used bike" },
+    { "ref": "ML-121", "title": "250 cc dual sport", "detail": "Higher mileage, fork seals weeping, otherwise sound.", "meta": "Nairobi", "status": "Inspected", "category": "Used bike" },
+    { "ref": "ML-124", "title": "125 cc, stage retired", "detail": "Working machine, honest wear, priced accordingly.", "meta": "Nakuru", "status": "Inspected", "category": "Used bike" },
+    { "ref": "ML-127", "title": "400 cc adventure, imported", "detail": "Low mileage, no local service history, parts lead time is the risk.", "meta": "Nairobi", "status": "Seen only", "category": "Used bike" },
+    { "ref": "ML-131", "title": "Socket set and torque wrench, used", "detail": "Demo listing. Sizes checked against common commuter fasteners.", "meta": "Nanyuki", "status": "Demo", "category": "Used tool" },
+    { "ref": "ML-132", "title": "Pannier rails with dry bags, used", "detail": "Demo listing. Mounts straight, bags hold water seal.", "meta": "Nanyuki", "status": "Demo", "category": "Used gear" }
   ],
   "guides": [
     { "title": "What to inspect", "detail": "The twenty minute sequence that ends an inspection early when it should end early.", "href": "/market/#inspect" },
-    { "title": "What to carry", "detail": "The set that earns its space on almost any route, and what does not.", "href": "/survive/#carry" },
+    { "title": "What to carry", "detail": "The set that earns its space on almost any route, and what does not.", "href": "/ride/#module" },
     { "title": "What a fair price looks like", "detail": "How condition, history and parts availability move a number, and which of the three matters most.", "href": "/market/#price" }
   ]
 }

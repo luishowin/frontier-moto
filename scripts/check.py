@@ -275,14 +275,15 @@ def check_support_files():
         fail("site.webmanifest", "has no name")
 
 
-def check_recovery_honesty():
+def check_workshop_honesty():
     """
-    The one content assertion worth automating. Recovery must never imply a live
-    dispatch service, and every form must carry its demonstration notice.
+    Workshop and recovery are opening soon. Nothing may imply live booking or
+    dispatch, and every form must carry its demonstration notice.
     """
-    recovery = (DOCS / "recovery" / "index.html").read_text(encoding="utf-8")
-    if "not live" not in recovery.lower() and "not an emergency service" not in recovery.lower():
-        fail("recovery/index.html", "no statement that dispatch is not live")
+    workshop = (DOCS / "workshop" / "index.html").read_text(encoding="utf-8").lower()
+    for phrase in ("opening soon", "not live", "not an emergency service", "demonstration"):
+        if phrase not in workshop:
+            fail("workshop/index.html", f"missing honesty phrase: {phrase}")
 
     for path in sorted(DOCS.rglob("index.html")) + [DOCS / "404.html"]:
         source = path.read_text(encoding="utf-8")
@@ -311,7 +312,7 @@ def main():
 
     check_content_sources()
     check_support_files()
-    check_recovery_honesty()
+    check_workshop_honesty()
 
     print(
         f"check: {CHECKED['pages']} pages, {CHECKED['links']} internal links, "

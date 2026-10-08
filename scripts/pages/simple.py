@@ -1,4 +1,4 @@
-"""Legal placeholders and the not-found page. Short, honest, no filler."""
+"""Legal single page. Minimal terms, privacy, credits. Short, honest, no filler."""
 
 from components import esc, newsletter_form, rel, section_label
 
@@ -8,53 +8,63 @@ NOTFOUND_DEPTH = 0
 
 def legal(data):
     site = data["site"]
+    brand = site["brand"]
     return f"""<section class="section page-top" aria-labelledby="legal-title">
   <div class="container">
-    {section_label("10", "Legal", "Placeholder text", heading_id="legal-title")}
-    <h1>Legal, privacy and credits</h1>
+    {section_label("10", "Legal", "In works, nothing for sale", heading_id="legal-title")}
+    <h1>Terms, privacy and design credit</h1>
     <p class="lede" style="margin-top:1rem">
-      Frontier Moto is not yet trading as a registered business, so the pages that would
-      normally carry company details carry placeholders instead. Everything below says
-      what will go here rather than pretending it is already in force.
+      The website is purely in the works. Nothing is selling. Market listings and shop
+      items are design placeholders. Workshop and rider recovery are opening soon.
+      All content is design work by {esc(brand.get("design_credit", "Luis Howin Maina."))}
     </p>
 
     <div class="prose" style="margin-top:2.5rem">
-      <h2 id="terms">Terms</h2>
+      <h2 id="terms">Terms of service</h2>
       <p>
-        Guides on this site describe what worked for us on specific machines in specific
-        conditions. Riding, maintenance and roadside decisions remain yours. Where a
-        procedure carries real risk we say so, but no guide can account for the state of
-        your motorcycle or the road you are on.
+        This site is a design in progress for a commercial platform selling used two
+        wheelers, used tools and biking goods in the Market, and new spares, accessories,
+        oils, kits, maps, navigation systems and audio in the Shop. No checkout exists
+        and no sale, booking or dispatch happens through this site today.
       </p>
       <p>
-        Recovery is not an operating service. Nothing on this site dispatches assistance,
-        and the request form is a front end demonstration that transmits nothing.
+        Guides in Ride describe what worked for us or for contributing professionals on
+        specific machines in specific conditions. Riding, maintenance and roadside
+        decisions remain yours. No guide can account for the state of your motorcycle
+        or the road you are on. Where a procedure carries real risk we say so.
+      </p>
+      <p>
+        Workshop service and rider recovery are opening soon. The phone
+        {esc(brand.get("phone", "+254 700 000 000"))} is a placeholder and is not answered.
+        Booking and recovery forms are front end demonstrations that transmit nothing.
+        Frontier Moto is not an emergency service. If anyone is injured, contact local
+        emergency services first.
       </p>
 
-      <h2 id="privacy">Privacy</h2>
+      <h2 id="privacy">Privacy policy</h2>
       <p>
-        This site sets no cookies, runs no analytics and has no backend. The forms on the
-        Recovery, Workshop and newsletter sections are demonstrations: entries stay in
+        Minimal version. This site sets no cookies, runs no analytics and has no backend.
+        The Workshop, newsletter and contact forms are demonstrations: entries stay in
         your browser and are discarded when you close the tab.
       </p>
       <p>
         Fonts are requested from Google Fonts, which means your browser contacts
         fonts.googleapis.com and fonts.gstatic.com when the page loads. Nothing else is
-        requested from a third party. A full privacy notice will replace this text once
-        there is a service that actually collects anything.
+        requested from a third party. Email to {esc(brand["email"])} is the only contact
+        that reaches anyone. A full notice will replace this text once a service actually
+        collects anything.
       </p>
 
       <h2 id="credits">Credits</h2>
       <p>
+        Design work and placeholder content by {esc(brand.get("design_credit", "Luis Howin Maina."))}
         Photographs on this site are reference imagery standing in for commissioned work.
         None of them were taken by Frontier Moto and none were taken in East Africa, so
-        captions and alt text describe what is in the frame and do not name a place. Where
-        a picture shows a machine, a tool or a road, read it as an illustration of the
-        subject rather than a record of somewhere we have been.
+        captions and alt text describe what is in the frame and do not name a place.
       </p>
       <p>
-        The one exception is the service point diagram on the Maintain and home pages,
-        which is drawn for this site. Every image slot is listed in the image manifest
+        The service point diagram on the Ride and home pages is drawn for this site.
+        Every image slot is listed in the image manifest
         with its source, dimensions and description.
       </p>
       <p>
@@ -64,9 +74,12 @@ def legal(data):
 
       <h2 id="contact">Contact</h2>
       <p>
-        Corrections are welcome, particularly on route notes and service intervals, which
+        Placeholder phone <a href="tel:+254700000000">{esc(brand.get("phone", "+254 700 000 000"))}</a>
+        ({esc(brand.get("phone_note", "not answered"))}). Planned hours {esc(brand.get("hours", ""))}.
+        Base {esc(brand.get("base", ""))}.
+        Corrections welcome, particularly on route notes and service intervals, which
         change. Write to
-        <a href="mailto:{esc(site["brand"]["email"])}">{esc(site["brand"]["email"])}</a>.
+        <a href="mailto:{esc(brand["email"])}">{esc(brand["email"])}</a>.
       </p>
     </div>
   </div>
@@ -86,10 +99,10 @@ def legal_meta(site):
         "out": "legal/index.html",
         "depth": LEGAL_DEPTH,
         "slug": None,
-        "title": "Legal, privacy and credits",
+        "title": "Terms, privacy and design credit",
         "description": (
-            "Terms, privacy and credits for Frontier Moto, including a plain statement "
-            "that recovery dispatch is not an operating service."
+            "Minimal terms and privacy for Frontier Moto: in works, nothing for sale, "
+            "workshop opening soon, design by Luis Howin Maina."
         ),
         "dark_hero": False,
     }
@@ -114,7 +127,7 @@ def not_found(data):
       <a class="btn btn--solid" href="{rel("/", NOTFOUND_DEPTH)}">
         <span class="btn__label">Home</span></a>
       <a class="btn btn--signal" href="{rel("/market/", NOTFOUND_DEPTH)}">
-        <span class="btn__label">Get moving</span></a>
+        <span class="btn__label">Market</span></a>
     </div>
 
     <nav aria-label="All sections" style="margin-top:3rem">

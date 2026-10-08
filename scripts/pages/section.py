@@ -1,9 +1,9 @@
 """
 The shared editorial page system.
 
-Ride, Navigate, Survive, Maintain, Market and News are all the same page with
-different content and a different practical data module. Workshop and Recovery
-have their own stricter structures and live in their own modules.
+Ride, Market and Shop are the same page shape with different content and a
+different practical data module. Workshop has its own stricter structure and
+lives in its own module.
 
 Every section page carries: a masthead, a lead block, one data module that is
 actually useful, the full listing for that section, cross-links to adjacent
@@ -30,20 +30,15 @@ from components import (
 DEPTH = 1
 
 SECTION_TITLES = {
-    "ride": "Ride", "navigate": "Navigate", "survive": "Survive",
-    "maintain": "Maintain", "market": "Market", "news": "News",
-    "workshop": "Workshop", "recovery": "Recovery",
+    "ride": "Ride", "market": "Market", "shop": "Shop",
+    "workshop": "Workshop",
 }
 
 SECTION_BLURBS = {
-    "ride": "Road safety, riding technique and awareness.",
-    "navigate": "Routes, maps, fuel and terrain preparation.",
-    "survive": "Breakdowns, preparedness and roadside resilience.",
-    "maintain": "Service, diagnostics and workshop knowledge.",
-    "market": "Gear, loadout and buying guidance.",
-    "news": "Field reports and regional motorcycle news.",
-    "workshop": "Service, inspection and repair.",
-    "recovery": "Help when the ride stops.",
+    "ride": "Guides and articles for riders.",
+    "market": "Used bikes, tools and gear.",
+    "shop": "New spares, accessories, oils, kits, nav and audio.",
+    "workshop": "Service, inspection and recovery.",
 }
 
 
@@ -140,7 +135,7 @@ def _module_listings(page, data):
 
     listings = "".join(
         f"""<article class="article-row" data-reveal style="--i:{i}">
-      <p class="article-row__cat">{esc(l["ref"])}</p>
+      <p class="article-row__cat">{esc(l.get("category", "Used"))} {esc(l["ref"])}</p>
       <div>
         <h3 class="article-row__title">{esc(l["title"])}</h3>
         <p class="article-row__excerpt">{esc(l["detail"])}</p>
@@ -150,13 +145,33 @@ def _module_listings(page, data):
         for i, l in enumerate(market["listings"])
     )
 
-    return "Equipment", "Six items, one untested", f"""<div class="gear-grid" id="inspect">{gear}</div>
-  <h3 style="margin-top:3rem" id="price">Motorcycles seen</h3>
+    return "Equipment", f'{len(market["gear"])} items, {len(market["listings"])} listings', f"""<div class="gear-grid" id="inspect">{gear}</div>
+  <h3 style="margin-top:3rem" id="price">Used bikes, tools and gear seen</h3>
   <p class="lede" style="margin-top:0.6rem;margin-bottom:1.25rem;max-width:62ch">
-    Machines we have inspected or, where marked, only seen. Frontier Moto does not
-    broker sales and holds no stock. These are notes on condition, not offers.
+    Machines, tools and gear we have inspected or, where marked, only seen or listed as demo.
+    Frontier Moto holds no stock yet and brokers no sales. These are notes on condition, not offers.
+    Nothing transacts yet.
   </p>
   <div class="row-list">{listings}</div>"""
+
+
+def _module_shop(page, data):
+    shop = data.get("shop", {"items": [], "note": ""})
+    items = "".join(
+        f"""<article class="gear-item" data-reveal style="--i:{i}">
+      <p class="gear-item__top"><span>{esc(g["ref"])}</span><span>{esc(g["category"])}</span></p>
+      <h3 class="gear-item__name">{esc(g["name"])}</h3>
+      <p class="gear-item__summary">{esc(g["summary"])}</p>
+      {spec_list(g["spec"], single=True)}
+      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
+        <span class="verdict verdict--untested">{esc(g["verdict"])}</span>
+      </p>
+    </article>"""
+        for i, g in enumerate(shop["items"])
+    )
+    return "Catalogue", f'{len(shop["items"])} placeholder items', f"""<p class="lede" style="margin-bottom:1.5rem;max-width:64ch">{esc(shop.get("note", ""))}</p>
+  <div class="gear-grid">{items}</div>
+  <p class="scroll-hint" style="margin-top:1.25rem">Placeholder catalogue. Categories will be refined as shop operations grow. Nothing for sale yet.</p>"""
 
 
 MODULES = {
@@ -165,6 +180,7 @@ MODULES = {
     "routes": _module_routes,
     "intervals": _module_intervals,
     "listings": _module_listings,
+    "shop": _module_shop,
 }
 
 
@@ -253,6 +269,27 @@ def build(page, data):
   <div class="container">
     {section_label(sub(), title, aside, heading_id="module-title")}
     {module_html}
+  </div>
+</section>""")
+
+    # ── Ride library extras ────────────────────────────────────────────────
+    # Intervals and roadside sequences live here so no standalone pages are
+    # needed. Route notes removed by request.
+    if page["slug"] == "ride":
+        iv_title, iv_aside, iv_html = MODULES["intervals"](page, data)
+        out.append(f"""<section class="section" aria-labelledby="intervals-title">
+  <div class="container">
+    {section_label(sub(), iv_title, iv_aside, heading_id="intervals-title")}
+    {iv_html}
+  </div>
+</section>""")
+        for key in ("roadside", "recovery"):
+            seq = data["checklists"]["steps"][key]
+            out.append(f"""<section class="section section--soft" aria-labelledby="{key}-title">
+  <div class="container">
+    {section_label(sub(), seq["title"], seq["number"], heading_id=f"{key}-title")}
+    <p class="lede" style="margin-bottom:1.5rem;max-width:62ch">{esc(seq["note"])}</p>
+    {steps(seq)}
   </div>
 </section>""")
 
