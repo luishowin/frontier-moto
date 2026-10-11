@@ -79,6 +79,7 @@ PLAN = {
     "market-gear":        ("helmets.avif",             4 / 3,  0.50, 0.35),
     "workshop-bay":       ("repair.avif",              3 / 4,  0.50, 0.50),
     "maintain-anatomy":   ("labelled-parts.png",    1572 / 1001, 0.50, 0.50),
+    "maintain-engine":    ("single-cylinder-annotated.png", 1536 / 1024, 0.50, 0.50),
 
     "og-frontier":        ("scrambler.jpg",         1200 / 630, 0.50, 0.50),
 }

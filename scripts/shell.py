@@ -34,7 +34,7 @@ def rel(href, depth):
 # assets with a long cache life and there is no build step to hash filenames,
 # so without this a deploy can leave readers on the previous stylesheet. The
 # house sites use the same query string approach.
-ASSET_VERSION = "12"
+ASSET_VERSION = "27"
 
 
 BEACON = (
@@ -58,9 +58,10 @@ MOON = (
 )
 
 # Applied before first paint so the page never flashes the wrong palette.
+# First visits default to light; a stored choice always wins afterwards.
 THEME_BOOT = (
     "<script>(function(){try{var t=localStorage.getItem('frontier-theme');"
-    "if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}"
+    "if(!t){t='light';}"
     "document.documentElement.setAttribute('data-theme',t);}"
     "catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>"
 )
@@ -171,9 +172,21 @@ def header(site, page, depth):
             f'{esc(item["label"])}</a></li>'
         )
 
+    # Site-wide work in progress strip. One accessible label on the region,
+    # the scrolling repeats are decorative duplicates.
+    wip_group = "".join(
+        '<span class="wip-strip__item">Work in progress!</span>' for _ in range(12)
+    )
+    wip = (
+        '<div class="wip-strip" role="note" aria-label="Work in progress">'
+        f'<div class="wip-strip__track" aria-hidden="true">{wip_group}{wip_group}</div>'
+        "</div>"
+    )
+
     return f"""<a class="skip-link" href="#main">Skip to content</a>
 <div id="header-sentinel" aria-hidden="true"></div>
 
+{wip}
 <header class="site-header"{over}>
   <div class="site-header__inner">
     {wordmark(site, depth)}

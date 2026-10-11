@@ -194,6 +194,79 @@ document.documentElement.classList.add('js');
     // they are usable and accessible, and then say plainly that the entry was
     // not transmitted. Making that obvious in the behaviour is the point.
 
+    // ── 5a. NOTIFY CHANNEL TOGGLE ──────────────────────────────
+    // The bike alert form asks for a phone number only when WhatsApp is the
+    // chosen channel. A hidden wrapper is barred from constraint validation,
+    // and required is toggled alongside so the demo validator agrees with it.
+    Array.prototype.forEach.call(document.querySelectorAll('[data-channel-toggle]'), function (group) {
+        var wrap = document.getElementById(group.getAttribute('data-channel-toggle'));
+        if (!wrap) return;
+        var phone = wrap.querySelector('input');
+        function sync() {
+            var wa = group.querySelector('input[value="whatsapp"]');
+            var on = !!(wa && wa.checked);
+            wrap.hidden = !on;
+            if (phone) phone.required = on;
+        }
+        Array.prototype.forEach.call(group.querySelectorAll('input[type="radio"]'), function (r) {
+            r.addEventListener('change', sync);
+        });
+        sync();
+    });
+
+    // ── 5b. MARKET FILTERS ─────────────────────────────────────
+    // Search plus selects filter the market list in place. Rows carry their
+    // category, size and status as data attributes; tools and gear carry no
+    // size and always pass that filter. With JS off everything is shown.
+    Array.prototype.forEach.call(document.querySelectorAll('[data-market-filters]'), function (bar) {
+        var root = bar.closest('section') || document;
+        var search = bar.querySelector('input[type="search"]');
+        var cat = bar.querySelector('select[name="category"]');
+        var size = bar.querySelector('select[name="size"]');
+        var status = bar.querySelector('select[name="status"]');
+        var list = root.querySelector('[data-market-list]');
+        var count = root.querySelector('[data-market-count]');
+        var empty = root.querySelector('[data-market-empty]');
+        if (!list) return;
+        var rows = Array.prototype.slice.call(list.children);
+
+        function syncFilters() {
+            var q = search ? search.value.trim().toLowerCase() : '';
+            var shown = 0;
+            rows.forEach(function (row) {
+                var ok = true;
+                if (q && row.getAttribute('data-search').toLowerCase().indexOf(q) === -1) ok = false;
+                if (cat && cat.value && row.getAttribute('data-category') !== cat.value) ok = false;
+                if (size && size.value && row.getAttribute('data-size') && row.getAttribute('data-size') !== size.value) ok = false;
+                if (status && status.value && row.getAttribute('data-status') !== status.value) ok = false;
+                row.hidden = !ok;
+                if (ok) shown += 1;
+            });
+            if (count) count.textContent = shown + (shown === 1 ? ' listing' : ' listings');
+            if (empty) empty.hidden = shown !== 0;
+        }
+
+        [[search, 'input'], [cat, 'change'], [size, 'change'], [status, 'change']].forEach(function (pair) {
+            if (pair[0]) pair[0].addEventListener(pair[1], syncFilters);
+        });
+        syncFilters();
+
+        // Popular search tags live in their own section. Clicking one fills
+        // the search box, filters the list, and brings the browser into view.
+        var tags = document.querySelector('[data-search-tags]');
+        if (tags && search) {
+            tags.addEventListener('click', function (e) {
+                var btn = e.target && e.target.closest ? e.target.closest('[data-search-tag]') : null;
+                if (!btn) return;
+                search.value = btn.getAttribute('data-search-tag');
+                syncFilters();
+                var browse = bar.closest('section');
+                if (browse && browse.scrollIntoView) browse.scrollIntoView();
+                if (search.focus) search.focus({ preventScroll: true });
+            });
+        }
+    });
+
     Array.prototype.forEach.call(document.querySelectorAll('[data-demo-form]'), function (form) {
         var status = form.querySelector('.form-status');
         var submit = form.querySelector('[type="submit"]');

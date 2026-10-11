@@ -75,12 +75,12 @@
     }
   ],
   "listings": [
-    { "ref": "ML-118", "title": "150 cc commuter, single owner", "detail": "Service history present, chain set recent, tyres at half.", "meta": "Central Kenya", "status": "Inspected", "category": "Used bike" },
-    { "ref": "ML-121", "title": "250 cc dual sport", "detail": "Higher mileage, fork seals weeping, otherwise sound.", "meta": "Nairobi", "status": "Inspected", "category": "Used bike" },
-    { "ref": "ML-124", "title": "125 cc, stage retired", "detail": "Working machine, honest wear, priced accordingly.", "meta": "Nakuru", "status": "Inspected", "category": "Used bike" },
-    { "ref": "ML-127", "title": "400 cc adventure, imported", "detail": "Low mileage, no local service history, parts lead time is the risk.", "meta": "Nairobi", "status": "Seen only", "category": "Used bike" },
-    { "ref": "ML-131", "title": "Socket set and torque wrench, used", "detail": "Demo listing. Sizes checked against common commuter fasteners.", "meta": "Nanyuki", "status": "Demo", "category": "Used tool" },
-    { "ref": "ML-132", "title": "Pannier rails with dry bags, used", "detail": "Demo listing. Mounts straight, bags hold water seal.", "meta": "Nanyuki", "status": "Demo", "category": "Used gear" }
+    { "ref": "ML-118", "title": "2021 Honda 150 commuter", "detail": "Single owner. Service history present, chain set recent, tyres at half.", "meta": "Central Kenya", "status": "Inspected", "category": "Used bike", "size": "125 to 250 cc", "make": "Honda", "kind": "Commuter", "gearbox": "5 speed manual", "price_guide": 165000, "tags": ["Kenyan used", "Private seller"] },
+    { "ref": "ML-121", "title": "2019 Yamaha 250 dual sport", "detail": "Higher mileage, fork seals weeping, otherwise sound.", "meta": "Nairobi", "status": "Inspected", "category": "Used bike", "size": "125 to 250 cc", "make": "Yamaha", "kind": "Dual sport", "gearbox": "5 speed manual", "price_guide": 420000, "tags": ["Kenyan used", "Private seller"] },
+    { "ref": "ML-124", "title": "2018 Shineray 125 commuter", "detail": "Stage retired. Working machine, honest wear, priced accordingly.", "meta": "Nakuru", "status": "Inspected", "category": "Used bike", "size": "Up to 125 cc", "make": "Shineray", "kind": "Commuter", "gearbox": "4 speed manual", "price_guide": 95000, "tags": ["Kenyan used", "Corporate seller"] },
+    { "ref": "ML-127", "title": "2020 Suzuki 400 adventure", "detail": "Imported. Low mileage, no local service history, parts lead time is the risk.", "meta": "Nairobi", "status": "Seen only", "category": "Used bike", "size": "250 to 400 cc", "make": "Suzuki", "kind": "Adventure", "gearbox": "6 speed manual", "price_guide": 780000, "tags": ["Foreign used import", "Corporate seller"] },
+    { "ref": "ML-131", "title": "Socket set and torque wrench, used", "detail": "Demo listing. Sizes checked against common commuter fasteners.", "meta": "Nanyuki", "status": "Demo", "category": "Used tool", "size": null, "make": null, "kind": null, "price_guide": 12000, "tags": ["Kenyan used", "Private seller"] },
+    { "ref": "ML-132", "title": "Pannier rails with dry bags, used", "detail": "Demo listing. Mounts straight, bags hold water seal.", "meta": "Nanyuki", "status": "Demo", "category": "Used gear", "size": null, "make": null, "kind": null, "price_guide": 18000, "tags": ["Kenyan used", "Custom build"] }
   ],
   "guides": [
     { "title": "What to inspect", "detail": "The twenty minute sequence that ends an inspection early when it should end early.", "href": "/market/#inspect" },

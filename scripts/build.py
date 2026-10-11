@@ -185,15 +185,29 @@ def main():
     built.append(meta)
 
     # The shared section pages: ride, market. Shop has its own commerce layout.
+    # Market paginates at 25 listings per generated page.
     for page in data["sections"]["pages"]:
         if page["slug"] == "shop":
             meta = shop_page.page_meta(site, data)
             body = shop_page.build(data)
+            write(meta["out"], shell.render(site, meta, meta["depth"], body))
+            built.append(meta)
+        elif page["slug"] == "market":
+            listings = data["market"]["listings"]
+            per = section_page.MARKET_PER_PAGE
+            total = max(1, (len(listings) + per - 1) // per)
+            for n in range(1, total + 1):
+                meta = section_page.market_page_meta(page, site, n, total)
+                body = section_page.build_market(
+                    page, data, listings[(n - 1) * per:n * per], n, total
+                )
+                write(meta["out"], shell.render(site, meta, meta["depth"], body))
+                built.append(meta)
         else:
             meta = section_page.page_meta(page, site)
             body = section_page.build(page, data)
-        write(meta["out"], shell.render(site, meta, meta["depth"], body))
-        built.append(meta)
+            write(meta["out"], shell.render(site, meta, meta["depth"], body))
+            built.append(meta)
 
     # Workshop
     meta = workshop_page.page_meta(site, data)
@@ -214,6 +228,13 @@ def main():
     meta = simple_pages.legal_meta(site)
     write(meta["out"], shell.render(site, meta, meta["depth"], simple_pages.legal(data)))
     built.append(meta)
+
+    # Market account placeholders: login, sign up, sell, faq, contact
+    for slug in simple_pages.PLACEHOLDERS:
+        meta = simple_pages.placeholder_meta(site, slug)
+        body = simple_pages.placeholder(slug, data)
+        write(meta["out"], shell.render(site, meta, meta["depth"], body))
+        built.append(meta)
 
     meta = simple_pages.not_found_meta(site)
     write(meta["out"], shell.render(site, meta, meta["depth"], simple_pages.not_found(data)))

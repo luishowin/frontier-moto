@@ -13,15 +13,20 @@ sections, and the newsletter.
 from components import (
     article_card,
     article_row,
+    bike_alert_form,
     image,
     checklist,
     editorial_hero,
     esc,
     feature_story,
+    market_browser,
+    market_pages_nav,
     newsletter_form,
+    popular_searches,
     related_cards,
     rel,
     section_label,
+    seller_menu,
     spec_list,
     steps,
     topic_nav,
@@ -186,6 +191,57 @@ MODULES = {
 
 # ── Page ─────────────────────────────────────────────────────────────────────
 
+def build_market(page, data, listings, page_num, total_pages):
+    """
+    The market stands apart from the shared section shape: a title block with
+    a seller menu, search plus working filters over a vertical stack of
+    listing cards, static pagination, popular searches, and the waitlist
+    closer. No hero photograph, no lead story, no guides.
+    """
+    market = data["market"]
+    bikes = [l for l in market["listings"] if l["category"] == "Used bike"]
+
+    out = []
+    out.append(f"""<div class="seller-menu-wrap">
+  <div class="container">
+    {seller_menu(DEPTH)}
+  </div>
+</div>
+<section class="section section--tight" aria-label="Market introduction">
+  <div class="container">
+    <h1>Frontier Moto Market</h1>
+    <p class="lede" style="margin-top:1rem">Buy and sell your bikes, tools and gear in Kenya.</p>
+    <p class="lede" style="margin-top:0.8rem;max-width:62ch">
+      Whatever strange machine you ride, if it is roadworthy and the papers
+      are in order, it belongs here. Condition notes say what was seen, and
+      guide prices are estimates rather than offers. Nothing transacts yet.
+    </p>
+  </div>
+</section>""")
+
+    out.append(f"""<section class="section" aria-label="Browse listings">
+  <div class="container">
+    <p class="lede" style="margin-bottom:1.5rem;max-width:62ch">{esc(market["note"])}</p>
+    <p class="mono" style="margin-bottom:1.25rem" data-reveal>
+      {len(bikes)} bikes listed. Showing {page_num} of {total_pages} pages.
+    </p>
+    {market_browser(market, listings)}
+    {market_pages_nav(page_num, total_pages, DEPTH)}
+    <div role="group" aria-label="Popular searches" style="margin-top:30px">
+      {popular_searches(market)}
+    </div>
+  </div>
+</section>""")
+
+    out.append(f"""<section class="section section--soft waitlist-compact" aria-label="Market waitlist">
+  <div class="container">
+    {bike_alert_form(DEPTH)}
+  </div>
+</section>""")
+
+    return "\n".join(out)
+
+
 def build(page, data):
     site = data["site"]
     articles = data["articles"]["articles"]
@@ -345,8 +401,18 @@ def build(page, data):
   </div>
 </section>""")
 
-    # ── Newsletter ───────────────────────────────────────────────────────────
-    out.append(f"""<section class="section" aria-labelledby="notes-title">
+    # ── Newsletter, or the market waitlist ───────────────────────────────────
+    # The market closes with a match-and-notify signup instead of the
+    # newsletter. It is a placeholder; matching and messaging do not exist.
+    if page["slug"] == "market":
+        out.append(f"""<section class="section" aria-labelledby="notes-title">
+  <div class="container">
+    {section_label(sub(), "Waitlist", "One message when your bike lands", heading_id="notes-title")}
+    {bike_alert_form(DEPTH)}
+  </div>
+</section>""")
+    else:
+        out.append(f"""<section class="section" aria-labelledby="notes-title">
   <div class="container">
     {section_label(sub(), "Field notes", "One email, occasionally", heading_id="notes-title")}
     {newsletter_form(DEPTH)}
@@ -357,15 +423,15 @@ def build(page, data):
 
 
 def page_meta(page, site):
-    return {
+    meta = {
         "href": f'/{page["slug"]}/',
         "out": f'{page["slug"]}/index.html',
         "depth": DEPTH,
         "slug": page["slug"],
         "title": page["title"],
         "description": page["purpose"],
-        "dark_hero": True,
-        "preload_image": page["hero_image"],
+        # The market has no hero photograph, so its header starts solid.
+        "dark_hero": page["slug"] != "market",
         "schema": {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
@@ -379,4 +445,39 @@ def page_meta(page, site):
             },
             "about": [{"@type": "Thing", "name": t} for t in page["topics"]],
         },
+    }
+    # Only pages that actually render a hero photograph preload one.
+    if page.get("hero_image"):
+        meta["preload_image"] = page["hero_image"]
+    return meta
+
+
+MARKET_PER_PAGE = 25
+
+
+def market_page_meta(page, site, page_num, total_pages):
+    """One meta per market pagination page. Titles stay unique for check.py."""
+    if page_num == 1:
+        return {
+            "href": "/market/",
+            "out": "market/index.html",
+            "depth": DEPTH,
+            "slug": "market",
+            "title": page["title"],
+            "description": page["purpose"],
+            "dark_hero": False,
+            "schema": page_meta(page, site)["schema"],
+        }
+    return {
+        "href": f"/market/page/{page_num}/",
+        "out": f"market/page/{page_num}/index.html",
+        "depth": 2,
+        "slug": "market",
+        "title": f'{page["title"]}, page {page_num}',
+        "description": (
+            f'Further market listings, page {page_num} of {total_pages}. '
+            "Used bikes, tools and gear with notes on condition."
+        ),
+        "dark_hero": False,
+        "schema": page_meta(page, site)["schema"],
     }

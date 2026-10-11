@@ -59,6 +59,15 @@ def mono_label(text):
     return f'<span class="mono">{esc(text)}</span>'
 
 
+# Shared button arrow. One copy so every guided button carries the same mark.
+BTN_ARROW = (
+    '<svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" '
+    'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
+    'stroke-linejoin="round" aria-hidden="true" focusable="false">'
+    '<path d="M4 2l4 4-4 4"/></svg>'
+)
+
+
 def rel(href, depth):
     """Kept in step with shell.rel; duplicated to avoid a circular import."""
     if href.startswith(("http://", "https://", "mailto:", "tel:", "#")):
@@ -432,6 +441,68 @@ def workshop_callout(*, depth, slot, caption_left, caption_right, callouts,
 </div>"""
 
 
+# ── EngineStudy ────────────────────────────────────────────────────────────
+
+def engine_study(*, depth, slot, caption_left, caption_right,
+                 title, body, actions, note=None, lede=None):
+    """
+    A photo-led workshop figure. Unlike workshop_callout this carries no
+    service-point callout list: the annotated figure names its own parts.
+    """
+    note_html = (
+        f'<p class="checklist__note" style="margin-top:1rem">{esc(note)}</p>'
+        if note else ""
+    )
+    lede_html = (
+        f'<p class="lede" style="margin-top:0.8rem">{esc(lede)}</p>'
+        if lede else ""
+    )
+
+    return f"""<div class="workshop-callout">
+  <figure class="workshop-callout__figure" data-reveal>
+    {image(slot, depth, sizes="(max-width: 960px) 100vw, 50vw")}
+    <figcaption class="workshop-callout__figcaption">
+      <span>{esc(caption_left)}</span><span>{esc(caption_right)}</span>
+    </figcaption>
+  </figure>
+  <div data-reveal style="--i:1">
+    <h3>{esc(title)}</h3>
+    {lede_html}
+    <p class="lede" style="margin-top:0.8rem">{esc(body)}</p>
+    {note_html}
+    <div class="btn-row" style="margin-top:1.5rem">{actions}</div>
+  </div>
+</div>"""
+
+
+# ── MarketCTA ──────────────────────────────────────────────────────────────
+
+def market_cta(depth):
+    """Homepage closer. Invites the reader to the market, not to a list."""
+    return f"""<div class="split split--wide-left">
+  <div data-reveal>
+    <h3 class="newsletter__title">See what is on the stand</h3>
+    <p class="newsletter__body">
+      Used bikes, tools and gear from the local market, inspected in person
+      and written up with notes on condition. New finds land there first.
+    </p>
+    <div class="btn-row" style="margin-top:1.5rem">
+      <a class="btn btn--signal" href="{rel("/market/", depth)}">
+        <span class="btn__label">Visit the market</span></a>
+      <a class="btn" href="{rel("/market/#guides", depth)}">
+        <span class="btn__label">Buying guidance</span></a>
+    </div>
+  </div>
+  <div data-reveal style="--i:1">
+    <ul class="fact-list">
+      <li><span class="fact-list__k">Bikes</span><span>Used two wheelers, seen and started</span></li>
+      <li><span class="fact-list__k">Tools</span><span>Used tools judged on wear, not packaging</span></li>
+      <li><span class="fact-list__k">Gear</span><span>Rider and bike goods with condition notes</span></li>
+    </ul>
+  </div>
+</div>"""
+
+
 # ── RecoveryBanner ───────────────────────────────────────────────────────────
 
 def recovery_banner(*, depth, ready, title="Workshop and recovery. Opening soon.",
@@ -471,7 +542,7 @@ def recovery_banner(*, depth, ready, title="Workshop and recovery. Opening soon.
       </p>
     </div>
     <div>
-      <p class="recovery-banner__label" style="border-bottom-color:rgba(18,18,18,0.35)">
+      <p class="recovery-banner__label" style="border-bottom-color:var(--line)">
         <span>Have this ready</span>
       </p>
       <ul class="ready-list" style="margin-top:1.2rem">{items}</ul>
@@ -510,6 +581,271 @@ def newsletter_form(depth):
     </p>
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
+</div>"""
+
+
+# ── BikeAlertForm ──────────────────────────────────────────────────────────
+
+def bike_alert_form(depth):
+    """
+    Market closer. A placeholder for a future match-and-notify feature:
+    email plus bike specs or a named make, with email or WhatsApp delivery.
+    Demonstration only, like every other form on the site.
+    """
+    return """<div class="newsletter">
+  <div data-reveal>
+    <h2 class="newsletter__title">Can&apos;t find what you&apos;re looking for?</h2>
+    <p class="newsletter__body">
+      Tell us the bike you are after and how to reach you. When a matching
+      machine is inspected and listed, you get one email or WhatsApp message.
+      Nothing else, and nothing until there is a match.
+    </p>
+    <p class="disclaimer" style="margin-top:1.25rem;max-width:44ch">
+      <strong>Demonstration only.</strong>
+      Matching and messaging are not built yet. This form transmits nothing
+      and no alert is created.
+    </p>
+  </div>
+  <form class="newsletter__form" data-reveal style="--i:1" data-demo-form
+        data-demo-message="Demonstration only. No alert was created and nothing was stored or sent. Matching and messaging are not built yet."
+        novalidate>
+    <div class="form-grid">
+      <div class="field field--full">
+        <label for="alert-email">Email address</label>
+        <input id="alert-email" name="email" type="email" required
+               autocomplete="email" placeholder="you@example.com">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="alert-size">Engine size</label>
+        <select id="alert-size" name="size" required>
+          <option value="">Choose one</option>
+          <option>Up to 125 cc</option>
+          <option>125 to 250 cc</option>
+          <option>250 to 400 cc</option>
+          <option>Over 400 cc</option>
+          <option>Not sure, advise me</option>
+        </select>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="alert-type">Bike type</label>
+        <select id="alert-type" name="type" required>
+          <option value="">Choose one</option>
+          <option>Commuter</option>
+          <option>Dual sport</option>
+          <option>Adventure</option>
+          <option>Anything sound</option>
+        </select>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field field--full">
+        <label for="alert-make">Make, model or bike name</label>
+        <input id="alert-make" name="make" type="text"
+               placeholder="A specific bike, or leave blank for any match">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field field--full" data-channel-toggle="alert-phone-wrap">
+        <span class="mono" id="alert-channel-label" style="display:block;margin-bottom:0.5rem">Notify me by</span>
+        <div role="radiogroup" aria-labelledby="alert-channel-label">
+          <label class="radio"><input type="radio" name="channel" value="email" checked> Email</label>
+          <label class="radio"><input type="radio" name="channel" value="whatsapp"> WhatsApp</label>
+        </div>
+      </div>
+      <div class="field field--full" id="alert-phone-wrap" hidden>
+        <label for="alert-phone">WhatsApp number</label>
+        <input id="alert-phone" name="phone" type="tel"
+               autocomplete="tel" placeholder="+254 700 000 000">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="btn-row" style="margin-top:1.5rem">
+      <button class="btn btn--solid" type="submit">
+        <span class="btn__label">Notify me</span>
+      </button>
+    </div>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</div>"""
+
+
+# ── MarketBrowser ──────────────────────────────────────────────────────────
+
+# Tiny inline stats icons. Decorative duplicates of adjacent text.
+GEAR_SVG = (
+    '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" '
+    'stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">'
+    '<circle cx="8" cy="8" r="2.2"/>'
+    '<path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4'
+    'M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"/></svg>'
+)
+
+TAG_SVG = (
+    '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" '
+    'stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">'
+    '<path d="M2.5 2.5h5l6 6-5 5-6-6v-5Z"/><circle cx="6" cy="6" r="1.2"/></svg>'
+)
+
+def _listing_card(l, i):
+    stat = l.get("gearbox") or l["category"]
+    icon = GEAR_SVG if l.get("gearbox") else TAG_SVG
+    chips = "".join(
+        f'<span class="tag">{esc(t)}</span>'
+        for t in [l["status"]] + l.get("tags", [])
+    )
+    price = l.get("price_guide")
+    price_html = (
+        f'<p class="listing-card__price">Guide price KSh {price:,}'
+        f'<span>{esc(l["meta"])}</span></p>'
+        if price else ""
+    )
+    search_text = " ".join([
+        l["title"], l["detail"], l["ref"], l["meta"], l["category"],
+        l["status"], l.get("make") or "", l.get("kind") or "",
+        l.get("size") or "", l.get("gearbox") or "",
+        " ".join(l.get("tags", [])),
+    ])
+    return f"""<article class="listing-card" data-reveal style="--i:{i}"
+      data-category="{esc(l["category"])}"
+      data-size="{esc(l.get("size") or "")}"
+      data-status="{esc(l["status"])}"
+      data-search="{esc(search_text)}">
+      <div class="listing-card__media" aria-hidden="true"><span>{esc(l["ref"])}</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">{esc(l["title"])}</h2>
+        <p class="article-row__cat listing-card__stat">{icon} {esc(stat)}</p>
+        <p class="article-row__excerpt">{esc(l["detail"])}</p>
+        <p class="tag-row">{chips}</p>
+        {price_html}
+      </div>
+    </article>"""
+
+
+def market_browser(market, listings):
+    """
+    Motifiti style market browsing: search plus honest filters over a
+    vertical stack of listing cards. The filters genuinely filter in the
+    browser (see index.js); with JS off every listing is shown. Tools and
+    gear carry no engine size, so they always pass the size filter.
+    """
+    rows = "".join(_listing_card(l, i) for i, l in enumerate(listings))
+
+    return f"""<div class="market-filters" data-reveal data-market-filters>
+  <div class="field">
+    <label for="market-search">Search listings</label>
+    <input id="market-search" name="search" type="search" autocomplete="off"
+           placeholder="Try 150 cc, commuter or Nairobi">
+  </div>
+  <div class="field">
+    <label for="market-category">Category</label>
+    <select id="market-category" name="category">
+      <option value="">All categories</option>
+      <option>Used bike</option>
+      <option>Used tool</option>
+      <option>Used gear</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="market-size">Engine size</label>
+    <select id="market-size" name="size">
+      <option value="">Any size</option>
+      <option>Up to 125 cc</option>
+      <option>125 to 250 cc</option>
+      <option>250 to 400 cc</option>
+      <option>Over 400 cc</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="market-status">Condition</label>
+    <select id="market-status" name="status">
+      <option value="">Any condition</option>
+      <option>Inspected</option>
+      <option>Seen only</option>
+      <option>Demo</option>
+    </select>
+  </div>
+</div>
+<p class="scroll-hint" data-market-count role="status" aria-live="polite">{len(listings)} listings</p>
+<div class="row-list" data-market-list>{rows}</div>
+<p class="lede" data-market-empty hidden style="margin-top:1.5rem;max-width:52ch">
+  No listings match those filters. Clear them to see everything again, or join
+  the waitlist below and we will message you when your bike lands.
+</p>"""
+
+
+# ── MarketSellerMenu ───────────────────────────────────────────────────────
+
+def seller_menu(depth):
+    """Market-local account menu. Every entry is a real placeholder page."""
+    entries = [
+        ("FAQ", "/faq/"),
+        ("Contact us", "/contact/"),
+        ("Log in", "/login/"),
+        ("Sign up", "/join/"),
+    ]
+    items = "".join(
+        f'<li><a href="{rel(href, depth)}">{esc(label)}</a></li>'
+        for label, href in entries
+    )
+    return f'<nav class="seller-menu" aria-label="Market account"><ul>{items}</ul></nav>'
+
+
+# ── MarketPagination ─────────────────────────────────────────────────────────
+
+def market_pages_nav(page_num, total_pages, depth):
+    """Static pagination. Real links to generated pages, not controls."""
+    def href(n):
+        return rel("/market/" if n == 1 else f"/market/page/{n}/", depth)
+
+    nums = []
+    for n in range(1, total_pages + 1):
+        if n == 1 or n == total_pages or abs(n - page_num) <= 2:
+            current = ' aria-current="page"' if n == page_num else ""
+            nums.append(
+                f'<a href="{href(n)}"{current}>{n}</a>'
+            )
+        elif not nums or not nums[-1].endswith("…</span>"):
+            nums.append('<span aria-hidden="true">…</span>')
+
+    prev = (
+        f'<a href="{href(page_num - 1)}" aria-label="Previous page">&#8249; Prev</a>'
+        if page_num > 1 else '<span aria-hidden="true">&#8249; Prev</span>'
+    )
+    nxt = (
+        f'<a href="{href(page_num + 1)}" aria-label="Next page">Next &#8250;</a>'
+        if page_num < total_pages else '<span aria-hidden="true">Next &#8250;</span>'
+    )
+    return (
+        f'<nav class="pages-nav" aria-label="Market pages">'
+        f"{prev}{''.join(nums)}{nxt}</nav>"
+    )
+
+
+# ── PopularSearches ──────────────────────────────────────────────────────────
+
+def popular_searches(market):
+    """
+    Tag buttons with real counts computed from the listings. Clicking one
+    fills the search box and filters the list, so the buttons genuinely work.
+    Only values present in the data are rendered.
+    """
+    counts = {}
+    order = []
+    for l in market["listings"]:
+        for term in [l.get("make"), l.get("kind"), l.get("size")]:
+            if term and term not in counts:
+                counts[term] = 0
+                order.append(term)
+            if term:
+                counts[term] += 1
+
+    buttons = "".join(
+        f'<button type="button" data-search-tag="{esc(term)}">'
+        f'<span>{esc(term)}</span><span>{counts[term]}</span></button>'
+        for term in order
+    )
+    return f"""<div data-reveal>
+  <div class="tag-cloud" data-search-tags>{buttons}</div>
 </div>"""
 
 

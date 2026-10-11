@@ -4,6 +4,79 @@ from components import esc, newsletter_form, rel, section_label
 
 LEGAL_DEPTH = 1
 NOTFOUND_DEPTH = 0
+PLACEHOLDER_DEPTH = 1
+
+
+# ── Market account placeholders ────────────────────────────────────────────
+# Log in, sign up, selling, FAQ and contact do not exist yet. These pages say
+# so plainly and point at what does exist, so no menu entry is a dead end.
+
+PLACEHOLDERS = {
+    "login": {
+        "title": "Log in",
+        "description": "Market accounts do not exist yet, so there is nowhere to log in. Opening soon.",
+        "heading": "Log in",
+        "body": "Market accounts are not open yet, so there is nowhere to log in. When they open, this is where returning sellers and buyers will sign in.",
+    },
+    "join": {
+        "title": "Sign up",
+        "description": "Market accounts do not exist yet. Join the market waitlist instead until sign up opens.",
+        "heading": "Sign up",
+        "body": "Market accounts are not open yet. Until sign up opens, the market waitlist is the way to hear when a bike you are after lands.",
+    },
+    "sell": {
+        "title": "Sell your bike or gear",
+        "description": "Seller listings are not open yet. What selling here will require once it opens.",
+        "heading": "Sell your bike or gear",
+        "body": "Seller listings are not open yet. When they open, anything roadworthy with its papers in order will be welcome, strange machines included. Condition notes and guide prices will follow the same rules as the listings on the market page.",
+    },
+    "faq": {
+        "title": "Market FAQ",
+        "description": "Plain answers about the market: nothing transacts yet, listings are condition notes, guide prices are estimates.",
+        "heading": "Market FAQ",
+        "body": "The market is a set of inspected condition notes, not a shop. Nothing transacts through this site yet, guide prices are estimates rather than offers, and the waitlist is how you hear about new arrivals.",
+    },
+    "contact": {
+        "title": "Contact us",
+        "description": "Reach Frontier Moto by email. The phone number on the site is a placeholder until opening.",
+        "heading": "Contact us",
+        "body": "Email reaches us directly. Social channels are not open yet and the phone number shown elsewhere on the site is a placeholder until opening.",
+    },
+}
+
+
+def placeholder(slug, data):
+    site = data["site"]
+    p = PLACEHOLDERS[slug]
+    return f"""<section class="section page-top" aria-labelledby="{slug}-title">
+  <div class="container">
+    {section_label("02", "Market", "Opening soon", heading_id=f"{slug}-title")}
+    <h1>{esc(p["heading"])}</h1>
+    <p class="lede" style="margin-top:1rem;max-width:58ch">{esc(p["body"])}</p>
+    <p class="lede" style="margin-top:0.8rem;max-width:58ch">
+      Email: <a href="mailto:{esc(site["brand"]["email"])}">{esc(site["brand"]["email"])}</a>
+    </p>
+    <div class="btn-row" style="margin-top:2rem">
+      <a class="btn btn--solid" href="{rel("/market/", PLACEHOLDER_DEPTH)}">
+        <span class="btn__label">Back to the market</span></a>
+      <a class="btn" href="{rel("/market/#notes-title", PLACEHOLDER_DEPTH)}">
+        <span class="btn__label">Join the waitlist</span></a>
+    </div>
+  </div>
+</section>"""
+
+
+def placeholder_meta(site, slug):
+    p = PLACEHOLDERS[slug]
+    return {
+        "href": f"/{slug}/",
+        "out": f"{slug}/index.html",
+        "depth": PLACEHOLDER_DEPTH,
+        "slug": None,
+        "title": p["title"],
+        "description": p["description"],
+        "dark_hero": False,
+    }
 
 
 def legal(data):

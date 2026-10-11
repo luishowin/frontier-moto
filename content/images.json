@@ -131,6 +131,22 @@
       ]
     },
     {
+      "id": "maintain-engine",
+      "w": 1536,
+      "h": 1024,
+      "kind": "diagram",
+      "tone": "light",
+      "caption": "Single cylinder, annotated",
+      "subject": "diagram",
+      "alt": "Annotated line drawing of a single cylinder four stroke motorcycle engine with nineteen numbered parts, from camshaft chain and rocker arms through piston and cylinder block to clutch and kickstarter, with a parts legend below",
+      "source": "single-cylinder-annotated.png",
+      "widths": [
+        1536,
+        1200,
+        800
+      ]
+    },
+    {
       "id": "market-gear",
       "w": 687,
       "h": 515,

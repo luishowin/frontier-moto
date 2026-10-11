@@ -28,11 +28,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap">
 
-<link rel="stylesheet" href="../assets/css/index.css?v=12">
+<link rel="stylesheet" href="../assets/css/index.css?v=27">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="preload" as="image" type="image/avif" imagesrcset="../assets/img/hero-market.avif 1170w, ../assets/img/hero-market-800.avif 800w" imagesizes="100vw" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -75,13 +74,14 @@
 }
 </script>
 
-<script>(function(){try{var t=localStorage.getItem('frontier-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<script>(function(){try{var t=localStorage.getItem('frontier-theme');if(!t){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div id="header-sentinel" aria-hidden="true"></div>
 
-<header class="site-header" data-over="dark">
+<div class="wip-strip" role="note" aria-label="Work in progress"><div class="wip-strip__track" aria-hidden="true"><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span><span class="wip-strip__item">Work in progress!</span></div></div>
+<header class="site-header">
   <div class="site-header__inner">
     <a class="wordmark" href="../" aria-label="Frontier Moto, home"><span>FRON</span><span>TIER</span><span>MOTO</span></a>
     <nav class="primary-nav" aria-label="Primary">
@@ -112,228 +112,229 @@
   </div>
 </div>
 <main id="main">
-<section class="hero hero--compact hero--flat">
-  <div class="hero__media"><picture><source type="image/avif" srcset="../assets/img/hero-market.avif 1170w, ../assets/img/hero-market-800.avif 800w" sizes="100vw"><img src="../assets/img/hero-market.jpg" srcset="../assets/img/hero-market.jpg 1170w, ../assets/img/hero-market-800.jpg 800w" width="1170" height="585" alt="A close packed rail of worn leather motorcycle jackets in browns and blacks" sizes="100vw" fetchpriority="high" decoding="async"></picture></div>
-  <div class="hero__scrim"></div>
-  <div class="hero__inner">
-    <p class="hero__label"><b>02</b> Frontier Index</p>
-    <h1 class="hero__title"><span>Market</span></h1>
-    <p class="hero__lede">Used two wheelers, used tools and other biking related goods, inspected in person.</p>
-    
-    <dl class="hero__field"><div><dt>Section</dt><dd>02 / Market</dd></div><div><dt>Guides</dt><dd>4 listed</dd></div><div><dt>Topics</dt><dd>6</dd></div><div><dt>Updated</dt><dd>24 AUG 2026</dd></div></dl>
-  </div>
-</section>
-<section class="section" aria-labelledby="lead-title">
+<div class="seller-menu-wrap">
   <div class="container">
-    <h2 class="section-label" id="lead-title"><span class="section-label__n">02.1</span><span class="section-label__title">In this section</span><span class="section-label__aside">6 topics</span></h2>
-    <div class="split split--wide-left">
-      <div data-reveal>
-        <p class="lede" style="max-width:none;color:var(--text)">Core business is used two wheelers from the local and used market, plus used tools and biking related goods. Notes on condition, not offers. Nothing transacts yet.</p>
-        <div class="btn-row" style="margin-top:1.75rem">
-          <a class="btn btn--solid" href="#guides"><span class="btn__label">Guides in this section</span></a>
-          <a class="btn" href="#module"><span class="btn__label">Practical module</span></a>
-        </div>
-      </div>
-      <div data-reveal style="--i:1"><div>
-  <p class="mono" style="color:var(--text-muted);margin-bottom:0.6rem">Covered in this section</p>
-  <div class="topic-nav"><span>Used bikes</span><span>Used tools</span><span>Used gear</span><span>Buying guides</span><span>Inspection</span><span>Fair pricing</span></div>
-</div></div>
-    </div>
+    <nav class="seller-menu" aria-label="Market account"><ul><li><a href="../faq/">FAQ</a></li><li><a href="../contact/">Contact us</a></li><li><a href="../login/">Log in</a></li><li><a href="../join/">Sign up</a></li></ul></nav>
   </div>
-</section>
-<section class="section section--soft" id="module" aria-labelledby="module-title">
+</div>
+<section class="section section--tight" aria-label="Market introduction">
   <div class="container">
-    <h2 class="section-label" id="module-title"><span class="section-label__n">02.2</span><span class="section-label__title">Equipment</span><span class="section-label__aside">6 items, 6 listings</span></h2>
-    <div class="gear-grid" id="inspect"><article class="gear-item" data-reveal style="--i:0">
-      <p class="gear-item__top"><span>EQ-01</span><span>Head</span></p>
-      <h3 class="gear-item__name">Full face helmet, vented</h3>
-      <p class="gear-item__summary">Ventilation matters more than weight at equatorial midday. A quiet helmet that cooks you is the wrong helmet.</p>
-      <dl class="spec-list spec-list--single"><div><dt>Use</dt><dd>Highway and mixed</dd></div><div><dt>Watch for</dt><dd>Vent count and exhaust ports</dd></div><div><dt>Replace</dt><dd>After any impact</dd></div></dl>
-      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
-        <span class="verdict verdict--tested">Field tested</span>
-      </p>
-    </article><article class="gear-item" data-reveal style="--i:1">
-      <p class="gear-item__top"><span>EQ-02</span><span>Wet weather</span></p>
-      <h3 class="gear-item__name">Two piece rain suit over armour</h3>
-      <p class="gear-item__summary">Survives a full season if the seams are taped and it goes over armour rather than under it. Packs smaller than a one piece.</p>
-      <dl class="spec-list spec-list--single"><div><dt>Use</dt><dd>Long rains</dd></div><div><dt>Watch for</dt><dd>Taped seams, ankle gussets</dd></div><div><dt>Fails at</dt><dd>Cuff and collar first</dd></div></dl>
-      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
-        <span class="verdict verdict--tested">Field tested</span>
-      </p>
-    </article><article class="gear-item" data-reveal style="--i:2">
-      <p class="gear-item__top"><span>EQ-03</span><span>Luggage</span></p>
-      <h3 class="gear-item__name">Dry bag with compression straps</h3>
-      <p class="gear-item__summary">Cheaper, lighter and more waterproof than hard cases, and it does not change the width of the bike in traffic.</p>
-      <dl class="spec-list spec-list--single"><div><dt>Use</dt><dd>Touring and cargo</dd></div><div><dt>Watch for</dt><dd>Roll closure, four anchor points</dd></div><div><dt>Limit</dt><dd>No security at all</dd></div></dl>
-      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
-        <span class="verdict verdict--tested">Field tested</span>
-      </p>
-    </article><article class="gear-item" data-reveal style="--i:3">
-      <p class="gear-item__top"><span>EQ-04</span><span>Tyres</span></p>
-      <h3 class="gear-item__name">Dual purpose, road biased</h3>
-      <p class="gear-item__summary">For riders who meet murram occasionally rather than daily. A knobbly tyre used mostly on tarmac is a braking problem.</p>
-      <dl class="spec-list spec-list--single"><div><dt>Use</dt><dd>80 road, 20 loose</dd></div><div><dt>Watch for</dt><dd>Date code on purchase</dd></div><div><dt>Pressure</dt><dd>Adjust for load</dd></div></dl>
-      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
-        <span class="verdict verdict--tested">Field tested</span>
-      </p>
-    </article><article class="gear-item" data-reveal style="--i:4">
-      <p class="gear-item__top"><span>EQ-05</span><span>Tools</span></p>
-      <h3 class="gear-item__name">Tyre plug kit and compact inflator</h3>
-      <p class="gear-item__summary">The single highest value item per gram carried. Practise on a dead tyre at home before you need it on a shoulder.</p>
-      <dl class="spec-list spec-list--single"><div><dt>Use</dt><dd>Tubeless only</dd></div><div><dt>Watch for</dt><dd>Inflator duty cycle</dd></div><div><dt>Note</dt><dd>A plug is a repair to get you home</dd></div></dl>
-      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
-        <span class="verdict verdict--tested">Field tested</span>
-      </p>
-    </article><article class="gear-item" data-reveal style="--i:5">
-      <p class="gear-item__top"><span>EQ-06</span><span>Visibility</span></p>
-      <h3 class="gear-item__name">Reflective vest, class rated</h3>
-      <p class="gear-item__summary">We have not run a controlled comparison. Any rated vest beats none, and the one you actually wear beats the better one you leave at home.</p>
-      <dl class="spec-list spec-list--single"><div><dt>Use</dt><dd>All conditions</dd></div><div><dt>Watch for</dt><dd>Class rating on the label</dd></div><div><dt>Status</dt><dd>Comparison planned</dd></div></dl>
-      <p class="gear-item__top" style="margin-top:auto;padding-top:0.9rem">
-        <span class="verdict verdict--untested">Untested</span>
-      </p>
-    </article></div>
-  <h3 style="margin-top:3rem" id="price">Used bikes, tools and gear seen</h3>
-  <p class="lede" style="margin-top:0.6rem;margin-bottom:1.25rem;max-width:62ch">
-    Machines, tools and gear we have inspected or, where marked, only seen or listed as demo.
-    Frontier Moto holds no stock yet and brokers no sales. These are notes on condition, not offers.
-    Nothing transacts yet.
-  </p>
-  <div class="row-list"><article class="article-row" data-reveal style="--i:0">
-      <p class="article-row__cat">Used bike ML-118</p>
-      <div>
-        <h3 class="article-row__title">150 cc commuter, single owner</h3>
-        <p class="article-row__excerpt">Service history present, chain set recent, tyres at half.</p>
-      </div>
-      <p class="article-row__meta">Central Kenya<br>Inspected</p>
-    </article><article class="article-row" data-reveal style="--i:1">
-      <p class="article-row__cat">Used bike ML-121</p>
-      <div>
-        <h3 class="article-row__title">250 cc dual sport</h3>
-        <p class="article-row__excerpt">Higher mileage, fork seals weeping, otherwise sound.</p>
-      </div>
-      <p class="article-row__meta">Nairobi<br>Inspected</p>
-    </article><article class="article-row" data-reveal style="--i:2">
-      <p class="article-row__cat">Used bike ML-124</p>
-      <div>
-        <h3 class="article-row__title">125 cc, stage retired</h3>
-        <p class="article-row__excerpt">Working machine, honest wear, priced accordingly.</p>
-      </div>
-      <p class="article-row__meta">Nakuru<br>Inspected</p>
-    </article><article class="article-row" data-reveal style="--i:3">
-      <p class="article-row__cat">Used bike ML-127</p>
-      <div>
-        <h3 class="article-row__title">400 cc adventure, imported</h3>
-        <p class="article-row__excerpt">Low mileage, no local service history, parts lead time is the risk.</p>
-      </div>
-      <p class="article-row__meta">Nairobi<br>Seen only</p>
-    </article><article class="article-row" data-reveal style="--i:4">
-      <p class="article-row__cat">Used tool ML-131</p>
-      <div>
-        <h3 class="article-row__title">Socket set and torque wrench, used</h3>
-        <p class="article-row__excerpt">Demo listing. Sizes checked against common commuter fasteners.</p>
-      </div>
-      <p class="article-row__meta">Nanyuki<br>Demo</p>
-    </article><article class="article-row" data-reveal style="--i:5">
-      <p class="article-row__cat">Used gear ML-132</p>
-      <div>
-        <h3 class="article-row__title">Pannier rails with dry bags, used</h3>
-        <p class="article-row__excerpt">Demo listing. Mounts straight, bags hold water seal.</p>
-      </div>
-      <p class="article-row__meta">Nanyuki<br>Demo</p>
-    </article></div>
-  </div>
-</section>
-<section class="section section--soft" aria-labelledby="plate-title">
-  <div class="container">
-    <h2 class="section-label" id="plate-title"><span class="section-label__n">02.3</span><span class="section-label__title">Condition, not packaging</span><span class="section-label__aside">How equipment is judged here</span></h2>
-    <div class="split split--wide-left">
-      <figure data-reveal style="margin:0">
-        <picture><source type="image/avif" srcset="../assets/img/market-gear.avif 687w" sizes="(max-width: 960px) 100vw, 50vw"><img src="../assets/img/market-gear.jpg" srcset="../assets/img/market-gear.jpg 687w" width="687" height="515" alt="A road helmet resting beneath a heavy timber shelf in a dim workshop, with a second helmet stored on the shelf above" sizes="(max-width: 960px) 100vw, 50vw" decoding="async" loading="lazy"></picture>
-        <figcaption class="workshop-callout__figcaption" style="border:1px solid var(--line);border-top:none">
-          <span>Shelf storage, helmets</span><span>Reference photograph</span>
-        </figcaption>
-      </figure>
-      <p class="lede" data-reveal style="--i:1;max-width:none">A helmet is the one item on this page where used is the wrong economy. It absorbs an impact once, the damage that matters is inside the shell where you cannot see it, and a resale price tells you nothing about whether it has already done its job. Everything else in a loadout can be bought second hand and judged on wear.</p>
-    </div>
-  </div>
-</section>
-<section class="section" id="guides" aria-labelledby="guides-title">
-  <div class="container">
-    <h2 class="section-label" id="guides-title"><span class="section-label__n">02.4</span><span class="section-label__title">Guides</span><span class="section-label__aside">4 listed</span></h2>
-    <div class="row-list"><article class="article-row" data-reveal style="--i:0">
-  <p class="article-row__cat">Buying guide</p>
-  <div>
-    <h3 class="article-row__title">Inspecting a used bike in twenty minutes</h3>
-    <p class="article-row__excerpt">The order to check things in, so that a fault ends the inspection before you waste an hour.</p>
-    <p class="row-tags"> <span class="tag-role tag-role--staff">Frontier</span><span class="tag-upcoming">In preparation</span></p>
-  </div>
-  <p class="article-row__meta">15 AUG 2026<br>10 min</p>
-</article><article class="article-row" data-reveal style="--i:1">
-  <p class="article-row__cat">Gear</p>
-  <div>
-    <h3 class="article-row__title">Wet weather kit that survives one season</h3>
-    <p class="article-row__excerpt">Tested through a full set of long rains, including the two that did not make it.</p>
-    <p class="row-tags"> <span class="tag-role tag-role--staff">Frontier</span><span class="tag-upcoming">In preparation</span></p>
-  </div>
-  <p class="article-row__meta">03 AUG 2026<br>7 min</p>
-</article><article class="article-row" data-reveal style="--i:2">
-  <p class="article-row__cat">Used tools</p>
-  <div>
-    <h3 class="article-row__title">Judging used tools before you pay</h3>
-    <p class="article-row__excerpt">Wear that matters against wear that does not, across hand tools and inflators.</p>
-    <p class="row-tags"> <span class="tag-role tag-role--staff">Frontier</span><span class="tag-upcoming">In preparation</span></p>
-  </div>
-  <p class="article-row__meta">01 AUG 2026<br>5 min</p>
-</article><article class="article-row" data-reveal style="--i:3">
-  <p class="article-row__cat">Helmets</p>
-  <div>
-    <h3 class="article-row__title">Ventilation and heat, judged locally</h3>
-    <p class="article-row__excerpt">A helmet rated for European weather behaves differently at midday on the equator.</p>
-    <p class="row-tags"> <span class="tag-role tag-role--pro">Pro</span><span class="tag-upcoming">In preparation</span></p>
-  </div>
-  <p class="article-row__meta">22 JUL 2026<br>6 min</p>
-</article></div>
-    <p class="scroll-hint" style="margin-top:1.25rem">
-      Entries marked in preparation are planned and drafted but not published. They are
-      listed so the scope of the section is honest rather than to imply a page exists.
+    <h1>Frontier Moto Market</h1>
+    <p class="lede" style="margin-top:1rem">Buy and sell your bikes, tools and gear in Kenya.</p>
+    <p class="lede" style="margin-top:0.8rem;max-width:62ch">
+      Whatever strange machine you ride, if it is roadworthy and the papers
+      are in order, it belongs here. Condition notes say what was seen, and
+      guide prices are estimates rather than offers. Nothing transacts yet.
     </p>
   </div>
 </section>
-<section class="section section--soft" aria-labelledby="related-title">
+<section class="section" aria-label="Browse listings">
   <div class="container">
-    <h2 class="section-label" id="related-title"><span class="section-label__n">02.5</span><span class="section-label__title">Adjacent sections</span><span class="section-label__aside">Where this leads</span></h2>
-    <div class="related-grid" data-reveal><article class="related-card"><p class="related-card__n">01</p><h3 class="related-card__title"><a href="../shop/">Shop</a></h3><p class="related-card__blurb">New spares, accessories, oils, kits, nav and audio.</p></article><article class="related-card"><p class="related-card__n">02</p><h3 class="related-card__title"><a href="../ride/">Ride</a></h3><p class="related-card__blurb">Guides and articles for riders.</p></article><article class="related-card"><p class="related-card__n">03</p><h3 class="related-card__title"><a href="../workshop/">Workshop</a></h3><p class="related-card__blurb">Service, inspection and recovery.</p></article></div>
+    <p class="lede" style="margin-bottom:1.5rem;max-width:62ch">Used two wheelers, used tools and biking related goods from the local and used market. Everything here was inspected in person or is shown as a demo listing. Frontier Moto holds no stock yet and brokers no sales. Notes on condition, not offers. Nothing transacts yet.</p>
+    <p class="mono" style="margin-bottom:1.25rem" data-reveal>
+      4 bikes listed. Showing 1 of 1 pages.
+    </p>
+    <div class="market-filters" data-reveal data-market-filters>
+  <div class="field">
+    <label for="market-search">Search listings</label>
+    <input id="market-search" name="search" type="search" autocomplete="off"
+           placeholder="Try 150 cc, commuter or Nairobi">
+  </div>
+  <div class="field">
+    <label for="market-category">Category</label>
+    <select id="market-category" name="category">
+      <option value="">All categories</option>
+      <option>Used bike</option>
+      <option>Used tool</option>
+      <option>Used gear</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="market-size">Engine size</label>
+    <select id="market-size" name="size">
+      <option value="">Any size</option>
+      <option>Up to 125 cc</option>
+      <option>125 to 250 cc</option>
+      <option>250 to 400 cc</option>
+      <option>Over 400 cc</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="market-status">Condition</label>
+    <select id="market-status" name="status">
+      <option value="">Any condition</option>
+      <option>Inspected</option>
+      <option>Seen only</option>
+      <option>Demo</option>
+    </select>
+  </div>
+</div>
+<p class="scroll-hint" data-market-count role="status" aria-live="polite">6 listings</p>
+<div class="row-list" data-market-list><article class="listing-card" data-reveal style="--i:0"
+      data-category="Used bike"
+      data-size="125 to 250 cc"
+      data-status="Inspected"
+      data-search="2021 Honda 150 commuter Single owner. Service history present, chain set recent, tyres at half. ML-118 Central Kenya Used bike Inspected Honda Commuter 125 to 250 cc 5 speed manual Kenyan used Private seller">
+      <div class="listing-card__media" aria-hidden="true"><span>ML-118</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">2021 Honda 150 commuter</h2>
+        <p class="article-row__cat listing-card__stat"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"/></svg> 5 speed manual</p>
+        <p class="article-row__excerpt">Single owner. Service history present, chain set recent, tyres at half.</p>
+        <p class="tag-row"><span class="tag">Inspected</span><span class="tag">Kenyan used</span><span class="tag">Private seller</span></p>
+        <p class="listing-card__price">Guide price KSh 165,000<span>Central Kenya</span></p>
+      </div>
+    </article><article class="listing-card" data-reveal style="--i:1"
+      data-category="Used bike"
+      data-size="125 to 250 cc"
+      data-status="Inspected"
+      data-search="2019 Yamaha 250 dual sport Higher mileage, fork seals weeping, otherwise sound. ML-121 Nairobi Used bike Inspected Yamaha Dual sport 125 to 250 cc 5 speed manual Kenyan used Private seller">
+      <div class="listing-card__media" aria-hidden="true"><span>ML-121</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">2019 Yamaha 250 dual sport</h2>
+        <p class="article-row__cat listing-card__stat"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"/></svg> 5 speed manual</p>
+        <p class="article-row__excerpt">Higher mileage, fork seals weeping, otherwise sound.</p>
+        <p class="tag-row"><span class="tag">Inspected</span><span class="tag">Kenyan used</span><span class="tag">Private seller</span></p>
+        <p class="listing-card__price">Guide price KSh 420,000<span>Nairobi</span></p>
+      </div>
+    </article><article class="listing-card" data-reveal style="--i:2"
+      data-category="Used bike"
+      data-size="Up to 125 cc"
+      data-status="Inspected"
+      data-search="2018 Shineray 125 commuter Stage retired. Working machine, honest wear, priced accordingly. ML-124 Nakuru Used bike Inspected Shineray Commuter Up to 125 cc 4 speed manual Kenyan used Corporate seller">
+      <div class="listing-card__media" aria-hidden="true"><span>ML-124</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">2018 Shineray 125 commuter</h2>
+        <p class="article-row__cat listing-card__stat"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"/></svg> 4 speed manual</p>
+        <p class="article-row__excerpt">Stage retired. Working machine, honest wear, priced accordingly.</p>
+        <p class="tag-row"><span class="tag">Inspected</span><span class="tag">Kenyan used</span><span class="tag">Corporate seller</span></p>
+        <p class="listing-card__price">Guide price KSh 95,000<span>Nakuru</span></p>
+      </div>
+    </article><article class="listing-card" data-reveal style="--i:3"
+      data-category="Used bike"
+      data-size="250 to 400 cc"
+      data-status="Seen only"
+      data-search="2020 Suzuki 400 adventure Imported. Low mileage, no local service history, parts lead time is the risk. ML-127 Nairobi Used bike Seen only Suzuki Adventure 250 to 400 cc 6 speed manual Foreign used import Corporate seller">
+      <div class="listing-card__media" aria-hidden="true"><span>ML-127</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">2020 Suzuki 400 adventure</h2>
+        <p class="article-row__cat listing-card__stat"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"/></svg> 6 speed manual</p>
+        <p class="article-row__excerpt">Imported. Low mileage, no local service history, parts lead time is the risk.</p>
+        <p class="tag-row"><span class="tag">Seen only</span><span class="tag">Foreign used import</span><span class="tag">Corporate seller</span></p>
+        <p class="listing-card__price">Guide price KSh 780,000<span>Nairobi</span></p>
+      </div>
+    </article><article class="listing-card" data-reveal style="--i:4"
+      data-category="Used tool"
+      data-size=""
+      data-status="Demo"
+      data-search="Socket set and torque wrench, used Demo listing. Sizes checked against common commuter fasteners. ML-131 Nanyuki Used tool Demo     Kenyan used Private seller">
+      <div class="listing-card__media" aria-hidden="true"><span>ML-131</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">Socket set and torque wrench, used</h2>
+        <p class="article-row__cat listing-card__stat"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M2.5 2.5h5l6 6-5 5-6-6v-5Z"/><circle cx="6" cy="6" r="1.2"/></svg> Used tool</p>
+        <p class="article-row__excerpt">Demo listing. Sizes checked against common commuter fasteners.</p>
+        <p class="tag-row"><span class="tag">Demo</span><span class="tag">Kenyan used</span><span class="tag">Private seller</span></p>
+        <p class="listing-card__price">Guide price KSh 12,000<span>Nanyuki</span></p>
+      </div>
+    </article><article class="listing-card" data-reveal style="--i:5"
+      data-category="Used gear"
+      data-size=""
+      data-status="Demo"
+      data-search="Pannier rails with dry bags, used Demo listing. Mounts straight, bags hold water seal. ML-132 Nanyuki Used gear Demo     Kenyan used Custom build">
+      <div class="listing-card__media" aria-hidden="true"><span>ML-132</span></div>
+      <div class="listing-card__body">
+        <h2 class="article-row__title">Pannier rails with dry bags, used</h2>
+        <p class="article-row__cat listing-card__stat"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M2.5 2.5h5l6 6-5 5-6-6v-5Z"/><circle cx="6" cy="6" r="1.2"/></svg> Used gear</p>
+        <p class="article-row__excerpt">Demo listing. Mounts straight, bags hold water seal.</p>
+        <p class="tag-row"><span class="tag">Demo</span><span class="tag">Kenyan used</span><span class="tag">Custom build</span></p>
+        <p class="listing-card__price">Guide price KSh 18,000<span>Nanyuki</span></p>
+      </div>
+    </article></div>
+<p class="lede" data-market-empty hidden style="margin-top:1.5rem;max-width:52ch">
+  No listings match those filters. Clear them to see everything again, or join
+  the waitlist below and we will message you when your bike lands.
+</p>
+    <nav class="pages-nav" aria-label="Market pages"><span aria-hidden="true">&#8249; Prev</span><a href="../market/" aria-current="page">1</a><span aria-hidden="true">Next &#8250;</span></nav>
+    <div role="group" aria-label="Popular searches" style="margin-top:30px">
+      <div data-reveal>
+  <div class="tag-cloud" data-search-tags><button type="button" data-search-tag="Honda"><span>Honda</span><span>1</span></button><button type="button" data-search-tag="Commuter"><span>Commuter</span><span>2</span></button><button type="button" data-search-tag="125 to 250 cc"><span>125 to 250 cc</span><span>2</span></button><button type="button" data-search-tag="Yamaha"><span>Yamaha</span><span>1</span></button><button type="button" data-search-tag="Dual sport"><span>Dual sport</span><span>1</span></button><button type="button" data-search-tag="Shineray"><span>Shineray</span><span>1</span></button><button type="button" data-search-tag="Up to 125 cc"><span>Up to 125 cc</span><span>1</span></button><button type="button" data-search-tag="Suzuki"><span>Suzuki</span><span>1</span></button><button type="button" data-search-tag="Adventure"><span>Adventure</span><span>1</span></button><button type="button" data-search-tag="250 to 400 cc"><span>250 to 400 cc</span><span>1</span></button></div>
+</div>
+    </div>
   </div>
 </section>
-<section class="section" aria-labelledby="notes-title">
+<section class="section section--soft waitlist-compact" aria-label="Market waitlist">
   <div class="container">
-    <h2 class="section-label" id="notes-title"><span class="section-label__n">02.6</span><span class="section-label__title">Field notes</span><span class="section-label__aside">One email, occasionally</span></h2>
     <div class="newsletter">
   <div data-reveal>
-    <h2 class="newsletter__title">Field notes for the ride ahead</h2>
+    <h2 class="newsletter__title">Can&apos;t find what you&apos;re looking for?</h2>
     <p class="newsletter__body">
-      Route notes, service intervals and what we got wrong last month. One email,
-      sent when there is something worth sending, not on a schedule.
+      Tell us the bike you are after and how to reach you. When a matching
+      machine is inspected and listed, you get one email or WhatsApp message.
+      Nothing else, and nothing until there is a match.
+    </p>
+    <p class="disclaimer" style="margin-top:1.25rem;max-width:44ch">
+      <strong>Demonstration only.</strong>
+      Matching and messaging are not built yet. This form transmits nothing
+      and no alert is created.
     </p>
   </div>
   <form class="newsletter__form" data-reveal style="--i:1" data-demo-form
-        data-demo-message="This sign up is a front end demonstration. Your address was not stored, sent or added to any list."
+        data-demo-message="Demonstration only. No alert was created and nothing was stored or sent. Matching and messaging are not built yet."
         novalidate>
-    <div class="newsletter__row">
-      <div class="field">
-        <label for="newsletter-email">Email address</label>
-        <input id="newsletter-email" name="email" type="email" required
+    <div class="form-grid">
+      <div class="field field--full">
+        <label for="alert-email">Email address</label>
+        <input id="alert-email" name="email" type="email" required
                autocomplete="email" placeholder="you@example.com">
         <p class="field__error" aria-live="polite"></p>
       </div>
-      <button class="btn btn--solid" type="submit" style="margin-top:1.55rem">
-        <span class="btn__label">Subscribe</span>
+      <div class="field">
+        <label for="alert-size">Engine size</label>
+        <select id="alert-size" name="size" required>
+          <option value="">Choose one</option>
+          <option>Up to 125 cc</option>
+          <option>125 to 250 cc</option>
+          <option>250 to 400 cc</option>
+          <option>Over 400 cc</option>
+          <option>Not sure, advise me</option>
+        </select>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="alert-type">Bike type</label>
+        <select id="alert-type" name="type" required>
+          <option value="">Choose one</option>
+          <option>Commuter</option>
+          <option>Dual sport</option>
+          <option>Adventure</option>
+          <option>Anything sound</option>
+        </select>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field field--full">
+        <label for="alert-make">Make, model or bike name</label>
+        <input id="alert-make" name="make" type="text"
+               placeholder="A specific bike, or leave blank for any match">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field field--full" data-channel-toggle="alert-phone-wrap">
+        <span class="mono" id="alert-channel-label" style="display:block;margin-bottom:0.5rem">Notify me by</span>
+        <div role="radiogroup" aria-labelledby="alert-channel-label">
+          <label class="radio"><input type="radio" name="channel" value="email" checked> Email</label>
+          <label class="radio"><input type="radio" name="channel" value="whatsapp"> WhatsApp</label>
+        </div>
+      </div>
+      <div class="field field--full" id="alert-phone-wrap" hidden>
+        <label for="alert-phone">WhatsApp number</label>
+        <input id="alert-phone" name="phone" type="tel"
+               autocomplete="tel" placeholder="+254 700 000 000">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="btn-row" style="margin-top:1.5rem">
+      <button class="btn btn--solid" type="submit">
+        <span class="btn__label">Notify me</span>
       </button>
     </div>
-    <p class="field" style="margin-top:0.75rem">
-      <span class="hint">No list exists yet. This form does not transmit anything.</span>
-    </p>
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
 </div>
@@ -372,6 +373,6 @@
     </div>
   </div>
 </footer>
-<script src="../assets/js/index.js?v=12" defer></script>
+<script src="../assets/js/index.js?v=27" defer></script>
 </body>
 </html>

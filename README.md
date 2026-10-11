@@ -231,7 +231,13 @@ None of it is implied to work in the meantime.
   is one, so canonicals do not advertise an address that does not resolve.
 - **Market and Shop.** Nothing is for sale. Market listings are inspected
   notes or demos, shop items are a placeholder catalogue with placeholder KSh
-  prices, and cart controls are disabled demonstrations.
+  prices, and cart controls are disabled demonstrations. The market page closes
+  with a "notify me when a matching bike lands" signup, which is a placeholder
+  interface only. Real matching needs a listings store, a matcher that turns
+  free text requests ("150 cc commuter") into structured specs (the likely AI
+  piece), and messaging integrations for email and WhatsApp delivery, plus
+  consent and storage handling for the addresses and numbers held. None of that
+  exists yet.
 - **Workshop and rider recovery.** Opening soon. No booking, no dispatch, no
   coverage area, no response time yet; the phone number is a placeholder that
   is not answered. The page says so beside the forms and the forms transmit
